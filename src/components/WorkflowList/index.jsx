@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import WorkflowService from '../../renderer/services/workflow.service';
 import './styles.css';
 
 // 空状态图标组件
@@ -9,34 +10,56 @@ const EmptyIcon = () => (
 );
 
 const WorkflowList = () => {
-  const [workflows, setWorkflows] = useState([
-    { id: 1, name: 'work flow 1' },
-    { id: 2, name: 'work flow 2' },
-    { id: 3, name: 'Develop the NPM library of wlp-tree' }
-  ]);
-
+  const [workflows, setWorkflows] = useState([]);
   const [selectedWorkflow, setSelectedWorkflow] = useState(null);
 
-  const handleAddWorkflow = () => {
-    const newWorkflow = {
-      id: Date.now(),
-      name: `work flow ${workflows.length + 1}`
-    };
-    setWorkflows([...workflows, newWorkflow]);
+  // 加载工作流列表
+  useEffect(() => {
+    loadWorkflows();
+  }, []);
+
+  const loadWorkflows = async () => {
+    try {
+      const data = await WorkflowService.getAllWorkflows();
+      setWorkflows(data || []);
+    } catch (error) {
+      console.error('Failed to load workflows:', error);
+    }
   };
 
-  const handleRemoveWorkflow = (id, e) => {
+  const handleAddWorkflow = async () => {
+    try {
+      const newWorkflow = {
+        id: Date.now(),
+        name: `work flow ${workflows.length + 1}`
+      };
+      await WorkflowService.saveWorkflow(newWorkflow);
+      await loadWorkflows();
+    } catch (error) {
+      console.error('Failed to add workflow:', error);
+    }
+  };
+
+  const handleRemoveWorkflow = async (id, e) => {
     e.stopPropagation();
     const workflowElement = e.target.closest('.workflow-item');
     workflowElement.style.transform = 'scale(0.9)';
     workflowElement.style.opacity = '0';
     
-    setTimeout(() => {
-      setWorkflows(workflows.filter(workflow => workflow.id !== id));
-      if (selectedWorkflow === id) {
-        setSelectedWorkflow(null);
-      }
-    }, 200);
+    try {
+      setTimeout(async () => {
+        await WorkflowService.deleteWorkflow(id);
+        if (selectedWorkflow === id) {
+          setSelectedWorkflow(null);
+        }
+        await loadWorkflows();
+      }, 200);
+    } catch (error) {
+      console.error('Failed to remove workflow:', error);
+      // 恢复动画状态
+      workflowElement.style.transform = '';
+      workflowElement.style.opacity = '';
+    }
   };
 
   const handleSelectWorkflow = (id) => {

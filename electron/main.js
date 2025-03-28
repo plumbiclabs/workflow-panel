@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const { setupIpcHandlers } = require('../src/main/services/ipc.service');
 const isDev = process.env.NODE_ENV === 'development';
 
 function createWindow() {
@@ -7,12 +8,12 @@ function createWindow() {
     width: 1200,
     height: 800,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, 'preload.js')
     }
   });
 
-  // 在开发环境中加载本地服务器，在生产环境中加载打包后的文件
   if (isDev) {
     mainWindow.loadURL('http://localhost:5173');
     mainWindow.webContents.openDevTools();
@@ -23,6 +24,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
+  setupIpcHandlers();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -35,4 +37,4 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-}); 
+});
