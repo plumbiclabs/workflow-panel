@@ -9,9 +9,9 @@ const EmptyIcon = () => (
   </svg>
 );
 
-const WorkflowList = () => {
+const WorkflowList = ({ onSelectWorkflow }) => {
   const [workflows, setWorkflows] = useState([]);
-  const [selectedWorkflow, setSelectedWorkflow] = useState(null);
+  const [selectedWorkflowId, setSelectedWorkflowId] = useState(null);
 
   // 加载工作流列表
   useEffect(() => {
@@ -31,7 +31,8 @@ const WorkflowList = () => {
     try {
       const newWorkflow = {
         id: Date.now(),
-        name: `work flow ${workflows.length + 1}`
+        name: `work flow ${workflows.length + 1}`,
+        tasks: []  // 初始化空的任务列表
       };
       await WorkflowService.saveWorkflow(newWorkflow);
       await loadWorkflows();
@@ -49,21 +50,22 @@ const WorkflowList = () => {
     try {
       setTimeout(async () => {
         await WorkflowService.deleteWorkflow(id);
-        if (selectedWorkflow === id) {
-          setSelectedWorkflow(null);
+        if (selectedWorkflowId === id) {
+          setSelectedWorkflowId(null);
+          onSelectWorkflow(null);
         }
         await loadWorkflows();
       }, 200);
     } catch (error) {
       console.error('Failed to remove workflow:', error);
-      // 恢复动画状态
       workflowElement.style.transform = '';
       workflowElement.style.opacity = '';
     }
   };
 
-  const handleSelectWorkflow = (id) => {
-    setSelectedWorkflow(id);
+  const handleSelectWorkflow = (workflow) => {
+    setSelectedWorkflowId(workflow.id);
+    onSelectWorkflow(workflow);
   };
 
   return (
@@ -88,8 +90,8 @@ const WorkflowList = () => {
           workflows.map((workflow) => (
             <div
               key={workflow.id}
-              className={`workflow-item ${selectedWorkflow === workflow.id ? 'selected' : ''}`}
-              onClick={() => handleSelectWorkflow(workflow.id)}
+              className={`workflow-item ${selectedWorkflowId === workflow.id ? 'selected' : ''}`}
+              onClick={() => handleSelectWorkflow(workflow)}
             >
               <span title={workflow.name}>{workflow.name}</span>
               <button
