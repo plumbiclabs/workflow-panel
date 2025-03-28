@@ -1,93 +1,195 @@
 .workflow-list {
   background: white;
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.workflow-list:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
 }
 
 .workflow-list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  position: relative;
 }
 
 .workflow-list-header h2 {
   margin: 0;
-  font-size: 18px;
-  color: #333;
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.workflow-list-header::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: -24px;
+  right: -24px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.06) 50%, rgba(0,0,0,0.03) 100%);
 }
 
 .add-button {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: none;
   background: #007AFF;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(0deg);
 }
 
 .add-button:hover {
   background: #0056b3;
+  transform: rotate(90deg);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
 }
 
 .workflow-items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.workflow-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.workflow-items::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.workflow-items::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.workflow-items::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
 }
 
 .workflow-item {
-  background: #f0f2f5;
-  border-radius: 6px;
-  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 1px solid transparent;
+  transform: translateY(0);
 }
 
 .workflow-item:hover {
-  background: #e4e6e9;
+  background: #f0f2f5;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .workflow-item.selected {
-  background: #e1f0ff;
+  background: #e8f2ff;
   border: 1px solid #007AFF;
+  box-shadow: 0 2px 12px rgba(0, 122, 255, 0.15);
 }
 
 .workflow-item span {
-  color: #333;
+  color: #2c3e50;
   font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.workflow-item:hover span {
+  color: #1a1a1a;
 }
 
 .remove-button {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.06);
   color: #666;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   line-height: 1;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.workflow-item:hover .remove-button {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .remove-button:hover {
-  background: rgba(0, 0, 0, 0.2);
-  color: #333;
+  background: #ff4d4f;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* 添加空状态样式 */
+.workflow-empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: #999;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.workflow-empty svg {
+  width: 48px;
+  height: 48px;
+  color: #ccc;
+}
+
+/* 添加列表项的进入/离开动画 */
+.workflow-item-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.workflow-item-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-out;
+}
+
+.workflow-item-exit {
+  opacity: 1;
+}
+
+.workflow-item-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in;
 } 
