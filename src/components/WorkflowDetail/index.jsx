@@ -1,72 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Task from '../Task';
 import EditableTitle from '../EditableTitle';
-import WorkflowService from '../../renderer/services/workflow.service';
+import { useWorkflow } from '../../context/WorkflowContext';
 import './style.css';
 
-const WorkflowDetail = ({ workflow }) => {
-  const [tasks, setTasks] = useState(workflow?.tasks || []);
-  const [currentWorkflow, setCurrentWorkflow] = useState(workflow);
-
-  // 当传入的 workflow 改变时更新 tasks 和 currentWorkflow
-  useEffect(() => {
-    if (workflow) {
-      setTasks(workflow.tasks || []);
-      setCurrentWorkflow(workflow);
-    }
-  }, [workflow]);
+const WorkflowDetail = () => {
+  const { 
+    selectedWorkflow, 
+    updateWorkflow, 
+    addTask, 
+    deleteTask 
+  } = useWorkflow();
 
   // 处理工作流名称变更
   const handleWorkflowNameSave = async (newName) => {
-    if (!currentWorkflow) return;
+    if (!selectedWorkflow) return;
     
     try {
-      const updatedWorkflow = await WorkflowService.updateWorkflow(currentWorkflow.id, { name: newName });
-      if (updatedWorkflow) {
-        setCurrentWorkflow(updatedWorkflow);
-      }
+      await updateWorkflow(selectedWorkflow.id, { name: newName });
     } catch (error) {
       console.error('Failed to update workflow name:', error);
     }
   };
 
-  // 修改后:
+  // 添加任务
   const handleAddTask = async () => {
-    if (!currentWorkflow) return;
+    if (!selectedWorkflow) return;
 
     try {
       const newTask = {
-        name: `Task ${tasks.length + 1}`,
+        name: `Task ${(selectedWorkflow.tasks || []).length + 1}`,
         commands: []
       };
-
-      // 直接使用 addTask API
-      const updatedWorkflow = await WorkflowService.addTask(currentWorkflow.id, newTask);
-      if (updatedWorkflow) {
-        setCurrentWorkflow(updatedWorkflow);
-        setTasks(updatedWorkflow.tasks || []);
-      }
+      await addTask(selectedWorkflow.id, newTask);
     } catch (error) {
       console.error('Failed to add task:', error);
     }
   };
 
+  // 删除任务
   const handleDeleteTask = async (taskId) => {
-    if (!currentWorkflow) return;
+    if (!selectedWorkflow) return;
 
     try {
-      // 直接使用 deleteTask API
-      const updatedWorkflow = await WorkflowService.deleteTask(currentWorkflow.id, taskId);
-      if (updatedWorkflow) {
-        setCurrentWorkflow(updatedWorkflow);
-        setTasks(updatedWorkflow.tasks || []);
-      }
+      await deleteTask(selectedWorkflow.id, taskId);
     } catch (error) {
       console.error('Failed to delete task:', error);
     }
   };
 
-  if (!workflow) {
+  if (!selectedWorkflow) {
     return (
       <div className="workflow-detail empty">
         <p>Select a workflow to view details</p>
@@ -78,7 +61,7 @@ const WorkflowDetail = ({ workflow }) => {
     <div className="workflow-detail">
       <div className="workflow-detail-header">
         <EditableTitle 
-          value={currentWorkflow?.name} 
+          value={selectedWorkflow.name} 
           onSave={handleWorkflowNameSave}
           size="medium"
           placeholder="Workflow"
@@ -93,15 +76,15 @@ const WorkflowDetail = ({ workflow }) => {
         </button>
       </div>
       <div className="tasks-container">
-        {tasks.map(task => (
+        {(selectedWorkflow.tasks || []).map(task => (
           <Task
             key={task.id}
             task={task}
-            workflowId={currentWorkflow?.id}
+            workflowId={selectedWorkflow.id}
             onClose={handleDeleteTask}
           />
         ))}
-        {tasks.length === 0 && (
+        {(!selectedWorkflow.tasks || selectedWorkflow.tasks.length === 0) && (
           <div className="no-tasks">
             <p>No tasks added yet</p>
             <button onClick={handleAddTask}>Add Task</button>

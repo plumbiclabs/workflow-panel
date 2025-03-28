@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import WorkflowService from '../../renderer/services/workflow.service';
+import React from 'react';
+import { useWorkflow } from '../../context/WorkflowContext';
 import './styles.css';
 
 // 空状态图标组件
@@ -9,23 +9,17 @@ const EmptyIcon = () => (
   </svg>
 );
 
-const WorkflowList = ({ onSelectWorkflow }) => {
-  const [workflows, setWorkflows] = useState([]);
-  const [selectedWorkflowId, setSelectedWorkflowId] = useState(null);
-
-  // 加载工作流列表
-  useEffect(() => {
-    loadWorkflows();
-  }, []);
-
-  const loadWorkflows = async () => {
-    try {
-      const data = await WorkflowService.getAllWorkflows();
-      setWorkflows(data || []);
-    } catch (error) {
-      console.error('Failed to load workflows:', error);
-    }
-  };
+const WorkflowList = () => {
+  const { 
+    workflows, 
+    selectedWorkflow, 
+    loading, 
+    error, 
+    addWorkflow, 
+    deleteWorkflow, 
+    selectWorkflow,
+    loadWorkflows 
+  } = useWorkflow();
 
   const handleAddWorkflow = async () => {
     try {
@@ -34,8 +28,7 @@ const WorkflowList = ({ onSelectWorkflow }) => {
         name: `work flow ${workflows.length + 1}`,
         tasks: []  // 初始化空的任务列表
       };
-      await WorkflowService.addWorkflow(newWorkflow);
-      await loadWorkflows();
+      await addWorkflow(newWorkflow);
     } catch (error) {
       console.error('Failed to add workflow:', error);
     }
@@ -49,12 +42,7 @@ const WorkflowList = ({ onSelectWorkflow }) => {
     
     try {
       setTimeout(async () => {
-        await WorkflowService.deleteWorkflow(id);
-        if (selectedWorkflowId === id) {
-          setSelectedWorkflowId(null);
-          onSelectWorkflow(null);
-        }
-        await loadWorkflows();
+        await deleteWorkflow(id);
       }, 200);
     } catch (error) {
       console.error('Failed to remove workflow:', error);
@@ -63,10 +51,18 @@ const WorkflowList = ({ onSelectWorkflow }) => {
     }
   };
 
-  const handleSelectWorkflow = (workflow) => {
-    setSelectedWorkflowId(workflow.id);
-    onSelectWorkflow(workflow);
-  };
+  if (loading) {
+    return <div className="workflow-list loading">Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="workflow-list error">
+        <p>Error: {error}</p>
+        <button onClick={loadWorkflows}>Retry</button>
+      </div>
+    );
+  }
 
   return (
     <div className="workflow-list">
@@ -90,8 +86,8 @@ const WorkflowList = ({ onSelectWorkflow }) => {
           workflows.map((workflow) => (
             <div
               key={workflow.id}
-              className={`workflow-item ${selectedWorkflowId === workflow.id ? 'selected' : ''}`}
-              onClick={() => handleSelectWorkflow(workflow)}
+              className={`workflow-item ${selectedWorkflow?.id === workflow.id ? 'selected' : ''}`}
+              onClick={() => selectWorkflow(workflow)}
             >
               <span title={workflow.name}>{workflow.name}</span>
               <button

@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
-import WorkflowService from '../../renderer/services/workflow.service';
 import EditableTitle from '../EditableTitle';
+import { useWorkflow } from '../../context/WorkflowContext';
 import './styles.css';
 
 const Task = ({ task, workflowId, onClose }) => {
+  const { 
+    updateTask, 
+    addCommand, 
+    deleteCommand, 
+    runTask,
+    taskRunningStates
+  } = useWorkflow();
+  
   const [newCommand, setNewCommand] = useState('');
-  const [commands, setCommands] = useState(task.commands || []);
-  const [isRunning, setIsRunning] = useState(false);
+  
+  // 检查此任务是否正在运行
+  const isRunning = taskRunningStates[`${workflowId}-${task.id}`];
+  
+  // 获取此任务的命令列表
+  const commands = task.commands || [];
 
   // 更新任务标题
   const handleTaskNameSave = async (newName) => {
     if (!workflowId) return;
 
     try {
-      const updatedWorkflow = await WorkflowService.updateTask(
-        workflowId, 
-        task.id, 
-        { name: newName }
-      );
-      
-      if (updatedWorkflow) {
-        console.log('Task name updated successfully');
-      }
+      await updateTask(workflowId, task.id, { name: newName });
     } catch (error) {
       console.error('Failed to update task name:', error);
     }
@@ -32,20 +36,8 @@ const Task = ({ task, workflowId, onClose }) => {
     if (!newCommand.trim() || !workflowId) return;
 
     try {
-      const updatedWorkflow = await WorkflowService.addCommand(
-        workflowId,
-        task.id,
-        newCommand.trim()
-      );
-
-      if (updatedWorkflow) {
-        // 查找更新后的任务
-        const updatedTask = updatedWorkflow.tasks.find(t => t.id === task.id);
-        if (updatedTask) {
-          setCommands(updatedTask.commands || []);
-        }
-        setNewCommand(''); // 清空输入框
-      }
+      await addCommand(workflowId, task.id, newCommand.trim());
+      setNewCommand(''); // 清空输入框
     } catch (error) {
       console.error('Failed to add command:', error);
     }
@@ -56,19 +48,7 @@ const Task = ({ task, workflowId, onClose }) => {
     if (!workflowId) return;
 
     try {
-      const updatedWorkflow = await WorkflowService.deleteCommand(
-        workflowId,
-        task.id,
-        commandIndex
-      );
-
-      if (updatedWorkflow) {
-        // 查找更新后的任务
-        const updatedTask = updatedWorkflow.tasks.find(t => t.id === task.id);
-        if (updatedTask) {
-          setCommands(updatedTask.commands || []);
-        }
-      }
+      await deleteCommand(workflowId, task.id, commandIndex);
     } catch (error) {
       console.error('Failed to delete command:', error);
     }
@@ -87,10 +67,7 @@ const Task = ({ task, workflowId, onClose }) => {
     if (!workflowId || isRunning) return;
     
     try {
-      setIsRunning(true);
-      
-      // 调用 WorkflowService 的 runTask 方法
-      const result = await WorkflowService.runTask(workflowId, task.id);
+      const result = await runTask(workflowId, task.id);
       
       if (!result.success) {
         console.error('Failed to run task:', result.error);
@@ -99,8 +76,6 @@ const Task = ({ task, workflowId, onClose }) => {
     } catch (error) {
       console.error('Error running task:', error);
       alert(`Error running task: ${error.message || 'Unknown error'}`);
-    } finally {
-      setIsRunning(false);
     }
   };
 
