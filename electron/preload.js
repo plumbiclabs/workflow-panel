@@ -14,7 +14,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
   task: {
     add: (workflowId, task) => ipcRenderer.invoke('task:add', { workflowId, task }),
     update: (workflowId, taskId, taskData) => ipcRenderer.invoke('task:update', { workflowId, taskId, taskData }),
-    delete: (workflowId, taskId) => ipcRenderer.invoke('task:delete', { workflowId, taskId })
+    delete: (workflowId, taskId) => ipcRenderer.invoke('task:delete', { workflowId, taskId }),
+    run: (workflowId, taskId) => ipcRenderer.invoke('task:run', { workflowId, taskId })
   },
   // 命令相关的 API
   command: {

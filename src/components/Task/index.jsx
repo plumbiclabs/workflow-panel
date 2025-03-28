@@ -3,9 +3,10 @@ import WorkflowService from '../../renderer/services/workflow.service';
 import EditableTitle from '../EditableTitle';
 import './styles.css';
 
-const Task = ({ task, workflowId, onClose, onRun }) => {
+const Task = ({ task, workflowId, onClose }) => {
   const [newCommand, setNewCommand] = useState('');
   const [commands, setCommands] = useState(task.commands || []);
+  const [isRunning, setIsRunning] = useState(false);
 
   // 更新任务标题
   const handleTaskNameSave = async (newName) => {
@@ -81,6 +82,28 @@ const Task = ({ task, workflowId, onClose, onRun }) => {
     }
   };
 
+  // 处理运行任务
+  const handleRunTask = async () => {
+    if (!workflowId || isRunning) return;
+    
+    try {
+      setIsRunning(true);
+      
+      // 调用 WorkflowService 的 runTask 方法
+      const result = await WorkflowService.runTask(workflowId, task.id);
+      
+      if (!result.success) {
+        console.error('Failed to run task:', result.error);
+        alert(`Failed to run task: ${result.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error running task:', error);
+      alert(`Error running task: ${error.message || 'Unknown error'}`);
+    } finally {
+      setIsRunning(false);
+    }
+  };
+
   return (
     <div className="task-window">
       <div className="task-header">
@@ -119,11 +142,12 @@ const Task = ({ task, workflowId, onClose, onRun }) => {
         </div>
       </div>
       <button 
-        className="task-run" 
-        onClick={() => onRun(task.id)}
+        className={`task-run ${isRunning ? 'running' : ''}`}
+        onClick={handleRunTask}
         title="Run commands"
+        disabled={isRunning || commands.length === 0}
       >
-        ▶
+        {isRunning ? '...' : '▶'}
       </button>
     </div>
   );

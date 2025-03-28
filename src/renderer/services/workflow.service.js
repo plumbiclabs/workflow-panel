@@ -32,6 +32,11 @@ class WorkflowService {
   static async deleteTask(workflowId, taskId) {
     return await window.electronAPI.task.delete(workflowId, taskId);
   }
+  
+  // 添加运行任务方法
+  static async runTask(workflowId, taskId) {
+    return await window.electronAPI.task.run(workflowId, taskId);
+  }
 
   // 命令操作
   static async addCommand(workflowId, taskId, command) {

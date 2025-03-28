@@ -1,5 +1,6 @@
 const { ipcMain } = require('electron');
 const workflowStore = require('../store/workflow.store');
+const terminalService = require('./terminal.service');
 
 function setupIpcHandlers() {
   // 工作流操作
@@ -34,6 +35,30 @@ function setupIpcHandlers() {
 
   ipcMain.handle('task:delete', (_, { workflowId, taskId }) => {
     return workflowStore.deleteTask(workflowId, taskId);
+  });
+  
+  // 添加运行任务命令的处理函数
+  ipcMain.handle('task:run', (_, { workflowId, taskId }) => {
+    // 获取工作流和任务
+    const workflow = workflowStore.getWorkflowById(workflowId);
+    if (!workflow) return { success: false, error: 'Workflow not found' };
+    
+    const task = workflow.tasks.find(t => t.id === taskId);
+    if (!task) return { success: false, error: 'Task not found' };
+    
+    // 确保有命令可以运行
+    if (!task.commands || task.commands.length === 0) {
+      return { success: false, error: 'No commands to run' };
+    }
+    
+    try {
+      // 创建终端窗口并运行命令
+      const window = terminalService.runTaskInTerminal(taskId, task.commands);
+      return { success: true, message: 'Terminal launched' };
+    } catch (error) {
+      console.error('Failed to run task:', error);
+      return { success: false, error: error.message };
+    }
   });
 
   // 命令操作

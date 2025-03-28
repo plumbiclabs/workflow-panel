@@ -66,11 +66,6 @@ const WorkflowDetail = ({ workflow }) => {
     }
   };
 
-  const handleRunTask = (taskId) => {
-    // TODO: Implement task command execution
-    console.log('Running task:', taskId);
-  };
-
   if (!workflow) {
     return (
       <div className="workflow-detail empty">
@@ -104,7 +99,6 @@ const WorkflowDetail = ({ workflow }) => {
             task={task}
             workflowId={currentWorkflow?.id}
             onClose={handleDeleteTask}
-            onRun={handleRunTask}
           />
         ))}
         {tasks.length === 0 && (
