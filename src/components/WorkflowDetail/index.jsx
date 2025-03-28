@@ -1,21 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Task from '../Task';
+import WorkflowService from '../../renderer/services/workflow.service';
 import './style.css';
 
 const WorkflowDetail = ({ workflow }) => {
   const [tasks, setTasks] = useState(workflow?.tasks || []);
+  const [currentWorkflow, setCurrentWorkflow] = useState(workflow);
+  
+  // 当传入的 workflow 改变时更新 tasks 和 currentWorkflow
+  useEffect(() => {
+    if (workflow) {
+      setTasks(workflow.tasks || []);
+      setCurrentWorkflow(workflow);
+    }
+  }, [workflow]);
 
-  const handleAddTask = () => {
+  // 保存 workflow 及其任务
+  const saveWorkflow = async (updatedTasks) => {
+    if (!currentWorkflow) return;
+    
+    try {
+      const updatedWorkflow = {
+        ...currentWorkflow,
+        tasks: updatedTasks
+      };
+      
+      await WorkflowService.saveWorkflow(updatedWorkflow);
+      setCurrentWorkflow(updatedWorkflow);
+    } catch (error) {
+      console.error('Failed to save workflow tasks:', error);
+    }
+  };
+
+  const handleAddTask = async () => {
     const newTask = {
       id: Date.now(),
       name: `Task ${tasks.length + 1}`,
       commands: []
     };
-    setTasks([...tasks, newTask]);
+    
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    
+    // 保存到 workflow
+    await saveWorkflow(updatedTasks);
   };
 
-  const handleCloseTask = (taskId) => {
-    setTasks(tasks.filter(t => t.id !== taskId));
+  const handleCloseTask = async (taskId) => {
+    const updatedTasks = tasks.filter(t => t.id !== taskId);
+    setTasks(updatedTasks);
+    
+    // 保存到 workflow
+    await saveWorkflow(updatedTasks);
   };
 
   const handleRunTask = (taskId) => {
