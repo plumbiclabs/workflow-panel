@@ -22,6 +22,30 @@
     font-weight: 500;
 }
 
+/* 可编辑标题的样式 */
+.task-title-editable {
+    color: #fff !important;
+}
+
+.task-title-editable .title-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.task-title-editable .edit-icon {
+    color: #666;
+}
+
+.task-title-editable:hover .edit-icon {
+    color: #999;
+}
+
+.editable-title-input.size-small {
+    background: #2d2d2d;
+    color: white;
+    border-color: #3d3d3d;
+}
+
 .task-close {
     background: none;
     border: none;
@@ -45,16 +69,82 @@
     font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
     font-size: 13px;
     line-height: 1.5;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .task-command {
     margin-bottom: 8px;
     color: #a0a0a0;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    border-radius: 3px;
+    position: relative;
 }
 
 .task-command::before {
     content: '$ ';
     color: #666;
+    margin-right: 8px;
+}
+
+.task-command:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.command-delete {
+    display: none;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+.task-command:hover .command-delete {
+    display: inline-block;
+}
+
+.command-delete:hover {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff4d4d;
+}
+
+/* 命令输入相关样式 */
+.command-input-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 16px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.command-prompt {
+    color: #666;
+    margin-right: 8px;
+    line-height: 22px;
+}
+
+.command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #a0a0a0;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    resize: vertical;
+    padding: 0;
+    min-height: 22px;
+    outline: none;
+}
+
+.command-input::placeholder {
+    color: #555;
 }
 
 .task-run {
