@@ -7,6 +7,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    title: 'JARVIS',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,

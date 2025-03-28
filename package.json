@@ -15,7 +15,7 @@
   "description": "",
   "build": {
     "appId": "com.electron.app",
-    "productName": "Electron React App",
+    "productName": "JARVIS",
     "directories": {
       "output": "release"
     },
