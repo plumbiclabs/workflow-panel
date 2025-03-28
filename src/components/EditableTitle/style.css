@@ -1,0 +1,56 @@
+.editable-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .editable-title:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .editable-title .edit-icon {
+    opacity: 0;
+    margin-left: 6px;
+    font-size: 0.8em;
+    color: #999;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  
+  .editable-title:hover .edit-icon {
+    opacity: 1;
+  }
+  
+  .editable-title:hover .edit-icon:hover {
+    color: #007AFF;
+  }
+  
+  .editable-title-input {
+    border: 1px solid #007AFF;
+    border-radius: 4px;
+    padding: 4px 8px;
+    outline: none;
+    width: 100%;
+  }
+  
+  /* 尺寸变体 */
+  .editable-title.size-small,
+  .editable-title-input.size-small {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .editable-title.size-medium,
+  .editable-title-input.size-medium {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .editable-title.size-large,
+  .editable-title-input.size-large {
+    font-size: 22px;
+    font-weight: 600;
+  }
