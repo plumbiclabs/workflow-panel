@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Task from '../Task';
+import EditableTitle from '../EditableTitle';
 import WorkflowService from '../../renderer/services/workflow.service';
 import './style.css';
 
@@ -14,6 +15,20 @@ const WorkflowDetail = ({ workflow }) => {
       setCurrentWorkflow(workflow);
     }
   }, [workflow]);
+
+  // 处理工作流名称变更
+  const handleWorkflowNameSave = async (newName) => {
+    if (!currentWorkflow) return;
+    
+    try {
+      const updatedWorkflow = await WorkflowService.updateWorkflow(currentWorkflow.id, { name: newName });
+      if (updatedWorkflow) {
+        setCurrentWorkflow(updatedWorkflow);
+      }
+    } catch (error) {
+      console.error('Failed to update workflow name:', error);
+    }
+  };
 
   // 修改后:
   const handleAddTask = async () => {
@@ -67,7 +82,13 @@ const WorkflowDetail = ({ workflow }) => {
   return (
     <div className="workflow-detail">
       <div className="workflow-detail-header">
-        <h2>{workflow.name}</h2>
+        <EditableTitle 
+          value={currentWorkflow?.name} 
+          onSave={handleWorkflowNameSave}
+          size="medium"
+          placeholder="Workflow"
+          className="workflow-title"
+        />
         <button
           className="add-task"
           onClick={handleAddTask}
@@ -81,6 +102,7 @@ const WorkflowDetail = ({ workflow }) => {
           <Task
             key={task.id}
             task={task}
+            workflowId={currentWorkflow?.id}
             onClose={handleDeleteTask}
             onRun={handleRunTask}
           />
