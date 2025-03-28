@@ -34,7 +34,7 @@ const WorkflowList = ({ onSelectWorkflow }) => {
         name: `work flow ${workflows.length + 1}`,
         tasks: []  // 初始化空的任务列表
       };
-      await WorkflowService.saveWorkflow(newWorkflow);
+      await WorkflowService.addWorkflow(newWorkflow);
       await loadWorkflows();
     } catch (error) {
       console.error('Failed to add workflow:', error);

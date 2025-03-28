@@ -6,7 +6,7 @@ import './style.css';
 const WorkflowDetail = ({ workflow }) => {
   const [tasks, setTasks] = useState(workflow?.tasks || []);
   const [currentWorkflow, setCurrentWorkflow] = useState(workflow);
-  
+
   // 当传入的 workflow 改变时更新 tasks 和 currentWorkflow
   useEffect(() => {
     if (workflow) {
@@ -15,43 +15,40 @@ const WorkflowDetail = ({ workflow }) => {
     }
   }, [workflow]);
 
-  // 保存 workflow 及其任务
-  const saveWorkflow = async (updatedTasks) => {
+  // 修改后:
+  const handleAddTask = async () => {
     if (!currentWorkflow) return;
-    
+
     try {
-      const updatedWorkflow = {
-        ...currentWorkflow,
-        tasks: updatedTasks
+      const newTask = {
+        name: `Task ${tasks.length + 1}`,
+        commands: []
       };
-      
-      await WorkflowService.saveWorkflow(updatedWorkflow);
-      setCurrentWorkflow(updatedWorkflow);
+
+      // 直接使用 addTask API
+      const updatedWorkflow = await WorkflowService.addTask(currentWorkflow.id, newTask);
+      if (updatedWorkflow) {
+        setCurrentWorkflow(updatedWorkflow);
+        setTasks(updatedWorkflow.tasks || []);
+      }
     } catch (error) {
-      console.error('Failed to save workflow tasks:', error);
+      console.error('Failed to add task:', error);
     }
   };
 
-  const handleAddTask = async () => {
-    const newTask = {
-      id: Date.now(),
-      name: `Task ${tasks.length + 1}`,
-      commands: []
-    };
-    
-    const updatedTasks = [...tasks, newTask];
-    setTasks(updatedTasks);
-    
-    // 保存到 workflow
-    await saveWorkflow(updatedTasks);
-  };
+  const handleDeleteTask = async (taskId) => {
+    if (!currentWorkflow) return;
 
-  const handleCloseTask = async (taskId) => {
-    const updatedTasks = tasks.filter(t => t.id !== taskId);
-    setTasks(updatedTasks);
-    
-    // 保存到 workflow
-    await saveWorkflow(updatedTasks);
+    try {
+      // 直接使用 deleteTask API
+      const updatedWorkflow = await WorkflowService.deleteTask(currentWorkflow.id, taskId);
+      if (updatedWorkflow) {
+        setCurrentWorkflow(updatedWorkflow);
+        setTasks(updatedWorkflow.tasks || []);
+      }
+    } catch (error) {
+      console.error('Failed to delete task:', error);
+    }
   };
 
   const handleRunTask = (taskId) => {
@@ -71,8 +68,8 @@ const WorkflowDetail = ({ workflow }) => {
     <div className="workflow-detail">
       <div className="workflow-detail-header">
         <h2>{workflow.name}</h2>
-        <button 
-          className="add-task" 
+        <button
+          className="add-task"
           onClick={handleAddTask}
           title="Add new task"
         >
@@ -84,7 +81,7 @@ const WorkflowDetail = ({ workflow }) => {
           <Task
             key={task.id}
             task={task}
-            onClose={handleCloseTask}
+            onClose={handleDeleteTask}
             onRun={handleRunTask}
           />
         ))}
