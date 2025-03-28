@@ -1,0 +1,21 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  padding: 20px;
+  background-color: #f0f2f5;
+}
+
+/* 重置一些基本样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+} 

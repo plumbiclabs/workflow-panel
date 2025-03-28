@@ -1,10 +1,11 @@
 import React from 'react';
+import WorkflowList from './components/WorkflowList';
+import './App.css';
 
 function App() {
   return (
     <div className="app">
-      <h1>Welcome to Electron + React App</h1>
-      <p>This is a basic setup for your Electron + React application.</p>
+      <WorkflowList />
     </div>
   );
 }
