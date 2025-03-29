@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import WorkflowService from '../renderer/services/workflow.service';
+import WorkflowService from '../services/workflow.service';
 
 // 创建Context
 export const WorkflowContext = createContext();

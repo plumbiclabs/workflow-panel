@@ -8,11 +8,6 @@ body {
   background-color: #f0f2f5;
 }
 
-.app {
-  padding: 2rem;
-  text-align: center;
-}
-
 h1 {
   color: #1a1a1a;
   margin-bottom: 1rem;
@@ -22,3 +17,10 @@ p {
   color: #666;
   font-size: 1.1rem;
 } 
+
+/* 重置一些基本样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
