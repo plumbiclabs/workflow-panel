@@ -46,19 +46,8 @@ function setupIpcHandlers() {
     const task = workflow.tasks.find(t => t.id === taskId);
     if (!task) return { success: false, error: 'Task not found' };
     
-    // 确保有命令可以运行
-    if (!task.commands || task.commands.length === 0) {
-      return { success: false, error: 'No commands to run' };
-    }
-    
-    try {
-      // 创建终端窗口并运行命令
-      const window = terminalService.runTaskInTerminal(taskId, task.commands);
-      return { success: true, message: 'Terminal launched' };
-    } catch (error) {
-      console.error('Failed to run task:', error);
-      return { success: false, error: error.message };
-    }
+    // 使用任务运行服务来执行任务
+    return taskRunnerService.runTask(task);
   });
 
   // 命令操作

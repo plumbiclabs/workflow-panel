@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Task from '../Task';
+import KeyValueTask from '../KeyValueTask';
 import EditableTitle from '../EditableTitle';
+import TaskTemplateModal from '../TaskTemplateModal';
 import { useWorkflow } from '../../context/WorkflowContext';
 import './style.css';
 
@@ -11,6 +13,8 @@ const WorkflowDetail = () => {
     addTask, 
     deleteTask 
   } = useWorkflow();
+  
+  const [showTemplateModal, setShowTemplateModal] = useState(false);
 
   // 处理工作流名称变更
   const handleWorkflowNameSave = async (newName) => {
@@ -23,15 +27,34 @@ const WorkflowDetail = () => {
     }
   };
 
-  // 添加任务
-  const handleAddTask = async () => {
+  // 添加任务按钮点击
+  const handleAddTaskClick = () => {
+    setShowTemplateModal(true);
+  };
+
+  // 处理任务模板选择
+  const handleSelectTemplate = async (template) => {
     if (!selectedWorkflow) return;
 
     try {
-      const newTask = {
-        name: `Task ${(selectedWorkflow.tasks || []).length + 1}`,
-        commands: []
-      };
+      let newTask;
+      
+      if (template.type === 'command') {
+        // Command task (traditional task)
+        newTask = {
+          name: `Task ${(selectedWorkflow.tasks || []).length + 1}`,
+          commands: [],
+          type: 'command'
+        };
+      } else if (template.type === 'key-value') {
+        // Key-value task
+        newTask = {
+          name: `Task ${(selectedWorkflow.tasks || []).length + 1}`,
+          parameters: [],
+          type: 'key-value'
+        };
+      }
+      
       await addTask(selectedWorkflow.id, newTask);
     } catch (error) {
       console.error('Failed to add task:', error);
@@ -47,6 +70,30 @@ const WorkflowDetail = () => {
     } catch (error) {
       console.error('Failed to delete task:', error);
     }
+  };
+
+  // 渲染特定类型的任务
+  const renderTask = (task) => {
+    if (task.type === 'key-value') {
+      return (
+        <KeyValueTask
+          key={task.id}
+          task={task}
+          workflowId={selectedWorkflow.id}
+          onClose={handleDeleteTask}
+        />
+      );
+    }
+    
+    // Default to command task
+    return (
+      <Task
+        key={task.id}
+        task={task}
+        workflowId={selectedWorkflow.id}
+        onClose={handleDeleteTask}
+      />
+    );
   };
 
   if (!selectedWorkflow) {
@@ -69,28 +116,28 @@ const WorkflowDetail = () => {
         />
         <button
           className="add-task"
-          onClick={handleAddTask}
+          onClick={handleAddTaskClick}
           title="Add new task"
         >
           +
         </button>
       </div>
       <div className="tasks-container">
-        {(selectedWorkflow.tasks || []).map(task => (
-          <Task
-            key={task.id}
-            task={task}
-            workflowId={selectedWorkflow.id}
-            onClose={handleDeleteTask}
-          />
-        ))}
+        {(selectedWorkflow.tasks || []).map(task => renderTask(task))}
         {(!selectedWorkflow.tasks || selectedWorkflow.tasks.length === 0) && (
           <div className="no-tasks">
             <p>No tasks added yet</p>
-            <button onClick={handleAddTask}>Add Task</button>
+            <button onClick={handleAddTaskClick}>Add Task</button>
           </div>
         )}
       </div>
+      
+      {showTemplateModal && (
+        <TaskTemplateModal 
+          onClose={() => setShowTemplateModal(false)} 
+          onSelectTemplate={handleSelectTemplate}
+        />
+      )}
     </div>
   );
 };

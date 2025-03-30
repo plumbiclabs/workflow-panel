@@ -1,0 +1,127 @@
+.key-value-task .task-content {
+    padding: 16px;
+    color: #fff;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .parameters-list {
+    margin-bottom: 16px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  
+  .no-parameters {
+    font-style: italic;
+    color: #888;
+    text-align: center;
+    padding: 16px 0;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .parameter-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
+  
+  .parameter-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .parameter-key {
+    font-weight: bold;
+    color: #64B5F6;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  
+  .parameter-value {
+    flex-grow: 1;
+    word-break: break-word;
+    color: #E0E0E0;
+  }
+  
+  .parameter-delete {
+    visibility: hidden;
+    background: none;
+    border: none;
+    color: #FF5252;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 8px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+  }
+  
+  .parameter-item:hover .parameter-delete {
+    visibility: visible;
+  }
+  
+  .parameter-delete:hover {
+    background-color: rgba(255, 82, 82, 0.2);
+    opacity: 1;
+  }
+  
+  .parameter-form {
+    margin-top: 12px;
+  }
+  
+  .parameter-inputs {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .parameter-key-input,
+  .parameter-value-input {
+    background-color: #2d2d2d;
+    color: white;
+    border: 1px solid #3d3d3d;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+  }
+  
+  .parameter-key-input {
+    flex: 2;
+  }
+  
+  .parameter-value-input {
+    flex: 3;
+  }
+  
+  .add-parameter-button {
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    padding: 0 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s;
+  }
+  
+  .add-parameter-button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .add-parameter-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }

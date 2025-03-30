@@ -55,23 +55,29 @@ class WorkflowStore {
     return true;
   }
 
-  // Task 相关操作
   addTask(workflowId, task) {
     const workflow = this.getWorkflowById(workflowId);
     if (!workflow) return null;
-
-    const newTask = {
+  
+    let newTask = {
       id: task.id || Date.now(),
       name: task.name || `Task ${(workflow.tasks || []).length + 1}`,
-      commands: task.commands || []
+      type: task.type || 'command' // 默认为命令类型任务
     };
-
+  
+    // 根据任务类型设置不同的初始属性
+    if (task.type === 'key-value') {
+      newTask.parameters = task.parameters || [];
+    } else {
+      // 默认命令类型
+      newTask.commands = task.commands || [];
+    }
+  
     const updatedWorkflow = {
       ...workflow,
       tasks: [...(workflow.tasks || []), newTask]
     };
-
-    // 使用更新 workflow 的方法来保存
+  
     return this.updateWorkflow(workflowId, { tasks: updatedWorkflow.tasks });
   }
 
