@@ -1,8 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import EditableTitle from '../EditableTitle';
 import { useWorkflow } from '../../context/WorkflowContext';
-import ScriptService from '../../services/script.service';
 import './styles.css';
+
+// 导入子组件
+import ScriptSelector from './components/ScriptSelector';
+import ParametersList from './components/ParametersList';
+import AddParameterForm from './components/AddParameterForm';
+
+// 导入自定义hooks
+import useScriptOptions from './hooks/useScriptOptions';
+import useParameters from './hooks/useParameters';
 
 const KeyValueTask = ({ task, workflowId, onClose }) => {
   const { 
@@ -11,97 +19,34 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
     taskRunningStates 
   } = useWorkflow();
   
-  const [newKey, setNewKey] = useState('');
-  const [newValue, setNewValue] = useState('');
+  // 使用自定义hook管理脚本选项
+  const {
+    scriptOptions,
+    loading,
+    selectedScriptId,
+    setSelectedScriptId,
+    selectedScript
+  } = useScriptOptions(task.scriptId);
   
-  // 脚本列表状态
-  const [scriptOptions, setScriptOptions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  // 获取当前选择的脚本ID
-  const [selectedScriptId, setSelectedScriptId] = useState(
-    task.scriptId || 'default'
-  );
+  // 使用自定义hook管理参数
+  const {
+    parameters,
+    newKey,
+    setNewKey,
+    newValue,
+    setNewValue,
+    missingParams,
+    isRequiredParam,
+    handleAddParameter,
+    handleDeleteParameter,
+    handleParameterValueChange
+  } = useParameters(task, workflowId, updateTask, selectedScript);
   
   // 检查此任务是否正在运行
   const isRunning = taskRunningStates[`${workflowId}-${task.id}`];
-  
-  // 获取此任务的参数
-  const parameters = task.parameters || [];
-  
-  // 获取当前选择的脚本
-  const [selectedScript, setSelectedScript] = useState(null);
-  
-  // 加载脚本选项
-  useEffect(() => {
-    async function loadScripts() {
-      setLoading(true);
-      try {
-        const scripts = await ScriptService.getAllScripts();
-        setScriptOptions(scripts);
-        
-        // 设置当前选择的脚本
-        const current = scripts.find(s => s.id === selectedScriptId) || scripts[0];
-        setSelectedScript(current);
-      } catch (error) {
-        console.error('Failed to load scripts:', error);
-        // 使用本地定义作为备用
-        const localScripts = ScriptService.getLocalScriptDefinitions();
-        setScriptOptions(localScripts);
-        setSelectedScript(localScripts.find(s => s.id === selectedScriptId) || localScripts[0]);
-      } finally {
-        setLoading(false);
-      }
-    }
-    
-    loadScripts();
-  }, []);
-  
-  // 当选择的脚本ID变更时，更新选中的脚本对象
-  useEffect(() => {
-    const script = scriptOptions.find(s => s.id === selectedScriptId);
-    if (script) {
-      setSelectedScript(script);
-    }
-  }, [selectedScriptId, scriptOptions]);
-  
-  // 检查是否缺少必填参数
-  const missingParams = selectedScript?.requiredParams?.filter(
-    param => !parameters.some(p => p.key === param)
-  ) || [];
-  
-  // 当脚本变更时，自动添加必填参数
-  useEffect(() => {
-    const addRequiredParams = async () => {
-      if (selectedScript && missingParams.length > 0 && workflowId) {
-        // 创建参数列表的副本
-        const updatedParameters = [...parameters];
-        
-        // 添加缺少的必填参数
-        missingParams.forEach(param => {
-          if (!updatedParameters.some(p => p.key === param)) {
-            updatedParameters.push({ key: param, value: '' });
-          }
-        });
-        
-        // 更新任务
-        try {
-          await updateTask(workflowId, task.id, { 
-            parameters: updatedParameters,
-            scriptId: selectedScriptId,
-            scriptPath: selectedScript.path
-          });
-        } catch (error) {
-          console.error('Failed to add required parameters:', error);
-        }
-      }
-    };
-    
-    addRequiredParams();
-  }, [selectedScript, missingParams.length]);
 
   // 更新任务标题
-  const handleTaskNameSave = async (newName) => {
+  const handleTaskNameSave = useCallback(async (newName) => {
     if (!workflowId) return;
 
     try {
@@ -109,10 +54,10 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
     } catch (error) {
       console.error('Failed to update task name:', error);
     }
-  };
+  }, [workflowId, task.id, updateTask]);
 
   // 更新任务脚本
-  const handleScriptChange = async (e) => {
+  const handleScriptChange = useCallback(async (e) => {
     const newScriptId = e.target.value;
     setSelectedScriptId(newScriptId);
     
@@ -126,90 +71,16 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
     } catch (error) {
       console.error('Failed to update script:', error);
     }
-  };
-
-  // 添加新参数
-  const handleAddParameter = async () => {
-    if (!newKey.trim() || !workflowId) return;
-
-    // 检查参数名是否已存在
-    if (parameters.some(p => p.key === newKey)) {
-      alert(`Parameter with key "${newKey}" already exists. Please use a different name.`);
-      return;
-    }
-
-    // 检查是否是保留的必填参数名
-    if (selectedScript?.requiredParams?.includes(newKey)) {
-      alert(`"${newKey}" is a reserved parameter name for this script. Please use a different name.`);
-      return;
-    }
-
-    try {
-      // 创建参数列表的副本
-      const updatedParameters = [...parameters, { key: newKey, value: newValue }];
-      
-      // 更新任务
-      await updateTask(workflowId, task.id, { parameters: updatedParameters });
-      
-      // 清空输入字段
-      setNewKey('');
-      setNewValue('');
-    } catch (error) {
-      console.error('Failed to add parameter:', error);
-    }
-  };
-
-  // 删除参数
-  const handleDeleteParameter = async (index) => {
-    if (!workflowId) return;
-    
-    const paramToDelete = parameters[index];
-    
-    // 检查是否是必填参数
-    if (selectedScript?.requiredParams?.includes(paramToDelete.key)) {
-      alert(`Cannot delete required parameter: ${paramToDelete.key}`);
-      return;
-    }
-
-    try {
-      // 创建参数的副本并移除指定索引的项
-      const updatedParameters = parameters.filter((_, i) => i !== index);
-      
-      // 更新任务
-      await updateTask(workflowId, task.id, { parameters: updatedParameters });
-    } catch (error) {
-      console.error('Failed to delete parameter:', error);
-    }
-  };
-
-  // 更新参数值
-  const handleParameterValueChange = async (index, newValue) => {
-    if (!workflowId) return;
-
-    try {
-      // 创建参数的副本
-      const updatedParameters = [...parameters];
-      // 只更新值，保持键不变
-      updatedParameters[index] = { 
-        ...updatedParameters[index], 
-        value: newValue 
-      };
-      
-      // 更新任务
-      await updateTask(workflowId, task.id, { parameters: updatedParameters });
-    } catch (error) {
-      console.error('Failed to update parameter value:', error);
-    }
-  };
+  }, [scriptOptions, workflowId, task.id, updateTask, setSelectedScriptId]);
 
   // 处理表单提交
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = useCallback((e) => {
     e.preventDefault();
     handleAddParameter();
-  };
+  }, [handleAddParameter]);
 
   // 运行任务
-  const handleRunTask = async () => {
+  const handleRunTask = useCallback(async () => {
     if (!workflowId || isRunning) return;
     
     // 验证必填参数
@@ -240,45 +111,23 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
       console.error('Error running task:', error);
       alert(`Error running task: ${error.message || 'Unknown error'}`);
     }
-  };
+  }, [workflowId, isRunning, missingParams, selectedScript, parameters, runTask, task.id]);
 
-  // 检查参数是否是必填项
-  const isRequiredParam = (key) => {
-    return selectedScript?.requiredParams?.includes(key) || false;
-  };
+  // 计算表单禁用状态
+  const formDisabled = useMemo(() => {
+    return loading || 
+      !newKey.trim() || 
+      (selectedScript?.requiredParams?.includes(newKey) || false) ||
+      parameters.some(p => p.key === newKey);
+  }, [loading, newKey, selectedScript, parameters]);
 
-  // 渲染单个参数项
-  const renderParameterItem = (param, index) => {
-    const required = isRequiredParam(param.key);
-    
-    return (
-      <div 
-        key={index} 
-        className={`parameter-item ${required ? 'required' : ''}`}
-      >
-        <div className="parameter-key">
-          {param.key}
-          {required && <span className="required-badge">Required</span>}
-        </div>
-        <input
-          type="text"
-          className="parameter-value-input-inline"
-          value={param.value}
-          onChange={(e) => handleParameterValueChange(index, e.target.value)}
-          placeholder={`Enter value for ${param.key}`}
-        />
-        {!required && (
-          <button 
-            className="parameter-delete" 
-            onClick={() => handleDeleteParameter(index)}
-            title="Delete parameter"
-          >
-            ×
-          </button>
-        )}
-      </div>
-    );
-  };
+  // 运行按钮禁用状态
+  const runDisabled = useMemo(() => {
+    return isRunning || 
+      missingParams.length > 0 || 
+      loading || 
+      parameters.length === 0;
+  }, [isRunning, missingParams.length, loading, parameters.length]);
 
   return (
     <div className="task-window key-value-task">
@@ -294,83 +143,35 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
       </div>
       
       <div className="task-content">
-        {/* 脚本选择下拉框 */}
-        <div className="script-selector-container">
-          <label htmlFor={`script-select-${task.id}`}>Script:</label>
-          {loading ? (
-            <div className="loading-scripts">Loading scripts...</div>
-          ) : (
-            <>
-              <select
-                id={`script-select-${task.id}`}
-                className="script-select"
-                value={selectedScriptId}
-                onChange={handleScriptChange}
-                disabled={loading}
-              >
-                {scriptOptions.map(script => (
-                  <option key={script.id} value={script.id}>
-                    {script.name}
-                  </option>
-                ))}
-              </select>
-              {selectedScript && (
-                <p className="script-description">{selectedScript.description}</p>
-              )}
-            </>
-          )}
-        </div>
+        {/* 脚本选择器 */}
+        <ScriptSelector
+          taskId={task.id}
+          selectedScriptId={selectedScriptId}
+          scriptOptions={scriptOptions}
+          loading={loading}
+          onScriptChange={handleScriptChange}
+          selectedScript={selectedScript}
+        />
         
         {/* 参数列表 */}
-        <div className="parameters-section">
-          <h4 className="parameters-header">Parameters</h4>
-          <div className="parameters-list">
-            {parameters.length > 0 ? (
-              parameters.map((param, index) => renderParameterItem(param, index))
-            ) : (
-              <div className="no-parameters">
-                {loading 
-                  ? 'Loading parameters...' 
-                  : 'No parameters added yet. Add parameters below.'}
-              </div>
-            )}
-          </div>
-        </div>
+        <ParametersList
+          parameters={parameters}
+          loading={loading}
+          isRequiredParam={isRequiredParam}
+          onValueChange={handleParameterValueChange}
+          onDelete={handleDeleteParameter}
+        />
         
-        {/* 添加自定义参数表单 */}
-        <form className="parameter-form" onSubmit={handleFormSubmit}>
-          <h4 className="parameters-header">Add Custom Parameter</h4>
-          <div className="parameter-inputs">
-            <input
-              type="text"
-              className="parameter-key-input"
-              placeholder="Key"
-              value={newKey}
-              onChange={(e) => setNewKey(e.target.value)}
-              disabled={loading}
-            />
-            <input
-              type="text"
-              className="parameter-value-input"
-              placeholder="Value"
-              value={newValue}
-              onChange={(e) => setNewValue(e.target.value)}
-              disabled={loading}
-            />
-            <button 
-              type="submit" 
-              className="add-parameter-button"
-              disabled={
-                loading || 
-                !newKey.trim() || 
-                (selectedScript?.requiredParams?.includes(newKey) || false) ||
-                parameters.some(p => p.key === newKey)
-              }
-            >
-              Add
-            </button>
-          </div>
-        </form>
+        {/* 添加参数表单 */}
+        <AddParameterForm
+          newKey={newKey}
+          newValue={newValue}
+          loading={loading}
+          onKeyChange={(e) => setNewKey(e.target.value)}
+          onValueChange={(e) => setNewValue(e.target.value)}
+          onSubmit={handleFormSubmit}
+          disableAdd={formDisabled}
+        />
       </div>
       
       {/* 运行按钮 */}
@@ -378,12 +179,7 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
         className={`task-run ${isRunning ? 'running' : ''}`}
         onClick={handleRunTask}
         title="Run task with parameters"
-        disabled={
-          isRunning || 
-          missingParams.length > 0 || 
-          loading || 
-          parameters.length === 0
-        }
+        disabled={runDisabled}
       >
         {isRunning ? '...' : '▶'}
       </button>

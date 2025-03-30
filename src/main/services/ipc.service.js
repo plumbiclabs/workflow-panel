@@ -1,6 +1,8 @@
 const { ipcMain } = require('electron');
 const workflowStore = require('../store/workflow.store');
 const scriptRegistry = require('./script-registry.service');
+const taskRunnerService = require('./task-runner.service');
+
 function setupIpcHandlers() {
   // 工作流操作
   ipcMain.handle('workflow:getAll', () => {
