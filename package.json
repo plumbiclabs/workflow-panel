@@ -7,6 +7,8 @@
     "build": "vite build",
     "electron:dev": "concurrently \"cross-env NODE_ENV=development vite\" \"wait-on tcp:5173 && cross-env NODE_ENV=development electron .\"",
     "electron:build": "vite build && electron-builder",
+    "electron:debug": "concurrently \"cross-env NODE_ENV=development vite\" \"wait-on tcp:5173 && cross-env NODE_ENV=development electron --inspect=9229 .\"",
+    "electron:debug-brk": "concurrently \"cross-env NODE_ENV=development vite\" \"wait-on tcp:5173 && cross-env NODE_ENV=development electron --inspect-brk=9229 .\"",
     "preview": "vite preview"
   },
   "keywords": [],

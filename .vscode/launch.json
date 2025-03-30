@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Electron Main Process",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "args": ["."],
+      "outputCapture": "std",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug With Vite",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "args": ["."],
+      "outputCapture": "std",
+      "env": {
+        "NODE_ENV": "development",
+        "VITE_DEV_SERVER_URL": "http://localhost:5173"
+      },
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "preLaunchTask": "Start Vite"
+    }
+  ]
+} 

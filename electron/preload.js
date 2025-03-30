@@ -1,5 +1,20 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
+// 用于存储事件监听器的集合
+const listeners = {
+  taskComplete: new Set(),
+  taskError: new Set()
+};
+
+// 设置IPC事件监听器
+ipcRenderer.on('task:complete', (_, data) => {
+  listeners.taskComplete.forEach(listener => listener(data));
+});
+
+ipcRenderer.on('task:error', (_, data) => {
+  listeners.taskError.forEach(listener => listener(data));
+});
+
 // 暴露安全的 API 到渲染进程
 contextBridge.exposeInMainWorld('electronAPI', {
   // 工作流相关的 API
@@ -15,7 +30,15 @@ contextBridge.exposeInMainWorld('electronAPI', {
     add: (workflowId, task) => ipcRenderer.invoke('task:add', { workflowId, task }),
     update: (workflowId, taskId, taskData) => ipcRenderer.invoke('task:update', { workflowId, taskId, taskData }),
     delete: (workflowId, taskId) => ipcRenderer.invoke('task:delete', { workflowId, taskId }),
-    run: (workflowId, taskId) => ipcRenderer.invoke('task:run', { workflowId, taskId })
+    run: (workflowId, taskId) => ipcRenderer.invoke('task:run', { workflowId, taskId }),
+    onComplete: (callback) => {
+      listeners.taskComplete.add(callback);
+      return () => listeners.taskComplete.delete(callback);
+    },
+    onError: (callback) => {
+      listeners.taskError.add(callback);
+      return () => listeners.taskError.delete(callback);
+    }
   },
   // 命令相关的 API
   command: {
