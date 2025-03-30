@@ -2,6 +2,7 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const { setupIpcHandlers } = require('../src/main/services/ipc.service');
 const isDev = process.env.NODE_ENV === 'development';
+const scriptRegistry = require('../src/main/services/script-registry.service');
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -26,6 +27,7 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
   setupIpcHandlers();
+  scriptRegistry.getScriptById('default');
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

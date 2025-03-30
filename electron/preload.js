@@ -22,5 +22,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     add: (workflowId, taskId, command) => ipcRenderer.invoke('command:add', { workflowId, taskId, command }),
     update: (workflowId, taskId, commandIndex, newCommand) => ipcRenderer.invoke('command:update', { workflowId, taskId, commandIndex, newCommand }),
     delete: (workflowId, taskId, commandIndex) => ipcRenderer.invoke('command:delete', { workflowId, taskId, commandIndex })
+  },
+  // 脚本相关的 API
+  script: {
+    getAll: () => ipcRenderer.invoke('script:getAll'),
+    getById: (scriptId) => ipcRenderer.invoke('script:getById', scriptId)
   }
 });

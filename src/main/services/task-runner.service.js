@@ -4,22 +4,22 @@ const os = require('os');
 const fs = require('fs');
 const { exec } = require('child_process');
 const terminalService = require('./terminal.service');
+const scriptRegistry = require('./script-registry.service');
 
 class TaskRunnerService {
   // 执行任务的入口方法
-  runTask(task) {
+  async runTask(task) {
     if (!task) {
       return { success: false, error: 'Invalid task' };
     }
     
     try {
       // 根据任务类型执行不同的处理逻辑
-      switch (task.type) {
-        case 'key-value':
-          return this.runKeyValueTask(task);
-        case 'command':
-        default:
-          return this.runCommandTask(task);
+      if (task.type === 'key-value') {
+        return await this.runKeyValueTask(task);
+      } else {
+        // 命令类型任务 (默认)
+        return this.runCommandTask(task);
       }
     } catch (error) {
       console.error('Error running task:', error);
@@ -38,105 +38,98 @@ class TaskRunnerService {
   }
   
   // 运行键值对任务
-  runKeyValueTask(task) {
+  async runKeyValueTask(task) {
     if (!task.parameters || task.parameters.length === 0) {
       return { success: false, error: 'No parameters defined for this task' };
     }
     
-    // 脚本路径 - 从任务配置中读取或使用默认脚本
-    const scriptToRun = task.scriptPath || this.getDefaultScript();
-    
-    // 准备参数
-    const paramsObj = {};
-    task.parameters.forEach(param => {
-      paramsObj[param.key] = param.value;
-    });
-    
-    // 创建临时参数文件
-    const paramsPath = path.join(os.tmpdir(), `task_params_${Date.now()}.json`);
-    fs.writeFileSync(paramsPath, JSON.stringify(paramsObj, null, 2));
-    
-    // 在终端中执行脚本并传递参数文件路径
-    return this.executeScript(scriptToRun, paramsPath);
-  }
-  
-  // 默认脚本 - 如果任务没有指定脚本
-  getDefaultScript() {
-    const defaultScriptDir = path.join(__dirname, '../scripts');
-    const defaultScriptPath = path.join(defaultScriptDir, 'default-task-handler.js');
-    
-    // 确保默认脚本目录存在
-    if (!fs.existsSync(defaultScriptDir)) {
-      fs.mkdirSync(defaultScriptDir, { recursive: true });
-    }
-    
-    // 如果默认脚本不存在，创建一个
-    if (!fs.existsSync(defaultScriptPath)) {
-      const defaultScript = `
+    try {
+      // 准备参数
+      const paramObj = {};
+      task.parameters.forEach(param => {
+        paramObj[param.key] = param.value;
+      });
+      
+      // 使用脚本注册表运行相应的脚本
+      // 在终端中显示执行过程
+      const scriptId = task.scriptId || 'default';
+      
+      // 1. 创建一个临时参数文件
+      const paramsPath = path.join(os.tmpdir(), `task_params_${Date.now()}.json`);
+      fs.writeFileSync(paramsPath, JSON.stringify(paramObj, null, 2));
+      
+      // 2. 创建一个包装脚本显示执行过程
+      const wrapperPath = path.join(os.tmpdir(), `task_wrapper_${Date.now()}.js`);
+      const wrapperScript = `
+const scriptRegistry = require('${path.join(__dirname, 'script-registry.service.js').replace(/\\/g, '\\\\')}');
 const fs = require('fs');
-const path = require('path');
 
-// 获取参数文件路径 (作为第一个命令行参数传入)
-const paramsPath = process.argv[2];
-
-if (!paramsPath || !fs.existsSync(paramsPath)) {
-  console.error('Parameters file not found');
-  process.exit(1);
-}
-
-// 读取参数
+// 读取参数文件
+const paramsPath = '${paramsPath.replace(/\\/g, '\\\\')}';
 const params = JSON.parse(fs.readFileSync(paramsPath, 'utf8'));
 
-console.log('Task parameters:');
+console.log('=== TASK START: ${task.name} ===');
+console.log('Running script: ${scriptId}');
+console.log('Parameters:');
 console.log(JSON.stringify(params, null, 2));
+console.log('-----------------------------------');
 
-// 这里可以根据参数执行不同的操作
-console.log('\\nTask completed successfully!');
+// 运行脚本
+scriptRegistry.runScript('${scriptId}', params)
+  .then(result => {
+    console.log('-----------------------------------');
+    console.log('Result:', JSON.stringify(result, null, 2));
+    console.log('=== TASK COMPLETE ===');
+  })
+  .catch(error => {
+    console.error('-----------------------------------');
+    console.error('Error:', error.message);
+    console.error('=== TASK FAILED ===');
+  });
       `;
-      fs.writeFileSync(defaultScriptPath, defaultScript);
-    }
-    
-    return defaultScriptPath;
-  }
-  
-  // 在终端中执行脚本
-  executeScript(scriptPath, paramsPath) {
-    const platform = os.platform();
-    
-    if (platform === 'darwin') {
-      // macOS
-      const appleScript = `
-        tell application "Terminal"
-          activate
-          do script "node '${scriptPath}' '${paramsPath}'; echo '\\nPress any key to exit...'; read -n 1"
-        end tell
-      `;
-      exec(`osascript -e '${appleScript}'`);
-    } else if (platform === 'win32') {
-      // Windows
-      exec(`start cmd.exe /k "node "${scriptPath}" "${paramsPath}" && pause"`);
-    } else {
-      // Linux
-      const terminals = ['gnome-terminal', 'xterm', 'konsole', 'xfce4-terminal'];
-      for (const terminal of terminals) {
-        try {
-          exec(`which ${terminal}`, (error, stdout) => {
-            if (!error && stdout) {
-              if (terminal === 'gnome-terminal') {
-                exec(`gnome-terminal -- bash -c "node ${scriptPath} ${paramsPath}; echo '\\nPress Enter to exit...'; read"`);
-              } else {
-                exec(`${terminal} -e "node ${scriptPath} ${paramsPath} && echo '\\nPress Enter to exit...' && read"`);
+      
+      fs.writeFileSync(wrapperPath, wrapperScript);
+      
+      // 3. 在终端中运行包装脚本
+      const platform = os.platform();
+      if (platform === 'darwin') {
+        // macOS
+        const appleScript = `
+          tell application "Terminal"
+            activate
+            do script "node '${wrapperPath}'; echo '\\nPress any key to exit...'; read -n 1"
+          end tell
+        `;
+        exec(`osascript -e '${appleScript}'`);
+      } else if (platform === 'win32') {
+        // Windows
+        exec(`start cmd.exe /k "node "${wrapperPath}" && pause"`);
+      } else {
+        // Linux
+        const terminals = ['gnome-terminal', 'xterm', 'konsole', 'xfce4-terminal'];
+        for (const terminal of terminals) {
+          try {
+            exec(`which ${terminal}`, (error, stdout) => {
+              if (!error && stdout) {
+                if (terminal === 'gnome-terminal') {
+                  exec(`gnome-terminal -- bash -c "node ${wrapperPath}; echo '\\nPress Enter to exit...'; read"`);
+                } else {
+                  exec(`${terminal} -e "node ${wrapperPath} && echo '\\nPress Enter to exit...' && read"`);
+                }
               }
-            }
-          });
-          break;
-        } catch (e) {
-          console.log(`Terminal ${terminal} not available`);
+            });
+            break;
+          } catch (e) {
+            console.log(`Terminal ${terminal} not available`);
+          }
         }
       }
+      
+      return { success: true, message: 'Script execution started' };
+    } catch (error) {
+      console.error('Failed to run key-value task:', error);
+      return { success: false, error: error.message };
     }
-    
-    return { success: true, message: 'Script execution started' };
   }
 }
 

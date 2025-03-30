@@ -1,7 +1,6 @@
 const { ipcMain } = require('electron');
 const workflowStore = require('../store/workflow.store');
-const terminalService = require('./terminal.service');
-
+const scriptRegistry = require('./script-registry.service');
 function setupIpcHandlers() {
   // 工作流操作
   ipcMain.handle('workflow:getAll', () => {
@@ -61,6 +60,16 @@ function setupIpcHandlers() {
 
   ipcMain.handle('command:delete', (_, { workflowId, taskId, commandIndex }) => {
     return workflowStore.deleteCommand(workflowId, taskId, commandIndex);
+  });
+
+  // 添加获取脚本列表的处理程序
+  ipcMain.handle('script:getAll', () => {
+    return scriptRegistry.getAllScripts();
+  });
+
+  // 获取单个脚本信息
+  ipcMain.handle('script:getById', (_, scriptId) => {
+    return scriptRegistry.getScriptById(scriptId);
   });
 }
 

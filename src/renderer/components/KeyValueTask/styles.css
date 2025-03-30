@@ -1,127 +1,217 @@
+/* KeyValueTask/styles.css */
 .key-value-task .task-content {
-    padding: 16px;
-    color: #fff;
-    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-    font-size: 13px;
-    line-height: 1.5;
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  
-  .parameters-list {
-    margin-bottom: 16px;
-    max-height: 220px;
-    overflow-y: auto;
-  }
-  
-  .no-parameters {
-    font-style: italic;
-    color: #888;
-    text-align: center;
-    padding: 16px 0;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-  
-  .parameter-item {
-    display: flex;
-    align-items: center;
-    padding: 8px 10px;
-    margin-bottom: 4px;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.05);
-    position: relative;
-  }
-  
-  .parameter-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .parameter-key {
-    font-weight: bold;
-    color: #64B5F6;
-    margin-right: 8px;
-    flex-shrink: 0;
-  }
-  
-  .parameter-value {
-    flex-grow: 1;
-    word-break: break-word;
-    color: #E0E0E0;
-  }
-  
-  .parameter-delete {
-    visibility: hidden;
-    background: none;
-    border: none;
-    color: #FF5252;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 4px;
-    margin-left: 8px;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.7;
-  }
-  
-  .parameter-item:hover .parameter-delete {
-    visibility: visible;
-  }
-  
-  .parameter-delete:hover {
-    background-color: rgba(255, 82, 82, 0.2);
-    opacity: 1;
-  }
-  
-  .parameter-form {
-    margin-top: 12px;
-  }
-  
-  .parameter-inputs {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .parameter-key-input,
-  .parameter-value-input {
-    background-color: #2d2d2d;
-    color: white;
-    border: 1px solid #3d3d3d;
-    padding: 8px 10px;
-    border-radius: 4px;
-    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-    font-size: 13px;
-  }
-  
-  .parameter-key-input {
-    flex: 2;
-  }
-  
-  .parameter-value-input {
-    flex: 3;
-  }
-  
-  .add-parameter-button {
-    background-color: #007AFF;
-    color: white;
-    border: none;
-    padding: 0 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: background-color 0.2s;
-  }
-  
-  .add-parameter-button:hover:not(:disabled) {
-    background-color: #0056b3;
-  }
-  
-  .add-parameter-button:disabled {
-    background-color: #555;
-    cursor: not-allowed;
-    opacity: 0.7;
-  }
+  padding: 16px;
+  color: #fff;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* 脚本选择器 */
+.script-selector-container {
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.script-selector-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #64B5F6;
+}
+
+.script-select {
+  width: 100%;
+  background-color: #2d2d2d;
+  color: white;
+  border: 1px solid #3d3d3d;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.script-description {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+}
+
+.loading-scripts {
+  padding: 8px;
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+/* 参数部分 */
+.parameters-section {
+  margin-bottom: 16px;
+}
+
+.parameters-header {
+  font-size: 14px;
+  color: #64B5F6;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+}
+
+.parameters-list {
+  margin-bottom: 16px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.no-parameters {
+  font-style: italic;
+  color: #888;
+  text-align: center;
+  padding: 16px 0;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.parameter-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.parameter-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.parameter-item.required {
+  border-left: 2px solid #64B5F6;
+}
+
+.parameter-key {
+  font-weight: bold;
+  color: #64B5F6;
+  margin-right: 8px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.required-badge {
+  font-size: 10px;
+  background-color: #64B5F6;
+  color: #1e1e1e;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-left: 6px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.parameter-value-input-inline {
+  flex: 1;
+  background-color: #2d2d2d;
+  color: white;
+  border: 1px solid #3d3d3d;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  margin: 0 8px;
+}
+
+.parameter-delete {
+  visibility: hidden;
+  background: none;
+  border: none;
+  color: #FF5252;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 8px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.parameter-item:hover .parameter-delete {
+  visibility: visible;
+}
+
+.parameter-delete:hover {
+  background-color: rgba(255, 82, 82, 0.2);
+  opacity: 1;
+}
+
+/* 参数添加表单 */
+.parameter-form {
+  margin-top: 12px;
+}
+
+.parameter-form h4 {
+  font-size: 14px;
+  color: #64B5F6;
+  margin: 12px 0 8px 0;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+}
+
+.parameter-inputs {
+  display: flex;
+  gap: 8px;
+}
+
+.parameter-key-input,
+.parameter-value-input {
+  background-color: #2d2d2d;
+  color: white;
+  border: 1px solid #3d3d3d;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.parameter-key-input {
+  flex: 2;
+}
+
+.parameter-value-input {
+  flex: 3;
+}
+
+.add-parameter-button {
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  padding: 0 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+
+.add-parameter-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.add-parameter-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
