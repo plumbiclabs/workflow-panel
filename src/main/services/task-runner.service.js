@@ -72,115 +72,89 @@ class TaskRunnerService {
       logger.info(`准备执行脚本: ${scriptId}`);
       logger.debug('脚本参数:', paramObj);
       
-      // 检查脚本是否存在
+      // 获取脚本信息和路径
+      let scriptInfo;
       try {
-        const scriptInfo = await scriptRegistry.getScriptById(scriptId);
+        scriptInfo = await scriptRegistry.getScriptById(scriptId);
         logger.debug('找到脚本:', scriptInfo);
+        
+        if (!scriptInfo) {
+          logger.error(`脚本 "${scriptId}" 不存在`);
+          return { success: false, error: `Script ${scriptId} not found` };
+        }
       } catch (error) {
-        logger.error(`脚本 "${scriptId}" 不存在或无法加载`);
-        return { success: false, error: `Script ${scriptId} not found` };
+        logger.error(`脚本 "${scriptId}" 加载失败:`, error);
+        return { success: false, error: `Failed to load script ${scriptId}: ${error.message}` };
       }
       
-      // 1. 创建一个临时参数文件
-      const paramsPath = path.join(os.tmpdir(), `task_params_${Date.now()}.json`);
-      fs.writeFileSync(paramsPath, JSON.stringify(paramObj, null, 2));
-      logger.debug(`参数文件已创建: ${paramsPath}`);
+      // 获取脚本的实际路径
+      const scriptPath = scriptInfo.path 
+        ? path.join(scriptRegistry.scriptsDir, scriptInfo.path) 
+        : scriptRegistry.defaultScriptPath;
       
-      // 2. 创建一个包装脚本显示执行过程
-      const wrapperPath = path.join(os.tmpdir(), `task_wrapper_${Date.now()}.js`);
-      const wrapperScript = `
-const scriptRegistry = require('${path.join(__dirname, 'script-registry.service.js').replace(/\\/g, '\\\\')}');
-const fs = require('fs');
-const logger = require('${path.join(__dirname, '../utils/logger.js').replace(/\\/g, '\\\\')}');
-
-// 读取参数文件
-const paramsPath = '${paramsPath.replace(/\\/g, '\\\\')}';
-const params = JSON.parse(fs.readFileSync(paramsPath, 'utf8'));
-
-console.log('=== TASK START: ${task.name} ===');
-console.log('Running script: ${scriptId}');
-console.log('Parameters:');
-console.log(JSON.stringify(params, null, 2));
-console.log('-----------------------------------');
-
-// 记录调试信息
-logger.debug('包装脚本开始执行', { 
-  scriptId: '${scriptId}', 
-  taskName: '${task.name}',
-  paramsPath: '${paramsPath.replace(/\\/g, '\\\\')}'
-});
-
-// 运行脚本
-scriptRegistry.runScript('${scriptId}', params)
-  .then(result => {
-    console.log('-----------------------------------');
-    console.log('Result:', JSON.stringify(result, null, 2));
-    console.log('=== TASK COMPLETE ===');
-    logger.debug('脚本执行成功', { result });
-  })
-  .catch(error => {
-    console.error('-----------------------------------');
-    console.error('Error:', error.message);
-    console.error('=== TASK FAILED ===');
-    logger.error('脚本执行失败', { error: error.message });
-  });
-      `;
+      logger.debug(`脚本路径: ${scriptPath}`);
       
-      fs.writeFileSync(wrapperPath, wrapperScript);
-      logger.debug(`包装脚本已创建: ${wrapperPath}`);
+      // 验证脚本文件存在
+      if (!fs.existsSync(scriptPath)) {
+        logger.error(`脚本文件不存在: ${scriptPath}`);
+        return { success: false, error: `Script file not found: ${scriptPath}` };
+      }
       
-      // 3. 在终端中运行包装脚本
-      const platform = os.platform();
-      logger.debug(`检测到平台: ${platform}`);
+      // 直接在主进程中执行脚本
+      logger.info(`直接执行脚本: ${scriptPath}`);
       
-      if (platform === 'darwin') {
-        // macOS
-        logger.debug('使用macOS Terminal执行脚本');
-        const appleScript = `
-          tell application "Terminal"
-            activate
-            do script "node '${wrapperPath}'; echo '\\nPress any key to exit...'; read -n 1"
-          end tell
-        `;
-        exec(`osascript -e '${appleScript}'`);
-      } else if (platform === 'win32') {
-        // Windows
-        logger.debug('使用Windows命令提示符执行脚本');
-        exec(`start cmd.exe /k "node "${wrapperPath}" && pause"`);
-      } else {
-        // Linux
-        logger.debug('尝试在Linux上查找可用终端');
-        const terminals = ['gnome-terminal', 'xterm', 'konsole', 'xfce4-terminal'];
-        let terminalFound = false;
+      // 检查必需参数
+      if (scriptInfo.requiredParams && scriptInfo.requiredParams.length > 0) {
+        const missingParams = scriptInfo.requiredParams.filter(param => !paramObj || paramObj[param] === undefined);
         
-        for (const terminal of terminals) {
+        if (missingParams.length > 0) {
+          const error = `缺少必需参数: ${missingParams.join(', ')}`;
+          logger.error(error);
+          return { success: false, error };
+        }
+      }
+      
+      try {
+        // 动态加载脚本模块
+        const scriptModule = require(scriptPath);
+        
+        // 直接运行脚本并等待结果
+        const result = await new Promise((resolve, reject) => {
           try {
-            exec(`which ${terminal}`, (error, stdout) => {
-              if (!error && stdout) {
-                logger.debug(`找到终端: ${terminal}`);
-                terminalFound = true;
-                
-                if (terminal === 'gnome-terminal') {
-                  exec(`gnome-terminal -- bash -c "node ${wrapperPath}; echo '\\nPress Enter to exit...'; read"`);
-                } else {
-                  exec(`${terminal} -e "node ${wrapperPath} && echo '\\nPress Enter to exit...' && read"`);
-                }
+            logger.debug('调用脚本模块...');
+            scriptModule(paramObj, (err, result) => {
+              if (err) {
+                logger.error('脚本执行返回错误:', err);
+                reject(err);
+              } else {
+                logger.info('脚本执行成功');
+                logger.debug('脚本返回结果:', result);
+                resolve(result);
               }
             });
-            
-            if (terminalFound) break;
-          } catch (e) {
-            logger.debug(`终端 ${terminal} 不可用: ${e.message}`);
+          } catch (error) {
+            logger.error('脚本执行出现异常:', error);
+            reject(error);
           }
-        }
+        });
         
-        if (!terminalFound) {
-          logger.warn('未找到可用的Linux终端');
-        }
+        // 返回最终结果
+        return {
+          success: true,
+          message: '脚本执行成功',
+          data: result,
+          scriptId,
+          scriptPath
+        };
+      } catch (error) {
+        logger.error('脚本执行失败:', error);
+        return { 
+          success: false, 
+          error: error.message || String(error),
+          scriptId,
+          scriptPath
+        };
       }
-      
-      logger.info('脚本执行已启动');
-      return { success: true, message: 'Script execution started' };
     } catch (error) {
       logger.error('执行键值对任务失败:', error);
       return { success: false, error: error.message };

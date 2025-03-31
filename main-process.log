@@ -100,3 +100,209 @@
 [2025-03-30T08:36:35.503Z] [INFO] 任务信息:
 [2025-03-30T08:36:35.503Z] [INFO] 开始执行任务: Task 1
 [2025-03-30T08:36:35.504Z] [DEBUG] 执行键值对类型任务
+[2025-03-30T08:42:52.549Z] [INFO] 准备执行脚本: auto-login-evq
+[2025-03-30T08:42:52.553Z] [DEBUG] 脚本参数:
+[2025-03-30T08:42:52.553Z] [DEBUG] 找到脚本:
+[2025-03-30T08:42:52.554Z] [DEBUG] 参数文件已创建: /var/folders/fy/gl_ghp2n71d2h38hq0x4lrw40000gn/T/task_params_1743324172553.json
+[2025-03-30T08:42:52.555Z] [DEBUG] 包装脚本已创建: /var/folders/fy/gl_ghp2n71d2h38hq0x4lrw40000gn/T/task_wrapper_1743324172554.js
+[2025-03-30T08:42:52.555Z] [DEBUG] 检测到平台: darwin
+[2025-03-30T08:42:52.555Z] [DEBUG] 使用macOS Terminal执行脚本
+[2025-03-30T08:42:52.557Z] [INFO] 脚本执行已启动
+[2025-03-30T08:42:52.557Z] [INFO] 任务执行结果:
+[2025-03-30T08:42:52.557Z] [INFO] ===== 任务执行完成 =====
+[2025-03-30T08:46:37.578Z] [DEBUG] 初始化脚本处理程序
+[2025-03-30T08:46:37.579Z] [INFO] 脚本注册服务已初始化
+[2025-03-30T08:46:37.635Z] [INFO] Electron应用已准备好
+[2025-03-30T08:46:37.635Z] [INFO] 创建主窗口
+[2025-03-30T08:46:37.671Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-03-30T08:46:37.678Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:46:37.678Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:46:37.678Z] [INFO] IPC处理程序设置完成
+[2025-03-30T08:46:37.678Z] [DEBUG] 查找脚本: default
+[2025-03-30T08:46:37.678Z] [DEBUG] 找到脚本: default
+[2025-03-30T08:46:37.863Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:46:37.863Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:46:37.863Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:46:37.864Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:46:39.617Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:46:39.617Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:46:44.158Z] [INFO] ===== 开始执行任务 =====
+[2025-03-30T08:46:44.159Z] [INFO] 工作流ID: 1743307200521, 任务ID: 1743307208471
+[2025-03-30T08:46:44.160Z] [INFO] 任务信息:
+[2025-03-30T08:46:44.161Z] [INFO] 开始执行任务: Task 1
+[2025-03-30T08:46:44.161Z] [DEBUG] 执行键值对类型任务
+[2025-03-30T08:46:51.860Z] [INFO] 准备执行脚本: auto-login-evq
+[2025-03-30T08:46:52.389Z] [DEBUG] 脚本参数:
+[2025-03-30T08:46:53.707Z] [DEBUG] 查找脚本: auto-login-evq
+[2025-03-30T08:46:53.707Z] [DEBUG] 找到脚本: auto-login-evq
+[2025-03-30T08:46:55.141Z] [DEBUG] 找到脚本:
+[2025-03-30T08:47:07.010Z] [DEBUG] 脚本路径: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T08:47:18.173Z] [DEBUG] 参数文件已创建: /var/folders/fy/gl_ghp2n71d2h38hq0x4lrw40000gn/T/task_params_1743324432459.json
+[2025-03-30T08:47:29.975Z] [DEBUG] 包装脚本已创建: /var/folders/fy/gl_ghp2n71d2h38hq0x4lrw40000gn/T/task_wrapper_1743324445643.js
+[2025-03-30T08:47:31.844Z] [DEBUG] 检测到平台: darwin
+[2025-03-30T08:47:34.776Z] [DEBUG] 使用macOS Terminal执行脚本
+[2025-03-30T08:48:02.886Z] [INFO] 脚本执行已启动
+[2025-03-30T08:48:02.887Z] [INFO] 任务执行结果:
+[2025-03-30T08:48:02.887Z] [INFO] ===== 任务执行完成 =====
+[2025-03-30T08:48:19.104Z] [DEBUG] 初始化脚本处理程序
+[2025-03-30T08:48:19.105Z] [INFO] 脚本注册服务已初始化
+[2025-03-30T08:48:19.198Z] [INFO] Electron应用已准备好
+[2025-03-30T08:48:19.198Z] [INFO] 创建主窗口
+[2025-03-30T08:48:19.241Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-03-30T08:48:19.246Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:48:19.247Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:48:19.247Z] [INFO] IPC处理程序设置完成
+[2025-03-30T08:48:19.247Z] [DEBUG] 查找脚本: default
+[2025-03-30T08:48:19.247Z] [DEBUG] 找到脚本: default
+[2025-03-30T08:48:19.740Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:48:19.741Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:48:19.741Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:48:19.741Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:48:22.068Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:48:22.069Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:53:30.085Z] [DEBUG] 初始化脚本处理程序
+[2025-03-30T08:53:30.086Z] [INFO] 脚本注册服务已初始化
+[2025-03-30T08:53:30.176Z] [INFO] Electron应用已准备好
+[2025-03-30T08:53:30.177Z] [INFO] 创建主窗口
+[2025-03-30T08:53:30.218Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-03-30T08:53:30.226Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:53:30.227Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:53:30.227Z] [INFO] IPC处理程序设置完成
+[2025-03-30T08:53:30.227Z] [DEBUG] 查找脚本: default
+[2025-03-30T08:53:30.227Z] [DEBUG] 找到脚本: default
+[2025-03-30T08:53:30.662Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:53:30.662Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:53:30.663Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:53:30.663Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:53:32.438Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:53:32.439Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:53:38.996Z] [INFO] ===== 开始执行任务 =====
+[2025-03-30T08:53:38.996Z] [INFO] 工作流ID: 1743307200521, 任务ID: 1743307208471
+[2025-03-30T08:53:38.997Z] [INFO] 任务信息:
+[2025-03-30T08:53:38.998Z] [INFO] 开始执行任务: Task 1
+[2025-03-30T08:53:38.998Z] [DEBUG] 执行键值对类型任务
+[2025-03-30T08:53:47.664Z] [INFO] 准备执行脚本: auto-login-evq
+[2025-03-30T08:53:48.463Z] [DEBUG] 脚本参数:
+[2025-03-30T08:53:51.663Z] [DEBUG] 查找脚本: auto-login-evq
+[2025-03-30T08:53:51.664Z] [DEBUG] 找到脚本: auto-login-evq
+[2025-03-30T08:53:52.348Z] [DEBUG] 找到脚本:
+[2025-03-30T08:53:54.930Z] [DEBUG] 脚本路径: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T08:53:56.897Z] [INFO] 直接执行脚本: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T08:54:57.732Z] [DEBUG] 调用脚本模块...
+[2025-03-30T08:55:22.710Z] [INFO] 脚本执行成功
+[2025-03-30T08:55:22.711Z] [DEBUG] 脚本返回结果:
+[2025-03-30T08:55:22.711Z] [INFO] 任务执行结果:
+[2025-03-30T08:55:22.711Z] [INFO] ===== 任务执行完成 =====
+[2025-03-30T08:58:09.453Z] [INFO] ===== 开始执行任务 =====
+[2025-03-30T08:58:09.454Z] [INFO] 工作流ID: 1743307200521, 任务ID: 1743307208471
+[2025-03-30T08:58:09.455Z] [INFO] 任务信息:
+[2025-03-30T08:58:09.455Z] [INFO] 开始执行任务: Task 1
+[2025-03-30T08:58:09.456Z] [DEBUG] 执行键值对类型任务
+[2025-03-30T08:58:15.581Z] [INFO] 准备执行脚本: auto-login-evq
+[2025-03-30T08:58:15.581Z] [DEBUG] 脚本参数:
+[2025-03-30T08:58:15.581Z] [DEBUG] 查找脚本: auto-login-evq
+[2025-03-30T08:58:15.582Z] [DEBUG] 找到脚本: auto-login-evq
+[2025-03-30T08:58:15.582Z] [DEBUG] 找到脚本:
+[2025-03-30T08:58:15.582Z] [DEBUG] 脚本路径: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T08:58:15.582Z] [INFO] 直接执行脚本: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T08:58:15.583Z] [DEBUG] 调用脚本模块...
+[2025-03-30T08:58:23.351Z] [ERROR] 脚本执行返回错误:
+[2025-03-30T08:58:23.351Z] [ERROR] 脚本执行失败:
+[2025-03-30T08:58:23.351Z] [INFO] 任务执行结果:
+[2025-03-30T08:58:23.351Z] [INFO] ===== 任务执行完成 =====
+[2025-03-30T08:58:51.763Z] [DEBUG] 初始化脚本处理程序
+[2025-03-30T08:58:51.767Z] [INFO] 脚本注册服务已初始化
+[2025-03-30T08:58:51.831Z] [INFO] Electron应用已准备好
+[2025-03-30T08:58:51.831Z] [INFO] 创建主窗口
+[2025-03-30T08:58:51.881Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-03-30T08:58:51.905Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:58:51.905Z] [INFO] 设置IPC处理程序
+[2025-03-30T08:58:51.905Z] [INFO] IPC处理程序设置完成
+[2025-03-30T08:58:51.906Z] [DEBUG] 查找脚本: default
+[2025-03-30T08:58:51.906Z] [DEBUG] 找到脚本: default
+[2025-03-30T08:58:52.410Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:58:52.410Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:58:52.411Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T08:58:52.411Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:58:53.858Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:58:53.858Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T08:58:55.314Z] [INFO] ===== 开始执行任务 =====
+[2025-03-30T08:58:55.314Z] [INFO] 工作流ID: 1743307200521, 任务ID: 1743307208471
+[2025-03-30T08:58:55.315Z] [INFO] 任务信息:
+[2025-03-30T08:58:55.315Z] [INFO] 开始执行任务: Task 1
+[2025-03-30T08:58:55.315Z] [DEBUG] 执行键值对类型任务
+[2025-03-30T08:58:55.316Z] [INFO] 准备执行脚本: auto-login-evq
+[2025-03-30T08:58:55.316Z] [DEBUG] 脚本参数:
+[2025-03-30T08:58:55.317Z] [DEBUG] 查找脚本: auto-login-evq
+[2025-03-30T08:58:55.317Z] [DEBUG] 找到脚本: auto-login-evq
+[2025-03-30T08:58:55.317Z] [DEBUG] 找到脚本:
+[2025-03-30T08:58:55.317Z] [DEBUG] 脚本路径: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T08:58:55.317Z] [INFO] 直接执行脚本: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T08:58:55.449Z] [DEBUG] 调用脚本模块...
+[2025-03-30T08:59:05.535Z] [ERROR] 脚本执行返回错误:
+[2025-03-30T08:59:05.535Z] [ERROR] 脚本执行失败:
+[2025-03-30T08:59:05.535Z] [INFO] 任务执行结果:
+[2025-03-30T08:59:05.535Z] [INFO] ===== 任务执行完成 =====
+[2025-03-30T09:00:00.711Z] [DEBUG] IPC调用: task:update
+[2025-03-30T09:00:01.408Z] [DEBUG] IPC调用: task:update
+[2025-03-30T09:00:05.451Z] [INFO] ===== 开始执行任务 =====
+[2025-03-30T09:00:05.452Z] [INFO] 工作流ID: 1743307200521, 任务ID: 1743307208471
+[2025-03-30T09:00:05.453Z] [INFO] 任务信息:
+[2025-03-30T09:00:05.453Z] [INFO] 开始执行任务: Task 1
+[2025-03-30T09:00:05.453Z] [DEBUG] 执行键值对类型任务
+[2025-03-30T09:00:05.453Z] [INFO] 准备执行脚本: auto-login-evq
+[2025-03-30T09:00:05.453Z] [DEBUG] 脚本参数:
+[2025-03-30T09:00:05.454Z] [DEBUG] 查找脚本: auto-login-evq
+[2025-03-30T09:00:05.454Z] [DEBUG] 找到脚本: auto-login-evq
+[2025-03-30T09:00:05.454Z] [DEBUG] 找到脚本:
+[2025-03-30T09:00:05.454Z] [DEBUG] 脚本路径: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T09:00:05.454Z] [INFO] 直接执行脚本: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T09:00:05.454Z] [DEBUG] 调用脚本模块...
+[2025-03-30T09:00:08.417Z] [INFO] 脚本执行成功
+[2025-03-30T09:00:08.417Z] [DEBUG] 脚本返回结果:
+[2025-03-30T09:00:08.417Z] [INFO] 任务执行结果:
+[2025-03-30T09:00:08.417Z] [INFO] ===== 任务执行完成 =====
+[2025-03-30T09:00:12.590Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:00:12.591Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:00:14.119Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:00:14.120Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:00:14.769Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:00:14.769Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:02:12.285Z] [DEBUG] 初始化脚本处理程序
+[2025-03-30T09:02:12.288Z] [INFO] 脚本注册服务已初始化
+[2025-03-30T09:02:12.355Z] [INFO] Electron应用已准备好
+[2025-03-30T09:02:12.355Z] [INFO] 创建主窗口
+[2025-03-30T09:02:12.404Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-03-30T09:02:12.417Z] [INFO] 设置IPC处理程序
+[2025-03-30T09:02:12.417Z] [INFO] 设置IPC处理程序
+[2025-03-30T09:02:12.417Z] [INFO] IPC处理程序设置完成
+[2025-03-30T09:02:12.417Z] [DEBUG] 查找脚本: default
+[2025-03-30T09:02:12.417Z] [DEBUG] 找到脚本: default
+[2025-03-30T09:02:13.167Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T09:02:13.168Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:02:13.168Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T09:02:13.168Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:02:16.108Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:02:16.109Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:02:22.900Z] [INFO] ===== 开始执行任务 =====
+[2025-03-30T09:02:22.901Z] [INFO] 工作流ID: 1743307200521, 任务ID: 1743307208471
+[2025-03-30T09:02:22.902Z] [INFO] 任务信息:
+[2025-03-30T09:02:22.902Z] [INFO] 开始执行任务: Task 1
+[2025-03-30T09:02:22.902Z] [DEBUG] 执行键值对类型任务
+[2025-03-30T09:02:22.903Z] [INFO] 准备执行脚本: auto-login-evq
+[2025-03-30T09:02:22.903Z] [DEBUG] 脚本参数:
+[2025-03-30T09:02:22.903Z] [DEBUG] 查找脚本: auto-login-evq
+[2025-03-30T09:02:22.903Z] [DEBUG] 找到脚本: auto-login-evq
+[2025-03-30T09:02:22.904Z] [DEBUG] 找到脚本:
+[2025-03-30T09:02:22.904Z] [DEBUG] 脚本路径: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T09:02:22.905Z] [INFO] 直接执行脚本: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts/autoLoginEVQ.js
+[2025-03-30T09:02:23.036Z] [DEBUG] 调用脚本模块...
+[2025-03-30T09:02:25.734Z] [INFO] 脚本执行成功
+[2025-03-30T09:02:25.734Z] [DEBUG] 脚本返回结果:
+[2025-03-30T09:02:25.734Z] [INFO] 任务执行结果:
+[2025-03-30T09:02:25.734Z] [INFO] ===== 任务执行完成 =====
+[2025-03-30T09:41:26.209Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T09:41:26.212Z] [DEBUG] IPC调用: script:getAll
+[2025-03-30T09:41:26.212Z] [DEBUG] IPC调用: workflow:getAll
+[2025-03-30T09:41:26.212Z] [DEBUG] IPC调用: script:getAll
+[2025-03-31T10:43:33.909Z] [INFO] 所有窗口已关闭
