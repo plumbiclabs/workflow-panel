@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import EditableTitle from '../EditableTitle';
 import { useWorkflow } from '../../context/WorkflowContext';
 import './styles.css';
@@ -6,19 +6,16 @@ import './styles.css';
 const Task = ({ task, workflowId, onClose }) => {
   const { 
     updateTask, 
-    addCommand, 
-    deleteCommand, 
     runTask,
     taskRunningStates
   } = useWorkflow();
   
+  const [commands, setCommands] = useState(task.commands || []);
   const [newCommand, setNewCommand] = useState('');
+  const inputRef = useRef(null);
   
   // 检查此任务是否正在运行
   const isRunning = taskRunningStates[`${workflowId}-${task.id}`];
-  
-  // 获取此任务的命令列表
-  const commands = task.commands || [];
 
   // 更新任务标题
   const handleTaskNameSave = async (newName) => {
@@ -31,24 +28,45 @@ const Task = ({ task, workflowId, onClose }) => {
     }
   };
 
+  // 更新命令
+  const handleCommandChange = async (index, newCommand) => {
+    if (!workflowId) return;
+    
+    const newCommands = [...commands];
+    newCommands[index] = newCommand;
+    setCommands(newCommands);
+    
+    try {
+      await updateTask(workflowId, task.id, { commands: newCommands });
+    } catch (error) {
+      console.error('Failed to update command:', error);
+    }
+  };
+
   // 添加新命令
   const handleAddCommand = async () => {
-    if (!newCommand.trim() || !workflowId) return;
+    if (!workflowId || !newCommand.trim()) return;
 
+    const newCommands = [...commands, newCommand.trim()];
+    setCommands(newCommands);
+    setNewCommand('');
+    
     try {
-      await addCommand(workflowId, task.id, newCommand.trim());
-      setNewCommand(''); // 清空输入框
+      await updateTask(workflowId, task.id, { commands: newCommands });
     } catch (error) {
       console.error('Failed to add command:', error);
     }
   };
 
   // 删除命令
-  const handleDeleteCommand = async (commandIndex) => {
+  const handleDeleteCommand = async (index) => {
     if (!workflowId) return;
 
+    const newCommands = commands.filter((_, i) => i !== index);
+    setCommands(newCommands);
+    
     try {
-      await deleteCommand(workflowId, task.id, commandIndex);
+      await updateTask(workflowId, task.id, { commands: newCommands });
     } catch (error) {
       console.error('Failed to delete command:', error);
     }
@@ -79,6 +97,13 @@ const Task = ({ task, workflowId, onClose }) => {
     }
   };
 
+  // 自动聚焦到输入框
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [commands.length]);
+
   return (
     <div className="task-window">
       <div className="task-header">
@@ -94,7 +119,14 @@ const Task = ({ task, workflowId, onClose }) => {
       <div className="task-content">
         {commands.map((command, index) => (
           <div key={index} className="task-command">
-            {command}
+            <div className="command-prompt">$</div>
+            <textarea
+              className="command-input"
+              value={command}
+              onChange={(e) => handleCommandChange(index, e.target.value)}
+              placeholder="Type command here"
+              rows={1}
+            />
             <button 
               className="command-delete" 
               onClick={() => handleDeleteCommand(index)}
@@ -107,6 +139,7 @@ const Task = ({ task, workflowId, onClose }) => {
         <div className="command-input-container">
           <div className="command-prompt">$</div>
           <textarea
+            ref={inputRef}
             className="command-input"
             value={newCommand}
             onChange={(e) => setNewCommand(e.target.value)}

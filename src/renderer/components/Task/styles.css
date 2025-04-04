@@ -81,16 +81,43 @@
     padding: 4px 0;
     border-radius: 3px;
     position: relative;
-}
-
-.task-command::before {
-    content: '$ ';
-    color: #666;
-    margin-right: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s;
 }
 
 .task-command:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.task-command:focus-within {
+    background: rgba(255, 255, 255, 0.1);
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.command-prompt {
+    color: #666;
+    margin-right: 8px;
+    margin-left: 8px;
+    line-height: 22px;
+    user-select: none;
+}
+
+.command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #a0a0a0;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    resize: none;
+    padding: 4px 0;
+    min-height: 22px;
+    outline: none;
+    line-height: 1.5;
+}
+
+.command-input::placeholder {
+    color: #555;
 }
 
 .command-delete {
@@ -100,9 +127,10 @@
     color: #666;
     font-size: 14px;
     cursor: pointer;
-    margin-left: 8px;
+    margin-right: 8px;
     padding: 0 4px;
     border-radius: 2px;
+    transition: all 0.2s;
 }
 
 .task-command:hover .command-delete {
@@ -122,29 +150,12 @@
     padding: 8px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-.command-prompt {
-    color: #666;
-    margin-right: 8px;
-    line-height: 22px;
-}
-
-.command-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #a0a0a0;
-    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-    font-size: 13px;
-    resize: vertical;
-    padding: 0;
-    min-height: 22px;
-    outline: none;
-}
-
-.command-input::placeholder {
-    color: #555;
+.command-input-container:focus-within {
+    background: rgba(255, 255, 255, 0.1);
+    outline: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .task-run {

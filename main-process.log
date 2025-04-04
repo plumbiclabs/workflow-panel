@@ -400,3 +400,81 @@
 [2025-04-04T13:39:52.514Z] [DEBUG] IPC调用: workflow:add
 [2025-04-04T13:40:09.332Z] [DEBUG] IPC调用: task:delete
 [2025-04-04T13:40:15.369Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-04T13:52:16.417Z] [DEBUG] IPC调用: task:add
+[2025-04-04T14:06:10.379Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:14.437Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:14.608Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:14.988Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:15.009Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:17.906Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:18.141Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:18.470Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:06:18.490Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:09:55.071Z] [DEBUG] IPC调用: task:delete
+[2025-04-04T14:09:57.683Z] [DEBUG] IPC调用: task:add
+[2025-04-04T14:10:04.125Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:08.349Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:10.766Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:11.025Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:11.160Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:11.470Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:11.574Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:11.778Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:14.232Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:14.346Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:14.455Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:14.642Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:15.038Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:15.231Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:15.391Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:15.561Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:10:21.311Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:11:01.782Z] [DEBUG] IPC调用: task:delete
+[2025-04-04T14:11:04.548Z] [DEBUG] IPC调用: task:add
+[2025-04-04T14:15:50.394Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:15:58.823Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:01.769Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:08.807Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:12.345Z] [DEBUG] IPC调用: task:delete
+[2025-04-04T14:16:15.311Z] [DEBUG] IPC调用: task:add
+[2025-04-04T14:16:17.822Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:19.819Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:20.894Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:22.704Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:26.725Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:28.595Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:29.876Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:30.994Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:16:31.977Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:18:47.085Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:20.343Z] [DEBUG] IPC调用: task:delete
+[2025-04-04T14:20:23.524Z] [DEBUG] IPC调用: task:add
+[2025-04-04T14:20:28.349Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:30.215Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:35.027Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:35.903Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:36.072Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:36.233Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:37.381Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:37.595Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:37.731Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:39.503Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:41.333Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:41.508Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:41.816Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:42.020Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:42.140Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:42.442Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:42.746Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:43.208Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:43.335Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:43.870Z] [DEBUG] IPC调用: task:update
+[2025-04-04T14:20:45.925Z] [INFO] ===== 开始执行任务 =====
+[2025-04-04T14:20:45.925Z] [INFO] 工作流ID: 1743424128422, 任务ID: 1743776423525
+[2025-04-04T14:20:45.926Z] [INFO] 任务信息:
+[2025-04-04T14:20:45.926Z] [INFO] 开始执行任务: Task 1
+[2025-04-04T14:20:45.927Z] [DEBUG] 执行命令类型任务
+[2025-04-04T14:20:45.927Z] [DEBUG] 任务命令列表:
+[2025-04-04T14:20:45.940Z] [INFO] 已启动终端执行命令
+[2025-04-04T14:20:45.940Z] [INFO] 任务执行结果:
+[2025-04-04T14:20:45.940Z] [INFO] ===== 任务执行完成 =====
