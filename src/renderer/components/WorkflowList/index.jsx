@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useWorkflow } from '../../context/WorkflowContext';
+import { Modal } from 'antd';
 import './styles.css';
 
 // 空状态图标组件
@@ -20,6 +21,9 @@ const WorkflowList = () => {
     selectWorkflow,
     loadWorkflows 
   } = useWorkflow();
+  
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [workflowToDelete, setWorkflowToDelete] = useState(null);
 
   const handleAddWorkflow = async () => {
     try {
@@ -36,18 +40,31 @@ const WorkflowList = () => {
 
   const handleRemoveWorkflow = async (id, e) => {
     e.stopPropagation();
-    const workflowElement = e.target.closest('.workflow-item');
-    workflowElement.style.transform = 'scale(0.9)';
-    workflowElement.style.opacity = '0';
+    setWorkflowToDelete(id);
+    setDeleteModalVisible(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!workflowToDelete) return;
+    
+    const workflowElement = document.querySelector(`.workflow-item[data-id="${workflowToDelete}"]`);
+    if (workflowElement) {
+      workflowElement.style.transform = 'scale(0.9)';
+      workflowElement.style.opacity = '0';
+    }
     
     try {
       setTimeout(async () => {
-        await deleteWorkflow(id);
+        await deleteWorkflow(workflowToDelete);
+        setDeleteModalVisible(false);
+        setWorkflowToDelete(null);
       }, 200);
     } catch (error) {
       console.error('Failed to remove workflow:', error);
-      workflowElement.style.transform = '';
-      workflowElement.style.opacity = '';
+      if (workflowElement) {
+        workflowElement.style.transform = '';
+        workflowElement.style.opacity = '';
+      }
     }
   };
 
@@ -66,6 +83,20 @@ const WorkflowList = () => {
 
   return (
     <div className="workflow-list">
+      <Modal
+        title="Confirm Delete"
+        open={deleteModalVisible}
+        onOk={handleConfirmDelete}
+        onCancel={() => {
+          setDeleteModalVisible(false);
+          setWorkflowToDelete(null);
+        }}
+        okText="Delete"
+        cancelText="Cancel"
+        okButtonProps={{ danger: true }}
+      >
+        <p>Are you sure you want to delete this workflow? This action cannot be undone.</p>
+      </Modal>
       <div className="workflow-list-header">
         <h2>WorkFlow List</h2>
         <button 

@@ -4,6 +4,7 @@ import KeyValueTask from '../KeyValueTask';
 import EditableTitle from '../EditableTitle';
 import TaskTemplateModal from '../TaskTemplateModal';
 import { useWorkflow } from '../../context/WorkflowContext';
+import { Modal } from 'antd';
 import './style.css';
 
 const WorkflowDetail = () => {
@@ -11,10 +12,13 @@ const WorkflowDetail = () => {
     selectedWorkflow, 
     updateWorkflow, 
     addTask, 
-    deleteTask 
+    deleteTask,
+    updateWorkflowName 
   } = useWorkflow();
   
   const [showTemplateModal, setShowTemplateModal] = useState(false);
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [taskToDelete, setTaskToDelete] = useState(null);
 
   // 处理工作流名称变更
   const handleWorkflowNameSave = async (newName) => {
@@ -64,9 +68,17 @@ const WorkflowDetail = () => {
   // 删除任务
   const handleDeleteTask = async (taskId) => {
     if (!selectedWorkflow) return;
+    setTaskToDelete(taskId);
+    setDeleteModalVisible(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!selectedWorkflow || !taskToDelete) return;
 
     try {
-      await deleteTask(selectedWorkflow.id, taskId);
+      await deleteTask(selectedWorkflow.id, taskToDelete);
+      setDeleteModalVisible(false);
+      setTaskToDelete(null);
     } catch (error) {
       console.error('Failed to delete task:', error);
     }
@@ -106,6 +118,20 @@ const WorkflowDetail = () => {
 
   return (
     <div className="workflow-detail">
+      <Modal
+        title="Confirm Delete"
+        open={deleteModalVisible}
+        onOk={handleConfirmDelete}
+        onCancel={() => {
+          setDeleteModalVisible(false);
+          setTaskToDelete(null);
+        }}
+        okText="Delete"
+        cancelText="Cancel"
+        okButtonProps={{ danger: true }}
+      >
+        <p>Are you sure you want to delete this task? This action cannot be undone.</p>
+      </Modal>
       <div className="workflow-detail-header">
         <EditableTitle 
           value={selectedWorkflow.name} 
