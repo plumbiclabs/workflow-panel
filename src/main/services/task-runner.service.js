@@ -9,45 +9,49 @@ const logger = require('../utils/logger');
 
 class TaskRunnerService {
   // 执行任务的入口方法
-  async runTask(task) {
+  async runTask(task, terminalId) {
     if (!task) {
-      logger.error('无效任务: 任务对象为空');
+      logger.error('Invalid task: task object is empty');
       return { success: false, error: 'Invalid task' };
     }
     
-    logger.info(`开始执行任务: ${task.name || 'Unnamed Task'}`, { taskId: task.id, type: task.type });
+    logger.info(`Starting task: ${task.name || 'Unnamed Task'}`, { 
+      taskId: task.id, 
+      type: task.type,
+      terminalId 
+    });
     
     try {
       // 根据任务类型执行不同的处理逻辑
       if (task.type === 'key-value') {
-        logger.debug('执行键值对类型任务');
+        logger.debug('Running key-value task');
         return await this.runKeyValueTask(task);
       } else {
         // 命令类型任务 (默认)
-        logger.debug('执行命令类型任务');
-        return this.runCommandTask(task);
+        logger.debug('Running command task');
+        return this.runCommandTask(task, terminalId);
       }
     } catch (error) {
-      logger.error('执行任务时出错:', error);
+      logger.error('Error running task:', error);
       return { success: false, error: error.message };
     }
   }
   
   // 运行命令类型任务
-  runCommandTask(task) {
+  runCommandTask(task, terminalId) {
     if (!task.commands || task.commands.length === 0) {
-      logger.error('无命令可执行', { taskId: task.id });
+      logger.error('No commands to run', { taskId: task.id });
       return { success: false, error: 'No commands to run' };
     }
     
-    logger.debug('任务命令列表:', task.commands);
+    logger.debug('Task commands:', task.commands);
     
     try {
-      const result = terminalService.runTaskInTerminal(task.id, task.commands);
-      logger.info('已启动终端执行命令');
+      const result = terminalService.runCommand(terminalId, task.commands);
+      logger.info('Terminal launched for command execution');
       return { success: true, message: 'Terminal launched' };
     } catch (error) {
-      logger.error('启动终端执行命令失败:', error);
+      logger.error('Failed to launch terminal for command execution:', error);
       return { success: false, error: error.message };
     }
   }
@@ -55,7 +59,7 @@ class TaskRunnerService {
   // 运行键值对任务
   async runKeyValueTask(task) {
     if (!task.parameters || task.parameters.length === 0) {
-      logger.error('任务未定义参数', { taskId: task.id });
+      logger.error('No parameters defined for task', { taskId: task.id });
       return { success: false, error: 'No parameters defined for this task' };
     }
     
@@ -69,21 +73,21 @@ class TaskRunnerService {
       // 使用脚本注册表运行相应的脚本
       const scriptId = task.scriptId || 'default';
       
-      logger.info(`准备执行脚本: ${scriptId}`);
-      logger.debug('脚本参数:', paramObj);
+      logger.info(`Preparing to run script: ${scriptId}`);
+      logger.debug('Script parameters:', paramObj);
       
       // 获取脚本信息和路径
       let scriptInfo;
       try {
         scriptInfo = await scriptRegistry.getScriptById(scriptId);
-        logger.debug('找到脚本:', scriptInfo);
+        logger.debug('Found script:', scriptInfo);
         
         if (!scriptInfo) {
-          logger.error(`脚本 "${scriptId}" 不存在`);
+          logger.error(`Script "${scriptId}" not found`);
           return { success: false, error: `Script ${scriptId} not found` };
         }
       } catch (error) {
-        logger.error(`脚本 "${scriptId}" 加载失败:`, error);
+        logger.error(`Failed to load script "${scriptId}":`, error);
         return { success: false, error: `Failed to load script ${scriptId}: ${error.message}` };
       }
       
@@ -92,16 +96,16 @@ class TaskRunnerService {
         ? path.join(scriptRegistry.scriptsDir, scriptInfo.path) 
         : scriptRegistry.defaultScriptPath;
       
-      logger.debug(`脚本路径: ${scriptPath}`);
+      logger.debug(`Script path: ${scriptPath}`);
       
       // 验证脚本文件存在
       if (!fs.existsSync(scriptPath)) {
-        logger.error(`脚本文件不存在: ${scriptPath}`);
+        logger.error(`Script file not found: ${scriptPath}`);
         return { success: false, error: `Script file not found: ${scriptPath}` };
       }
       
       // 直接在主进程中执行脚本
-      logger.info(`直接执行脚本: ${scriptPath}`);
+      logger.info(`Executing script: ${scriptPath}`);
       
       // 检查必需参数
       if (scriptInfo.requiredParams && scriptInfo.requiredParams.length > 0) {
@@ -156,7 +160,7 @@ class TaskRunnerService {
         };
       }
     } catch (error) {
-      logger.error('执行键值对任务失败:', error);
+      logger.error('Error running key-value task:', error);
       return { success: false, error: error.message };
     }
   }

@@ -57,31 +57,30 @@ function setupIpcHandlers(mainWindow) {
 
   // 修改任务运行处理函数以支持终端选择
   ipcMain.handle('task:run', async (_, { workflowId, taskId, terminalId }) => {
-    logger.info('===== 开始执行任务 =====');
-    logger.info(`工作流ID: ${workflowId}, 任务ID: ${taskId}, 终端ID: ${terminalId}`);
-
+    logger.info('===== Starting task execution =====');
+    logger.info(`Workflow ID: ${workflowId}, Task ID: ${taskId}, Terminal ID: ${terminalId}`);
     
     try {
       // 获取工作流和任务
       const workflow = workflowStore.getWorkflowById(workflowId);
       if (!workflow) {
-        logger.error('工作流未找到', { workflowId });
+        logger.error('Workflow not found', { workflowId });
         return { success: false, error: 'Workflow not found' };
       }
       
       const task = workflow.tasks.find(t => t.id === taskId);
       if (!task) {
-        logger.error('任务未找到', { workflowId, taskId });
+        logger.error('Task not found', { workflowId, taskId });
         return { success: false, error: 'Task not found' };
       }
       
-      logger.info('任务信息:', task);
+      logger.info('Task info:', task);
       
-      // 使用指定的终端执行命令
-      const result = await terminalService.runCommand(terminalId, task.commands);
+      // 使用任务运行服务来执行任务
+      const result = await taskRunnerService.runTask(task, terminalId);
       
-      logger.info('任务执行结果:', result);
-      logger.info('===== 任务执行完成 =====');
+      logger.info('Task execution result:', result);
+      logger.info('===== Task execution completed =====');
       
       // 通知渲染进程任务已完成
       if (mainWindow) {
@@ -89,25 +88,25 @@ function setupIpcHandlers(mainWindow) {
           workflowId, 
           taskId, 
           success: result.success,
-          message: result.success ? '任务执行成功' : '任务执行失败'
+          message: result.success ? 'Task executed successfully' : 'Task execution failed'
         });
       }
       
       return result;
     } catch (error) {
-      logger.error('任务执行出错:', error);
-      logger.info('===== 任务执行失败 =====');
+      logger.error('Task execution error:', error);
+      logger.info('===== Task execution failed =====');
       
       // 通知渲染进程任务失败
       if (mainWindow) {
         mainWindow.webContents.send('task:error', { 
           workflowId, 
           taskId, 
-          error: error.message || '未知错误'
+          error: error.message || 'Unknown error'
         });
       }
       
-      return { success: false, error: error.message || '未知错误' };
+      return { success: false, error: error.message || 'Unknown error' };
     }
   });
 
