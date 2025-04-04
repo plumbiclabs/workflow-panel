@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import EditableTitle from '../EditableTitle';
 import { useWorkflow } from '../../context/WorkflowContext';
+import { Select } from 'antd';
 import './styles.css';
 
 const Task = ({ task, workflowId, onClose }) => {
@@ -12,10 +13,29 @@ const Task = ({ task, workflowId, onClose }) => {
   
   const [commands, setCommands] = useState(task.commands || []);
   const [newCommand, setNewCommand] = useState('');
+  const [availableTerminals, setAvailableTerminals] = useState([]);
+  const [selectedTerminal, setSelectedTerminal] = useState('');
   const inputRef = useRef(null);
   
   // 检查此任务是否正在运行
   const isRunning = taskRunningStates[`${workflowId}-${task.id}`];
+
+  // 加载可用的终端
+  useEffect(() => {
+    const loadTerminals = async () => {
+      try {
+        const terminals = await window.electronAPI.terminal.getAvailable();
+        setAvailableTerminals(terminals);
+        if (terminals.length > 0) {
+          setSelectedTerminal(terminals[0].id);
+        }
+      } catch (error) {
+        console.error('Failed to load terminals:', error);
+      }
+    };
+
+    loadTerminals();
+  }, []);
 
   // 更新任务标题
   const handleTaskNameSave = async (newName) => {
@@ -82,10 +102,12 @@ const Task = ({ task, workflowId, onClose }) => {
 
   // 处理运行任务
   const handleRunTask = async () => {
-    if (!workflowId || isRunning) return;
+    if (!workflowId || isRunning || !selectedTerminal) return;
+
+    debugger
     
     try {
-      const result = await runTask(workflowId, task.id);
+      const result = await runTask(workflowId, task.id, selectedTerminal);
       
       if (!result.success) {
         console.error('Failed to run task:', result.error);
@@ -114,6 +136,23 @@ const Task = ({ task, workflowId, onClose }) => {
           placeholder="Task Name"
           className="task-title-editable"
         />
+        <div className="terminal-selector">
+          <Select
+            value={selectedTerminal}
+            onChange={setSelectedTerminal}
+            style={{ width: 150 }}
+            placeholder="Select terminal"
+          >
+            {availableTerminals.map(terminal => (
+              <Select.Option key={terminal.id} value={terminal.id}>
+                <span className="terminal-option">
+                  <span className="terminal-icon">{terminal.icon}</span>
+                  <span className="terminal-name">{terminal.name}</span>
+                </span>
+              </Select.Option>
+            ))}
+          </Select>
+        </div>
         <button className="task-close" onClick={() => onClose(task.id)} title="Close task">×</button>
       </div>
       <div className="task-content">
@@ -153,7 +192,7 @@ const Task = ({ task, workflowId, onClose }) => {
         className={`task-run ${isRunning ? 'running' : ''}`}
         onClick={handleRunTask}
         title="Run commands"
-        disabled={isRunning || commands.length === 0}
+        disabled={isRunning || commands.length === 0 || !selectedTerminal}
       >
         {isRunning ? '...' : '▶'}
       </button>

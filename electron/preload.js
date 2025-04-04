@@ -30,7 +30,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     add: (workflowId, task) => ipcRenderer.invoke('task:add', { workflowId, task }),
     update: (workflowId, taskId, taskData) => ipcRenderer.invoke('task:update', { workflowId, taskId, taskData }),
     delete: (workflowId, taskId) => ipcRenderer.invoke('task:delete', { workflowId, taskId }),
-    run: (workflowId, taskId) => ipcRenderer.invoke('task:run', { workflowId, taskId }),
+    run: (workflowId, taskId, terminalId) => ipcRenderer.invoke('task:run', { workflowId, taskId, terminalId }),
     onComplete: (callback) => {
       listeners.taskComplete.add(callback);
       return () => listeners.taskComplete.delete(callback);
@@ -39,6 +39,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
       listeners.taskError.add(callback);
       return () => listeners.taskError.delete(callback);
     }
+  },
+  // 终端相关的 API
+  terminal: {
+    getAvailable: () => ipcRenderer.invoke('terminal:getAvailable')
   },
   // 命令相关的 API
   command: {

@@ -149,7 +149,7 @@ export const WorkflowProvider = ({ children }) => {
   };
 
   // 运行任务
-  const runTask = async (workflowId, taskId) => {
+  const runTask = async (workflowId, taskId, terminalId) => {
     try {
       // 更新任务运行状态
       setTaskRunningStates(prev => ({
@@ -157,7 +157,7 @@ export const WorkflowProvider = ({ children }) => {
         [`${workflowId}-${taskId}`]: true
       }));
       
-      const result = await WorkflowService.runTask(workflowId, taskId);
+      const result = await WorkflowService.runTask(workflowId, taskId, terminalId);
       
       // 重置任务运行状态
       setTaskRunningStates(prev => ({

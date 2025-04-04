@@ -3,6 +3,7 @@ const workflowStore = require('../store/workflow.store');
 const scriptRegistry = require('./script-registry.service');
 const taskRunnerService = require('./task-runner.service');
 const logger = require('../utils/logger');
+const terminalService = require('./terminal.service');
 
 function setupIpcHandlers(mainWindow) {
   logger.info('设置IPC处理程序');
@@ -49,10 +50,16 @@ function setupIpcHandlers(mainWindow) {
     return workflowStore.deleteTask(workflowId, taskId);
   });
   
-  // 添加运行任务命令的处理函数
-  ipcMain.handle('task:run', async (_, { workflowId, taskId }) => {
+  // 添加获取可用终端的处理函数
+  ipcMain.handle('terminal:getAvailable', () => {
+    return terminalService.getAvailableTerminals();
+  });
+
+  // 修改任务运行处理函数以支持终端选择
+  ipcMain.handle('task:run', async (_, { workflowId, taskId, terminalId }) => {
     logger.info('===== 开始执行任务 =====');
-    logger.info(`工作流ID: ${workflowId}, 任务ID: ${taskId}`);
+    logger.info(`工作流ID: ${workflowId}, 任务ID: ${taskId}, 终端ID: ${terminalId}`);
+
     
     try {
       // 获取工作流和任务
@@ -70,8 +77,8 @@ function setupIpcHandlers(mainWindow) {
       
       logger.info('任务信息:', task);
       
-      // 使用任务运行服务来执行任务
-      const result = await taskRunnerService.runTask(task);
+      // 使用指定的终端执行命令
+      const result = await terminalService.runCommand(terminalId, task.commands);
       
       logger.info('任务执行结果:', result);
       logger.info('===== 任务执行完成 =====');

@@ -34,8 +34,8 @@ class WorkflowService {
   }
   
   // 添加运行任务方法
-  static async runTask(workflowId, taskId) {
-    return await window.electronAPI.task.run(workflowId, taskId);
+  static async runTask(workflowId, taskId, terminalId) {
+    return await window.electronAPI.task.run(workflowId, taskId, terminalId);
   }
 
   // 命令操作
