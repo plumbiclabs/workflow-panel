@@ -775,3 +775,421 @@
 [2025-04-04T15:42:15.032Z] [INFO] Terminal launched for command execution
 [2025-04-04T15:42:15.032Z] [INFO] Task execution result:
 [2025-04-04T15:42:15.033Z] [INFO] ===== Task execution completed =====
+[2025-04-04T15:44:45.745Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T15:44:45.746Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T15:44:48.351Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T15:44:48.352Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T15:44:51.734Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T15:44:51.735Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T16:07:37.014Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T16:07:37.016Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T16:07:37.016Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T16:07:37.016Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:27:18.093Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T23:27:18.097Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:27:18.097Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T23:27:18.097Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:34:52.060Z] [DEBUG] IPC调用: workflow:add
+[2025-04-04T23:34:58.527Z] [DEBUG] IPC调用: task:add
+[2025-04-04T23:34:58.550Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:34:58.551Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:41:25.667Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T23:41:25.669Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:41:25.670Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T23:42:07.663Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T23:42:07.665Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:42:20.653Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T23:42:20.655Z] [DEBUG] IPC调用: script:getAll
+[2025-04-04T23:42:20.655Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-04T23:50:57.841Z] [INFO] 所有窗口已关闭
+[2025-04-05T00:18:40.016Z] [INFO] 应用即将退出
+[2025-04-05T00:18:51.530Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T00:18:51.533Z] [INFO] 创建默认脚本: /Users/wangtengyun/workplace/workflow-panel/scripts/default-handler.js
+[2025-04-05T00:18:51.533Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T00:18:51.533Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T00:18:51.533Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T00:18:51.730Z] [INFO] Electron应用已准备好
+[2025-04-05T00:18:51.730Z] [INFO] 创建主窗口
+[2025-04-05T00:18:51.793Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T00:18:51.804Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:18:51.804Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:18:51.804Z] [INFO] IPC处理程序设置完成
+[2025-04-05T00:18:51.804Z] [DEBUG] 查找脚本: default
+[2025-04-05T00:18:51.805Z] [DEBUG] 找到脚本: default
+[2025-04-05T00:18:52.952Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:18:52.953Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:18:52.953Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:18:52.954Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:18:56.728Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:18:56.728Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:19:03.488Z] [INFO] 所有窗口已关闭
+[2025-04-05T00:19:14.953Z] [INFO] 应用即将退出
+[2025-04-05T00:19:17.402Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T00:19:17.403Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T00:19:17.403Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T00:19:17.403Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T00:19:17.441Z] [INFO] Electron应用已准备好
+[2025-04-05T00:19:17.441Z] [INFO] 创建主窗口
+[2025-04-05T00:19:17.479Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T00:19:17.484Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:19:17.484Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:19:17.485Z] [INFO] IPC处理程序设置完成
+[2025-04-05T00:19:17.485Z] [DEBUG] 查找脚本: default
+[2025-04-05T00:19:17.485Z] [DEBUG] 找到脚本: default
+[2025-04-05T00:19:18.361Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:19:18.362Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:19:18.362Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:19:18.362Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:19:19.794Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:19:19.794Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:19:23.515Z] [DEBUG] IPC调用: task:delete
+[2025-04-05T00:19:27.999Z] [DEBUG] IPC调用: task:add
+[2025-04-05T00:19:28.029Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:19:28.029Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:19:50.644Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:19:50.668Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:20:00.499Z] [DEBUG] IPC调用: task:add
+[2025-04-05T00:20:00.529Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:20:00.529Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:20:05.788Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:20:05.809Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:20:05.829Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:20:05.829Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:21:48.910Z] [INFO] 应用即将退出
+[2025-04-05T00:21:51.225Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T00:21:51.225Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T00:21:51.225Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T00:21:51.226Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T00:21:51.276Z] [INFO] Electron应用已准备好
+[2025-04-05T00:21:51.276Z] [INFO] 创建主窗口
+[2025-04-05T00:21:51.314Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T00:21:51.320Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:21:51.321Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:21:51.321Z] [INFO] IPC处理程序设置完成
+[2025-04-05T00:21:51.321Z] [DEBUG] 查找脚本: default
+[2025-04-05T00:21:51.321Z] [DEBUG] 找到脚本: default
+[2025-04-05T00:21:52.290Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:21:52.291Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:21:52.292Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:21:52.292Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:21:53.583Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:21:53.584Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:21:53.585Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:21:53.585Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:23:22.483Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:23:22.485Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:23:53.700Z] [INFO] 应用即将退出
+[2025-04-05T00:24:00.649Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T00:24:00.662Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T00:24:00.663Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T00:24:00.663Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T00:24:00.723Z] [INFO] Electron应用已准备好
+[2025-04-05T00:24:00.723Z] [INFO] 创建主窗口
+[2025-04-05T00:24:00.765Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T00:24:00.771Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:24:00.772Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:24:00.772Z] [INFO] IPC处理程序设置完成
+[2025-04-05T00:24:00.772Z] [DEBUG] 查找脚本: default
+[2025-04-05T00:24:00.772Z] [DEBUG] 找到脚本: default
+[2025-04-05T00:24:01.849Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:24:01.849Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:24:01.850Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:24:01.850Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:24:03.351Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:24:03.352Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:24:03.352Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:24:03.352Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:27:07.067Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:28:28.032Z] [INFO] ===== Starting task execution =====
+[2025-04-05T00:28:28.034Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812368000, Terminal ID: undefined
+[2025-04-05T00:28:28.034Z] [INFO] Task info:
+[2025-04-05T00:28:28.035Z] [INFO] Starting task: Task 1
+[2025-04-05T00:28:28.035Z] [DEBUG] Running key-value task
+[2025-04-05T00:28:28.036Z] [DEBUG] Resolved parameters:
+[2025-04-05T00:28:28.036Z] [INFO] Preparing to run script: system-info
+[2025-04-05T00:28:28.036Z] [DEBUG] Script parameters:
+[2025-04-05T00:28:28.036Z] [DEBUG] 查找脚本: system-info
+[2025-04-05T00:28:28.036Z] [DEBUG] 找到脚本: system-info
+[2025-04-05T00:28:28.036Z] [DEBUG] Found script:
+[2025-04-05T00:28:28.036Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T00:28:28.037Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T00:28:28.039Z] [INFO] Script executed successfully
+[2025-04-05T00:28:28.039Z] [INFO] Task execution result:
+[2025-04-05T00:28:28.039Z] [INFO] ===== Task execution completed =====
+[2025-04-05T00:29:56.365Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:30:01.097Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:30:32.899Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:31:04.716Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:39:13.710Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:13.711Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:13.711Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:39:13.712Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:13.712Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:13.712Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:51.050Z] [INFO] 应用即将退出
+[2025-04-05T00:39:53.460Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T00:39:53.460Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T00:39:53.460Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T00:39:53.460Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T00:39:53.610Z] [INFO] Electron应用已准备好
+[2025-04-05T00:39:53.610Z] [INFO] 创建主窗口
+[2025-04-05T00:39:53.668Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T00:39:53.674Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:39:53.674Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:39:53.674Z] [INFO] IPC处理程序设置完成
+[2025-04-05T00:39:53.675Z] [DEBUG] 查找脚本: default
+[2025-04-05T00:39:53.675Z] [DEBUG] 找到脚本: default
+[2025-04-05T00:39:54.624Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:39:54.626Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:54.626Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:39:54.627Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:56.156Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:56.156Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:56.157Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:39:56.157Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:40:09.597Z] [INFO] ===== Starting task execution =====
+[2025-04-05T00:40:09.597Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812368000, Terminal ID: undefined
+[2025-04-05T00:40:09.598Z] [INFO] Task info:
+[2025-04-05T00:40:09.598Z] [INFO] Starting task: task 1: get system info
+[2025-04-05T00:40:09.598Z] [DEBUG] Running key-value task
+[2025-04-05T00:40:09.599Z] [DEBUG] Resolved parameters:
+[2025-04-05T00:40:09.599Z] [INFO] Preparing to run script: system-info
+[2025-04-05T00:40:09.599Z] [DEBUG] Script parameters:
+[2025-04-05T00:40:09.599Z] [DEBUG] 查找脚本: system-info
+[2025-04-05T00:40:09.599Z] [DEBUG] 找到脚本: system-info
+[2025-04-05T00:40:09.599Z] [DEBUG] Found script:
+[2025-04-05T00:40:09.600Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T00:40:09.600Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T00:40:09.602Z] [INFO] Script executed successfully
+[2025-04-05T00:40:09.602Z] [INFO] Task execution result:
+[2025-04-05T00:40:09.603Z] [INFO] ===== Task execution completed =====
+[2025-04-05T00:40:18.779Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:43:11.283Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:45:14.157Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:58:29.936Z] [DEBUG] IPC调用: task:update
+[2025-04-05T00:58:30.034Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:30.035Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:41.062Z] [INFO] 应用即将退出
+[2025-04-05T00:58:43.905Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T00:58:43.906Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T00:58:43.906Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T00:58:43.906Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T00:58:44.046Z] [INFO] Electron应用已准备好
+[2025-04-05T00:58:44.047Z] [INFO] 创建主窗口
+[2025-04-05T00:58:44.101Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T00:58:44.107Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:58:44.108Z] [INFO] 设置IPC处理程序
+[2025-04-05T00:58:44.108Z] [INFO] IPC处理程序设置完成
+[2025-04-05T00:58:44.108Z] [DEBUG] 查找脚本: default
+[2025-04-05T00:58:44.108Z] [DEBUG] 找到脚本: default
+[2025-04-05T00:58:45.259Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:58:45.259Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:45.260Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T00:58:45.261Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:49.225Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:49.225Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:49.226Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:49.226Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T00:58:56.278Z] [INFO] ===== Starting task execution =====
+[2025-04-05T00:58:56.279Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812368000, Terminal ID: undefined
+[2025-04-05T00:58:56.279Z] [INFO] Task info:
+[2025-04-05T00:58:56.279Z] [INFO] Starting task: task 1: get system info
+[2025-04-05T00:58:56.280Z] [DEBUG] Running key-value task
+[2025-04-05T00:58:56.280Z] [DEBUG] Resolving variables for workflow 1743809692059. Available outputs:
+[2025-04-05T00:58:56.281Z] [DEBUG] Resolved parameters:
+[2025-04-05T00:58:56.281Z] [DEBUG] Resolved parameters:
+[2025-04-05T00:58:56.281Z] [INFO] Preparing to run script: system-info
+[2025-04-05T00:58:56.282Z] [DEBUG] Script parameters:
+[2025-04-05T00:58:56.282Z] [DEBUG] 查找脚本: system-info
+[2025-04-05T00:58:56.282Z] [DEBUG] 找到脚本: system-info
+[2025-04-05T00:58:56.282Z] [DEBUG] Found script:
+[2025-04-05T00:58:56.282Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T00:58:56.283Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T00:58:56.285Z] [INFO] Script executed successfully
+[2025-04-05T00:58:56.285Z] [INFO] Task execution result:
+[2025-04-05T00:58:56.286Z] [INFO] ===== Task execution completed =====
+[2025-04-05T01:12:59.148Z] [INFO] 所有窗口已关闭
+[2025-04-05T01:13:05.091Z] [INFO] 应用即将退出
+[2025-04-05T01:13:07.451Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T01:13:07.451Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T01:13:07.452Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T01:13:07.452Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T01:13:07.518Z] [INFO] Electron应用已准备好
+[2025-04-05T01:13:07.518Z] [INFO] 创建主窗口
+[2025-04-05T01:13:07.578Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T01:13:07.583Z] [INFO] 设置IPC处理程序
+[2025-04-05T01:13:07.584Z] [INFO] 设置IPC处理程序
+[2025-04-05T01:13:07.584Z] [INFO] IPC处理程序设置完成
+[2025-04-05T01:13:07.584Z] [DEBUG] 查找脚本: default
+[2025-04-05T01:13:07.584Z] [DEBUG] 找到脚本: default
+[2025-04-05T01:13:08.738Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T01:13:08.739Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:13:08.739Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T01:13:08.739Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:13:11.323Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:13:11.323Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:13:11.324Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:13:11.324Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:13:17.091Z] [INFO] ===== Starting task execution =====
+[2025-04-05T01:13:17.092Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812368000, Terminal ID: undefined
+[2025-04-05T01:13:17.092Z] [INFO] Task info:
+[2025-04-05T01:13:17.093Z] [INFO] Starting task: task 1: get system info
+[2025-04-05T01:13:17.093Z] [DEBUG] Running key-value task
+[2025-04-05T01:13:17.094Z] [DEBUG] Resolving variables for workflow 1743809692059. Available outputs:
+[2025-04-05T01:13:17.094Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:13:17.094Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:13:17.094Z] [INFO] Preparing to run script: system-info
+[2025-04-05T01:13:17.094Z] [DEBUG] Script parameters:
+[2025-04-05T01:13:17.094Z] [DEBUG] 查找脚本: system-info
+[2025-04-05T01:13:17.095Z] [DEBUG] 找到脚本: system-info
+[2025-04-05T01:13:17.095Z] [DEBUG] Found script:
+[2025-04-05T01:13:17.095Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T01:13:17.096Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T01:13:17.097Z] [INFO] Script executed successfully
+[2025-04-05T01:13:17.098Z] [INFO] Task execution result:
+[2025-04-05T01:13:17.098Z] [INFO] ===== Task execution completed =====
+[2025-04-05T01:15:03.879Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:15:45.693Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:03.641Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:21.860Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:21.913Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:22.273Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:22.714Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:22.881Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:23.016Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:25.814Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:25.941Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:26.094Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:26.247Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:27.085Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:28.060Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:28.225Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:28.273Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:28.782Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:28.882Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:29.063Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:29.335Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:29.599Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:29.838Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:30.054Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:30.126Z] [DEBUG] IPC调用: task:update
+[2025-04-05T01:16:33.342Z] [INFO] ===== Starting task execution =====
+[2025-04-05T01:16:33.343Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812400500, Terminal ID: undefined
+[2025-04-05T01:16:33.343Z] [INFO] Task info:
+[2025-04-05T01:16:33.343Z] [INFO] Starting task: Task 2
+[2025-04-05T01:16:33.344Z] [DEBUG] Running key-value task
+[2025-04-05T01:16:33.344Z] [DEBUG] Resolving variables for workflow 1743809692059. Available outputs:
+[2025-04-05T01:16:33.344Z] [DEBUG] Resolving variable references in parameter username: ${task-1743812368000.output.user.username}
+[2025-04-05T01:16:33.345Z] [DEBUG] Looking for variable ${task-1743812368000.output.user.username} in cache key 1743809692059-1743812368000
+[2025-04-05T01:16:33.345Z] [DEBUG] Resolved ${task-1743812368000.output.user.username} to value: wangtengyun
+[2025-04-05T01:16:33.345Z] [DEBUG] Resolving variable references in parameter platform: ${task-1743812368000.output.os.platform}
+[2025-04-05T01:16:33.345Z] [DEBUG] Looking for variable ${task-1743812368000.output.os.platform} in cache key 1743809692059-1743812368000
+[2025-04-05T01:16:33.346Z] [DEBUG] Resolved ${task-1743812368000.output.os.platform} to value: darwin
+[2025-04-05T01:16:33.346Z] [DEBUG] Resolving variable references in parameter memory: ${task-1743812368000.output.memory.total}
+[2025-04-05T01:16:33.346Z] [DEBUG] Looking for variable ${task-1743812368000.output.memory.total} in cache key 1743809692059-1743812368000
+[2025-04-05T01:16:33.346Z] [DEBUG] Resolved ${task-1743812368000.output.memory.total} to value: 8GB
+[2025-04-05T01:16:33.346Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:16:33.346Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:16:33.346Z] [INFO] Preparing to run script: user-greeting
+[2025-04-05T01:16:33.347Z] [DEBUG] Script parameters:
+[2025-04-05T01:16:33.347Z] [DEBUG] 查找脚本: user-greeting
+[2025-04-05T01:16:33.347Z] [DEBUG] 找到脚本: user-greeting
+[2025-04-05T01:16:33.347Z] [DEBUG] Found script:
+[2025-04-05T01:16:33.347Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/user-greeting.js
+[2025-04-05T01:16:33.348Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/user-greeting.js
+[2025-04-05T01:16:33.369Z] [INFO] Script executed successfully
+[2025-04-05T01:16:33.369Z] [INFO] Task execution result:
+[2025-04-05T01:16:33.369Z] [INFO] ===== Task execution completed =====
+[2025-04-05T01:16:43.575Z] [INFO] ===== Starting task execution =====
+[2025-04-05T01:16:43.575Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812400500, Terminal ID: undefined
+[2025-04-05T01:16:43.576Z] [INFO] Task info:
+[2025-04-05T01:16:43.576Z] [INFO] Starting task: Task 2
+[2025-04-05T01:16:43.576Z] [DEBUG] Running key-value task
+[2025-04-05T01:16:43.576Z] [DEBUG] Resolving variables for workflow 1743809692059. Available outputs:
+[2025-04-05T01:16:43.577Z] [DEBUG] Resolving variable references in parameter username: ${task-1743812368000.output.user.username}
+[2025-04-05T01:16:43.577Z] [DEBUG] Looking for variable ${task-1743812368000.output.user.username} in cache key 1743809692059-1743812368000
+[2025-04-05T01:16:43.577Z] [DEBUG] Resolved ${task-1743812368000.output.user.username} to value: wangtengyun
+[2025-04-05T01:16:43.577Z] [DEBUG] Resolving variable references in parameter platform: ${task-1743812368000.output.os.platform}
+[2025-04-05T01:16:43.577Z] [DEBUG] Looking for variable ${task-1743812368000.output.os.platform} in cache key 1743809692059-1743812368000
+[2025-04-05T01:16:43.577Z] [DEBUG] Resolved ${task-1743812368000.output.os.platform} to value: darwin
+[2025-04-05T01:16:43.577Z] [DEBUG] Resolving variable references in parameter memory: ${task-1743812368000.output.memory.total}
+[2025-04-05T01:16:43.578Z] [DEBUG] Looking for variable ${task-1743812368000.output.memory.total} in cache key 1743809692059-1743812368000
+[2025-04-05T01:16:43.578Z] [DEBUG] Resolved ${task-1743812368000.output.memory.total} to value: 8GB
+[2025-04-05T01:16:43.578Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:16:43.578Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:16:43.579Z] [INFO] Preparing to run script: user-greeting
+[2025-04-05T01:16:43.579Z] [DEBUG] Script parameters:
+[2025-04-05T01:16:43.579Z] [DEBUG] 查找脚本: user-greeting
+[2025-04-05T01:16:43.579Z] [DEBUG] 找到脚本: user-greeting
+[2025-04-05T01:16:43.579Z] [DEBUG] Found script:
+[2025-04-05T01:16:43.579Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/user-greeting.js
+[2025-04-05T01:16:43.580Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/user-greeting.js
+[2025-04-05T01:16:43.580Z] [INFO] Script executed successfully
+[2025-04-05T01:16:43.580Z] [INFO] Task execution result:
+[2025-04-05T01:16:43.580Z] [INFO] ===== Task execution completed =====
+[2025-04-05T01:16:58.512Z] [INFO] 应用即将退出
+[2025-04-05T01:17:01.005Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-05T01:17:01.006Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-05T01:17:01.006Z] [DEBUG] 初始化脚本处理程序
+[2025-04-05T01:17:01.006Z] [INFO] 脚本注册服务已初始化
+[2025-04-05T01:17:01.059Z] [INFO] Electron应用已准备好
+[2025-04-05T01:17:01.059Z] [INFO] 创建主窗口
+[2025-04-05T01:17:01.111Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-05T01:17:01.117Z] [INFO] 设置IPC处理程序
+[2025-04-05T01:17:01.118Z] [INFO] 设置IPC处理程序
+[2025-04-05T01:17:01.118Z] [INFO] IPC处理程序设置完成
+[2025-04-05T01:17:01.118Z] [DEBUG] 查找脚本: default
+[2025-04-05T01:17:01.118Z] [DEBUG] 找到脚本: default
+[2025-04-05T01:17:02.150Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T01:17:02.151Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:17:02.151Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-05T01:17:02.151Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:17:04.470Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:17:04.470Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:17:04.471Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:17:04.472Z] [DEBUG] IPC调用: script:getAll
+[2025-04-05T01:17:21.891Z] [INFO] ===== Starting task execution =====
+[2025-04-05T01:17:21.892Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812368000, Terminal ID: undefined
+[2025-04-05T01:17:21.893Z] [INFO] Task info:
+[2025-04-05T01:17:21.893Z] [INFO] Starting task: task 1: get system info
+[2025-04-05T01:17:21.894Z] [DEBUG] Running key-value task
+[2025-04-05T01:17:21.894Z] [DEBUG] Resolving variables for workflow 1743809692059. Available outputs:
+[2025-04-05T01:17:21.894Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:17:21.894Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:17:21.895Z] [INFO] Preparing to run script: system-info
+[2025-04-05T01:17:21.895Z] [DEBUG] Script parameters:
+[2025-04-05T01:17:21.895Z] [DEBUG] 查找脚本: system-info
+[2025-04-05T01:17:21.895Z] [DEBUG] 找到脚本: system-info
+[2025-04-05T01:17:21.895Z] [DEBUG] Found script:
+[2025-04-05T01:17:21.895Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T01:17:21.896Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-05T01:17:21.898Z] [INFO] Script executed successfully
+[2025-04-05T01:17:21.898Z] [INFO] Task execution result:
+[2025-04-05T01:17:21.898Z] [INFO] ===== Task execution completed =====
+[2025-04-05T01:18:42.326Z] [INFO] ===== Starting task execution =====
+[2025-04-05T01:18:42.327Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743812400500, Terminal ID: undefined
+[2025-04-05T01:18:42.327Z] [INFO] Task info:
+[2025-04-05T01:18:42.328Z] [INFO] Starting task: Task 2
+[2025-04-05T01:18:42.328Z] [DEBUG] Running key-value task
+[2025-04-05T01:18:42.328Z] [DEBUG] Resolving variables for workflow 1743809692059. Available outputs:
+[2025-04-05T01:18:42.328Z] [DEBUG] Resolving variable references in parameter username: ${task-1743812368000.output.user.username}
+[2025-04-05T01:18:42.329Z] [DEBUG] Looking for variable ${task-1743812368000.output.user.username} in cache key 1743809692059-1743812368000
+[2025-04-05T01:18:42.329Z] [DEBUG] Resolved ${task-1743812368000.output.user.username} to value: wangtengyun
+[2025-04-05T01:18:42.329Z] [DEBUG] Resolving variable references in parameter platform: ${task-1743812368000.output.os.platform}
+[2025-04-05T01:18:42.329Z] [DEBUG] Looking for variable ${task-1743812368000.output.os.platform} in cache key 1743809692059-1743812368000
+[2025-04-05T01:18:42.329Z] [DEBUG] Resolved ${task-1743812368000.output.os.platform} to value: darwin
+[2025-04-05T01:18:42.329Z] [DEBUG] Resolving variable references in parameter memory: ${task-1743812368000.output.memory.total}
+[2025-04-05T01:18:42.329Z] [DEBUG] Looking for variable ${task-1743812368000.output.memory.total} in cache key 1743809692059-1743812368000
+[2025-04-05T01:18:42.329Z] [DEBUG] Resolved ${task-1743812368000.output.memory.total} to value: 8GB
+[2025-04-05T01:18:42.329Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:18:42.329Z] [DEBUG] Resolved parameters:
+[2025-04-05T01:18:42.330Z] [INFO] Preparing to run script: user-greeting
+[2025-04-05T01:18:42.330Z] [DEBUG] Script parameters:
+[2025-04-05T01:18:42.330Z] [DEBUG] 查找脚本: user-greeting
+[2025-04-05T01:18:42.330Z] [DEBUG] 找到脚本: user-greeting
+[2025-04-05T01:18:42.330Z] [DEBUG] Found script:
+[2025-04-05T01:18:42.330Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/user-greeting.js
+[2025-04-05T01:18:42.331Z] [INFO] Executing script: /Users/wangtengyun/workplace/workflow-panel/scripts/user-greeting.js
+[2025-04-05T01:18:42.349Z] [INFO] Script executed successfully
+[2025-04-05T01:18:42.349Z] [INFO] Task execution result:
+[2025-04-05T01:18:42.349Z] [INFO] ===== Task execution completed =====

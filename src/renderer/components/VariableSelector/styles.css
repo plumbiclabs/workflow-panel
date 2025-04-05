@@ -1,0 +1,67 @@
+.variable-selector-button {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.variable-selector-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #a0a0a0;
+}
+
+.variable-selector-button.has-value {
+  color: #1890ff;
+}
+
+.variable-selector-popover {
+  min-width: 350px;
+  max-width: 500px;
+}
+
+.variable-selector-content {
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.variable-selector-tabs {
+  margin-top: 12px;
+  flex: 1;
+  overflow: auto;
+}
+
+.variable-selector-loading {
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+  color: #888;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.ant-tree-treenode {
+  width: 100%;
+  padding: 4px 8px !important;
+  border-radius: 4px;
+}
+
+.ant-tree-treenode:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ant-tree-node-content-wrapper {
+  width: 100%;
+}
+
+.ant-tree-treenode-leaf-last .ant-tree-node-content-wrapper {
+  cursor: pointer;
+} 

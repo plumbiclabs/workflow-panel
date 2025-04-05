@@ -38,6 +38,11 @@ class WorkflowService {
     return await window.electronAPI.task.run(workflowId, taskId, terminalId);
   }
 
+  // 添加注册任务输出结果回调方法
+  static registerTaskCompletionHandler(callback) {
+    return window.electronAPI.task.onComplete(callback);
+  }
+
   // 命令操作
   static async addCommand(workflowId, taskId, command) {
     return await window.electronAPI.command.add(workflowId, taskId, command);

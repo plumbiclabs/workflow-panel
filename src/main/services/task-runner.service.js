@@ -8,8 +8,13 @@ const scriptRegistry = require('./script-registry.service');
 const logger = require('../utils/logger');
 
 class TaskRunnerService {
+  constructor() {
+    // 存储任务执行结果的缓存，用于变量引用解析
+    this.taskOutputCache = {};
+  }
+
   // 执行任务的入口方法
-  async runTask(task, terminalId) {
+  async runTask(task, terminalId, workflowId) {
     if (!task) {
       logger.error('Invalid task: task object is empty');
       return { success: false, error: 'Invalid task' };
@@ -25,7 +30,7 @@ class TaskRunnerService {
       // 根据任务类型执行不同的处理逻辑
       if (task.type === 'key-value') {
         logger.debug('Running key-value task');
-        return await this.runKeyValueTask(task);
+        return await this.runKeyValueTask(task, workflowId);
       } else {
         // 命令类型任务 (默认)
         logger.debug('Running command task');
@@ -56,25 +61,107 @@ class TaskRunnerService {
     }
   }
   
+  // 解析参数中的变量引用
+  resolveVariableReferences(parameters, workflowId) {
+    if (!parameters || !Array.isArray(parameters)) return {};
+
+    // 记录任务输出缓存的内容，便于调试
+    logger.debug(`Resolving variables for workflow ${workflowId}. Available outputs:`, 
+      Object.keys(this.taskOutputCache)
+        .filter(key => key.startsWith(`${workflowId}-`))
+        .reduce((acc, key) => {
+          acc[key] = typeof this.taskOutputCache[key] === 'object' ? 
+            Object.keys(this.taskOutputCache[key]) : 
+            this.taskOutputCache[key];
+          return acc;
+        }, {})
+    );
+
+    // 解析后的参数
+    const resolvedParams = {};
+
+    // 正则表达式用于匹配变量引用: ${TaskX.output.xyz}
+    const variablePattern = /\${([^}]+)}/g;
+
+    // 处理每个参数
+    parameters.forEach(param => {
+      let value = param.value;
+      
+      // 检查值是否包含变量引用
+      if (typeof value === 'string' && value.includes('${')) {
+        logger.debug(`Resolving variable references in parameter ${param.key}: ${value}`);
+        
+        // 替换所有变量引用
+        value = value.replace(variablePattern, (match, varPath) => {
+          try {
+            // 解析变量路径，例如 Task1.output.user.name
+            const pathParts = varPath.split('.');
+            
+            // 我们现在的格式是 task-X.output.path.to.value
+            if (pathParts.length >= 2 && pathParts[1] === 'output') {
+              const taskRef = pathParts[0]; // 例如 "task-1"
+              const actualTaskId = taskRef.replace('task-', '');
+              const cacheKey = `${workflowId}-${actualTaskId}`;
+              
+              logger.debug(`Looking for variable ${match} in cache key ${cacheKey}`);
+              
+              // 在缓存中查找任务结果
+              const taskOutput = this.taskOutputCache[cacheKey];
+              
+              if (!taskOutput) {
+                logger.warn(`Variable reference not found: ${match} - Task output not in cache (key: ${cacheKey})`);
+                return match; // 如果找不到，保留原始引用
+              }
+              
+              // 递归查找嵌套属性
+              let result = taskOutput;
+              for (let i = 2; i < pathParts.length; i++) {
+                result = result[pathParts[i]];
+                
+                // 如果路径不存在，返回原始引用
+                if (result === undefined) {
+                  logger.warn(`Variable reference not found: ${match} - Path ${pathParts.slice(2).join('.')} does not exist in output`);
+                  return match;
+                }
+              }
+              
+              logger.debug(`Resolved ${match} to value: ${String(result)}`);
+              return String(result); // 返回解析的值（转换为字符串）
+            }
+            
+            logger.warn(`Invalid variable reference format: ${match}`);
+            return match; // 格式不正确，保留原始引用
+          } catch (error) {
+            logger.error(`Error resolving variable reference ${match}:`, error);
+            return match; // 出现错误，保留原始引用
+          }
+        });
+      }
+      
+      resolvedParams[param.key] = value;
+    });
+    
+    logger.debug('Resolved parameters:', resolvedParams);
+    return resolvedParams;
+  }
+
   // 运行键值对任务
-  async runKeyValueTask(task) {
+  async runKeyValueTask(task, workflowId) {
     if (!task.parameters || task.parameters.length === 0) {
       logger.error('No parameters defined for task', { taskId: task.id });
       return { success: false, error: 'No parameters defined for this task' };
     }
     
     try {
-      // 准备参数
-      const paramObj = {};
-      task.parameters.forEach(param => {
-        paramObj[param.key] = param.value;
-      });
+      // 解析参数中的变量引用
+      const resolvedParams = this.resolveVariableReferences(task.parameters, workflowId);
+      logger.debug('Resolved parameters:', resolvedParams);
       
       // 使用脚本注册表运行相应的脚本
       const scriptId = task.scriptId || 'default';
       
       logger.info(`Preparing to run script: ${scriptId}`);
-      logger.debug('Script parameters:', paramObj);
+      logger.debug('Script parameters:', resolvedParams);
       
       // 获取脚本信息和路径
       let scriptInfo;
@@ -104,61 +191,66 @@ class TaskRunnerService {
         return { success: false, error: `Script file not found: ${scriptPath}` };
       }
       
-      // 直接在主进程中执行脚本
-      logger.info(`Executing script: ${scriptPath}`);
-      
       // 检查必需参数
       if (scriptInfo.requiredParams && scriptInfo.requiredParams.length > 0) {
-        const missingParams = scriptInfo.requiredParams.filter(param => !paramObj || paramObj[param] === undefined);
+        const missingParams = scriptInfo.requiredParams.filter(param => 
+          !resolvedParams || resolvedParams[param] === undefined
+        );
         
         if (missingParams.length > 0) {
-          const error = `缺少必需参数: ${missingParams.join(', ')}`;
-          logger.error(error);
-          return { success: false, error };
+          logger.error(`Missing required parameters: ${missingParams.join(', ')}`);
+          return { 
+            success: false, 
+            error: `Missing required parameters: ${missingParams.join(', ')}` 
+          };
         }
       }
       
+      // 从磁盘加载脚本
+      let scriptModule;
       try {
-        // 动态加载脚本模块
-        const scriptModule = require(scriptPath);
+        // 使用 require 加载脚本模块
+        scriptModule = require(scriptPath);
         
-        // 直接运行脚本并等待结果
-        const result = await new Promise((resolve, reject) => {
-          try {
-            logger.debug('调用脚本模块...');
-            scriptModule(paramObj, (err, result) => {
-              if (err) {
-                logger.error('脚本执行返回错误:', err);
-                reject(err);
-              } else {
-                logger.info('脚本执行成功');
-                logger.debug('脚本返回结果:', result);
-                resolve(result);
-              }
-            });
-          } catch (error) {
-            logger.error('脚本执行出现异常:', error);
-            reject(error);
-          }
-        });
-        
-        // 返回最终结果
-        return {
-          success: true,
-          message: '脚本执行成功',
-          data: result,
-          scriptId,
-          scriptPath
-        };
+        if (typeof scriptModule !== 'function') {
+          logger.error('Script is not a function');
+          return { success: false, error: 'Script is not a function' };
+        }
       } catch (error) {
-        logger.error('脚本执行失败:', error);
-        return { 
-          success: false, 
-          error: error.message || String(error),
-          scriptId,
-          scriptPath
-        };
+        logger.error('Failed to load script module:', error);
+        return { success: false, error: `Failed to load script module: ${error.message}` };
       }
+      
+      // 执行脚本
+      logger.info(`Executing script: ${scriptPath}`);
+      
+      return new Promise((resolve) => {
+        try {
+          // 调用脚本并传递参数
+          scriptModule(resolvedParams, (err, result) => {
+            if (err) {
+              logger.error('Script execution returned error:', err);
+              resolve({ success: false, error: err.message || 'Script execution failed' });
+            } else {
+              logger.info('Script executed successfully');
+              
+              // 存储结果到缓存
+              if (result && result.output) {
+                this.taskOutputCache[`${workflowId}-${task.id}`] = result.output;
+              }
+              
+              resolve({ 
+                success: true, 
+                message: 'Script executed successfully',
+                output: result && result.output ? result.output : null
+              });
+            }
+          });
+        } catch (error) {
+          logger.error('Error during script execution:', error);
+          resolve({ success: false, error: `Error during script execution: ${error.message}` });
+        }
+      });
     } catch (error) {
       logger.error('Error running key-value task:', error);
       return { success: false, error: error.message };

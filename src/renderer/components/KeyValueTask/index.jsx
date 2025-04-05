@@ -81,6 +81,7 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
 
   // 运行任务
   const handleRunTask = useCallback(async () => {
+    debugger;
     if (!workflowId || isRunning) return;
     
     // 验证必填参数
@@ -160,6 +161,8 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
           isRequiredParam={isRequiredParam}
           onValueChange={handleParameterValueChange}
           onDelete={handleDeleteParameter}
+          workflowId={workflowId}
+          taskId={task.id}
         />
         
         {/* 添加参数表单 */}

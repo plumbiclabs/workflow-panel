@@ -77,18 +77,20 @@ function setupIpcHandlers(mainWindow) {
       logger.info('Task info:', task);
       
       // 使用任务运行服务来执行任务
-      const result = await taskRunnerService.runTask(task, terminalId);
+      const result = await taskRunnerService.runTask(task, terminalId, workflowId);
       
       logger.info('Task execution result:', result);
       logger.info('===== Task execution completed =====');
       
-      // 通知渲染进程任务已完成
+      // 通知渲染进程任务已完成并传递结果
       if (mainWindow) {
         mainWindow.webContents.send('task:complete', { 
           workflowId, 
           taskId, 
           success: result.success,
-          message: result.success ? 'Task executed successfully' : 'Task execution failed'
+          message: result.success ? 'Task executed successfully' : 'Task execution failed',
+          output: result.output || null,
+          error: result.error || null
         });
       }
       

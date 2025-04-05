@@ -102,8 +102,30 @@ function useParameters(task, workflowId, updateTask, selectedScript) {
   }, [workflowId, parameters, selectedScript, updateTask, task.id]);
 
   // 更新参数值
-  const handleParameterValueChange = useCallback(async (index, newValue) => {
+  const handleParameterValueChange = useCallback(async (indexOrEvent, optionalValue) => {
     if (!workflowId) return;
+    
+    // 处理两种调用方式: 
+    // 1. (event) 是对象(从输入框onChange事件)，包含 target.value 和 paramIndex
+    // 2. 直接传入 (index, newValue) 参数
+    
+    let index, newValue;
+    
+    if (typeof indexOrEvent === 'object' && indexOrEvent !== null) {
+      // 来自输入框 onChange 的事件对象
+      index = indexOrEvent.paramIndex;
+      newValue = indexOrEvent.target.value;
+    } else {
+      // 直接传入 (index, newValue) 的调用方式
+      index = indexOrEvent;
+      newValue = optionalValue;
+    }
+    
+    // 确保参数有效
+    if (index === undefined || newValue === undefined) {
+      console.error('Invalid parameters for handleParameterValueChange');
+      return;
+    }
 
     try {
       // 创建参数的副本
