@@ -4,7 +4,12 @@ import { useWorkflow } from '../../context/WorkflowContext';
 import { Select } from 'antd';
 import './styles.css';
 
-const Task = ({ task, workflowId, onClose }) => {
+/**
+ * GenericTask组件
+ * 
+ * 用于显示和执行通用任务
+ */
+const GenericTask = ({ task, workflowId, onClose }) => {
   const { 
     updateTask, 
     runTask,
@@ -127,7 +132,7 @@ const Task = ({ task, workflowId, onClose }) => {
   }, [commands.length]);
 
   return (
-    <div className="task-window">
+    <div className="task-window generic-task">
       <div className="task-header">
         <EditableTitle
           value={task.name}
@@ -200,4 +205,4 @@ const Task = ({ task, workflowId, onClose }) => {
   );
 };
 
-export default Task;
+export default GenericTask;

@@ -1,5 +1,13 @@
 /* KeyValueTask/styles.css */
-.key-value-task .task-content {
+.script-executor-task {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.script-executor-task .task-content {
   padding: 16px;
   color: #fff;
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;

@@ -66,7 +66,7 @@ class WorkflowStore {
     };
   
     // 根据任务类型设置不同的初始属性
-    if (task.type === 'key-value') {
+    if (task.type === 'script-executor') {
       newTask.parameters = task.parameters || [];
     } else {
       // 默认命令类型

@@ -28,8 +28,8 @@ class TaskRunnerService {
     
     try {
       // 根据任务类型执行不同的处理逻辑
-      if (task.type === 'key-value') {
-        logger.debug('Running key-value task');
+      if (task.type === 'script-executor') {
+        logger.debug('Running script-executor task');
         return await this.runKeyValueTask(task, workflowId);
       } else {
         // 命令类型任务 (默认)

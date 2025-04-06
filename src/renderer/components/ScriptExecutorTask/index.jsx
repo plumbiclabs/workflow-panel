@@ -12,7 +12,7 @@ import AddParameterForm from './components/AddParameterForm';
 import useScriptOptions from './hooks/useScriptOptions';
 import useParameters from './hooks/useParameters';
 
-const KeyValueTask = ({ task, workflowId, onClose }) => {
+const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
   const { 
     updateTask, 
     runTask,
@@ -81,7 +81,6 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
 
   // 运行任务
   const handleRunTask = useCallback(async () => {
-    debugger;
     if (!workflowId || isRunning) return;
     
     // 验证必填参数
@@ -131,7 +130,7 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
   }, [isRunning, missingParams.length, loading, parameters.length]);
 
   return (
-    <div className="task-window key-value-task">
+    <div className="task-window script-executor-task">
       <div className="task-header">
         <EditableTitle
           value={task.name}
@@ -190,4 +189,4 @@ const KeyValueTask = ({ task, workflowId, onClose }) => {
   );
 };
 
-export default KeyValueTask;
+export default ScriptExecutorTask;

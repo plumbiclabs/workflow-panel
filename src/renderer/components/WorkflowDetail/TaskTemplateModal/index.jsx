@@ -9,10 +9,10 @@ const TASK_TEMPLATES = [
     type: 'command'
   },
   { 
-    id: 'key-value',
-    name: 'Parameter Task', 
-    description: 'Create a task with key-value parameters',
-    type: 'key-value'
+    id: 'script-executor',
+    name: 'Script Executor Task',
+    description: 'A task that executes scripts with key-value parameters',
+    type: 'script-executor'
   }
 ];
 

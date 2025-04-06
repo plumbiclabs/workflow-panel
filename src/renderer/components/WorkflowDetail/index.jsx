@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Task from '../Task';
-import KeyValueTask from '../KeyValueTask';
+import GenericTask from '../GenericTask';
+import ScriptExecutorTask from '../ScriptExecutorTask';
 import EditableTitle from '../EditableTitle';
 import TaskTemplateModal from './TaskTemplateModal';
 import { useWorkflow } from '../../context/WorkflowContext';
@@ -50,12 +50,12 @@ const WorkflowDetail = () => {
           commands: [],
           type: 'command'
         };
-      } else if (template.type === 'key-value') {
+      } else if (template.type === 'script-executor') {
         // Key-value task
         newTask = {
           name: `Task ${(selectedWorkflow.tasks || []).length + 1}`,
           parameters: [],
-          type: 'key-value'
+          type: 'script-executor'
         };
       }
       
@@ -86,9 +86,9 @@ const WorkflowDetail = () => {
 
   // 渲染特定类型的任务
   const renderTask = (task) => {
-    if (task.type === 'key-value') {
+    if (task.type === 'script-executor') {
       return (
-        <KeyValueTask
+        <ScriptExecutorTask
           key={task.id}
           task={task}
           workflowId={selectedWorkflow.id}
@@ -99,7 +99,7 @@ const WorkflowDetail = () => {
     
     // Default to command task
     return (
-      <Task
+      <GenericTask
         key={task.id}
         task={task}
         workflowId={selectedWorkflow.id}
