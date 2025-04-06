@@ -19,7 +19,7 @@ const GenericTask = ({ task, workflowId, onClose }) => {
   const [commands, setCommands] = useState(task.commands || []);
   const [newCommand, setNewCommand] = useState('');
   const [availableTerminals, setAvailableTerminals] = useState([]);
-  const [selectedTerminal, setSelectedTerminal] = useState('');
+  const [selectedTerminal, setSelectedTerminal] = useState(task.terminalId || '');
   const inputRef = useRef(null);
   
   // 检查此任务是否正在运行
@@ -31,8 +31,22 @@ const GenericTask = ({ task, workflowId, onClose }) => {
       try {
         const terminals = await window.electronAPI.terminal.getAvailable();
         setAvailableTerminals(terminals);
-        if (terminals.length > 0) {
+        
+        // 如果任务有保存的终端ID，优先使用它
+        if (task.terminalId) {
+          // 检查保存的终端是否仍然可用
+          const terminalExists = terminals.some(t => t.id === task.terminalId);
+          if (terminalExists) {
+            setSelectedTerminal(task.terminalId);
+          } else if (terminals.length > 0) {
+            // 如果保存的终端不存在，使用第一个可用的终端并更新任务
+            setSelectedTerminal(terminals[0].id);
+            updateTerminalSelection(terminals[0].id);
+          }
+        } else if (terminals.length > 0) {
+          // 如果任务没有保存终端ID，使用第一个并保存
           setSelectedTerminal(terminals[0].id);
+          updateTerminalSelection(terminals[0].id);
         }
       } catch (error) {
         console.error('Failed to load terminals:', error);
@@ -40,7 +54,18 @@ const GenericTask = ({ task, workflowId, onClose }) => {
     };
 
     loadTerminals();
-  }, []);
+  }, [task.terminalId, workflowId, task.id]);
+
+  // 更新终端选择
+  const updateTerminalSelection = async (terminalId) => {
+    if (!workflowId) return;
+    
+    try {
+      await updateTask(workflowId, task.id, { terminalId });
+    } catch (error) {
+      console.error('Failed to update terminal selection:', error);
+    }
+  };
 
   // 更新任务标题
   const handleTaskNameSave = async (newName) => {
@@ -108,8 +133,6 @@ const GenericTask = ({ task, workflowId, onClose }) => {
   // 处理运行任务
   const handleRunTask = async () => {
     if (!workflowId || isRunning || !selectedTerminal) return;
-
-    debugger
     
     try {
       const result = await runTask(workflowId, task.id, selectedTerminal);
@@ -131,6 +154,11 @@ const GenericTask = ({ task, workflowId, onClose }) => {
     }
   }, [commands.length]);
 
+  const handleTerminalChange = (value) => {
+    setSelectedTerminal(value);
+    updateTerminalSelection(value);
+  };
+
   return (
     <div className="task-window generic-task">
       <div className="task-header">
@@ -144,7 +172,7 @@ const GenericTask = ({ task, workflowId, onClose }) => {
         <div className="terminal-selector">
           <Select
             value={selectedTerminal}
-            onChange={setSelectedTerminal}
+            onChange={handleTerminalChange}
             style={{ width: 150 }}
             placeholder="Select terminal"
           >

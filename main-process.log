@@ -1348,3 +1348,6 @@
 [2025-04-06T15:44:16.892Z] [DEBUG] IPC调用: workflow:getAll
 [2025-04-06T15:44:16.892Z] [DEBUG] IPC调用: script:getAll
 [2025-04-06T15:44:23.803Z] [DEBUG] IPC调用: task:delete
+[2025-04-06T15:55:33.121Z] [DEBUG] IPC调用: task:update
+[2025-04-06T15:55:33.142Z] [DEBUG] IPC调用: task:update
+[2025-04-06T15:55:35.450Z] [DEBUG] IPC调用: task:update
