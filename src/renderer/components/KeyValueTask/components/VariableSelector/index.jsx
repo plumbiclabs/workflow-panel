@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Popover, Input, Tabs, Empty, Tree } from 'antd';
 import { LinkOutlined, SearchOutlined } from '@ant-design/icons';
-import { useWorkflow } from '../../context/WorkflowContext';
+import { useWorkflow } from '../../../../context/WorkflowContext';
 import './styles.css';
 
 const VariableSelector = ({ 

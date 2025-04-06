@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Task from '../Task';
 import KeyValueTask from '../KeyValueTask';
 import EditableTitle from '../EditableTitle';
-import TaskTemplateModal from '../TaskTemplateModal';
+import TaskTemplateModal from './TaskTemplateModal';
 import { useWorkflow } from '../../context/WorkflowContext';
 import { Modal } from 'antd';
 import './style.css';

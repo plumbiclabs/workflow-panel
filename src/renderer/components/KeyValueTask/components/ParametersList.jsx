@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import VariableSelector from '../../VariableSelector';
+import VariableSelector from './VariableSelector';
 import { useWorkflow } from '../../../context/WorkflowContext';
 import { Tooltip } from 'antd';
 

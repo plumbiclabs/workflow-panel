@@ -1193,3 +1193,49 @@
 [2025-04-05T01:18:42.349Z] [INFO] Script executed successfully
 [2025-04-05T01:18:42.349Z] [INFO] Task execution result:
 [2025-04-05T01:18:42.349Z] [INFO] ===== Task execution completed =====
+[2025-04-06T14:42:06.696Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T14:42:06.697Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:42:06.697Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T14:42:06.697Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:56:23.308Z] [INFO] 应用即将退出
+[2025-04-06T14:56:25.890Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-06T14:56:25.894Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-06T14:56:25.894Z] [DEBUG] 初始化脚本处理程序
+[2025-04-06T14:56:25.894Z] [INFO] 脚本注册服务已初始化
+[2025-04-06T14:56:26.032Z] [INFO] Electron应用已准备好
+[2025-04-06T14:56:26.032Z] [INFO] 创建主窗口
+[2025-04-06T14:56:26.107Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-06T14:56:26.125Z] [INFO] 设置IPC处理程序
+[2025-04-06T14:56:26.125Z] [INFO] 设置IPC处理程序
+[2025-04-06T14:56:26.125Z] [INFO] IPC处理程序设置完成
+[2025-04-06T14:56:26.125Z] [DEBUG] 查找脚本: default
+[2025-04-06T14:56:26.125Z] [DEBUG] 找到脚本: default
+[2025-04-06T14:57:04.499Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T14:57:04.502Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:04.503Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T14:57:04.503Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:10.576Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:10.576Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:10.576Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:10.576Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:16.855Z] [INFO] 应用即将退出
+[2025-04-06T14:57:19.049Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-06T14:57:19.049Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-06T14:57:19.049Z] [DEBUG] 初始化脚本处理程序
+[2025-04-06T14:57:19.050Z] [INFO] 脚本注册服务已初始化
+[2025-04-06T14:57:19.094Z] [INFO] Electron应用已准备好
+[2025-04-06T14:57:19.094Z] [INFO] 创建主窗口
+[2025-04-06T14:57:19.125Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-06T14:57:19.129Z] [INFO] 设置IPC处理程序
+[2025-04-06T14:57:19.130Z] [INFO] 设置IPC处理程序
+[2025-04-06T14:57:19.130Z] [INFO] IPC处理程序设置完成
+[2025-04-06T14:57:19.130Z] [DEBUG] 查找脚本: default
+[2025-04-06T14:57:19.130Z] [DEBUG] 找到脚本: default
+[2025-04-06T14:57:19.895Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T14:57:19.899Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:19.899Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T14:57:19.899Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:22.471Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:22.471Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:22.472Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T14:57:22.472Z] [DEBUG] IPC调用: script:getAll
