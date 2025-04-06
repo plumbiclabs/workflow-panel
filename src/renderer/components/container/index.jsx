@@ -1,6 +1,6 @@
 import React from 'react';
-import WorkflowList from '../components/WorkflowList';
-import WorkflowDetail from '../components/WorkflowDetail';
+import WorkflowList from '../WorkflowList';
+import WorkflowDetail from '../WorkflowDetail';
 import './style.css';
 
 /**

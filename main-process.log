@@ -1239,3 +1239,89 @@
 [2025-04-06T14:57:22.471Z] [DEBUG] IPC调用: script:getAll
 [2025-04-06T14:57:22.472Z] [DEBUG] IPC调用: script:getAll
 [2025-04-06T14:57:22.472Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:13.321Z] [INFO] 创建脚本目录: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-06T15:04:13.324Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-06T15:04:13.324Z] [INFO] 创建默认脚本: /Users/wangtengyun/workplace/workflow-panel/scripts/default-handler.js
+[2025-04-06T15:04:13.324Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-06T15:04:13.324Z] [DEBUG] 初始化脚本处理程序
+[2025-04-06T15:04:13.325Z] [INFO] 脚本注册服务已初始化
+[2025-04-06T15:04:13.449Z] [INFO] Electron应用已准备好
+[2025-04-06T15:04:13.449Z] [INFO] 创建主窗口
+[2025-04-06T15:04:13.527Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-06T15:04:13.570Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:04:13.570Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:04:13.570Z] [INFO] IPC处理程序设置完成
+[2025-04-06T15:04:13.571Z] [DEBUG] 查找脚本: default
+[2025-04-06T15:04:13.571Z] [DEBUG] 找到脚本: default
+[2025-04-06T15:04:14.344Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:04:14.345Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:14.346Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:04:14.347Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:16.167Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:16.167Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:16.168Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:16.168Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:19.817Z] [DEBUG] IPC调用: workflow:add
+[2025-04-06T15:04:26.319Z] [DEBUG] IPC调用: task:add
+[2025-04-06T15:04:26.345Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:04:26.345Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:07:51.428Z] [INFO] 所有窗口已关闭
+[2025-04-06T15:07:53.097Z] [INFO] 应用即将退出
+[2025-04-06T15:07:55.396Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-06T15:07:55.397Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-06T15:07:55.397Z] [DEBUG] 初始化脚本处理程序
+[2025-04-06T15:07:55.397Z] [INFO] 脚本注册服务已初始化
+[2025-04-06T15:07:55.439Z] [INFO] Electron应用已准备好
+[2025-04-06T15:07:55.439Z] [INFO] 创建主窗口
+[2025-04-06T15:07:55.478Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-06T15:07:55.484Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:07:55.484Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:07:55.484Z] [INFO] IPC处理程序设置完成
+[2025-04-06T15:07:55.484Z] [DEBUG] 查找脚本: default
+[2025-04-06T15:07:55.486Z] [WARN] 脚本未找到: default
+[2025-04-06T15:08:26.257Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:08:26.258Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:08:26.258Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:08:26.258Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:11:07.665Z] [INFO] 应用即将退出
+[2025-04-06T15:11:10.462Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-06T15:11:10.462Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-06T15:11:10.462Z] [DEBUG] 初始化脚本处理程序
+[2025-04-06T15:11:10.463Z] [INFO] 脚本注册服务已初始化
+[2025-04-06T15:11:10.508Z] [INFO] Electron应用已准备好
+[2025-04-06T15:11:10.508Z] [INFO] 创建主窗口
+[2025-04-06T15:11:10.550Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-06T15:11:10.557Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:11:10.557Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:11:10.558Z] [INFO] IPC处理程序设置完成
+[2025-04-06T15:11:10.558Z] [DEBUG] 查找脚本: default
+[2025-04-06T15:11:10.559Z] [WARN] 脚本未找到: default
+[2025-04-06T15:11:11.263Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:11:11.264Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:11:11.264Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:11:11.264Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:11:13.296Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:11:13.297Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:11:20.576Z] [DEBUG] IPC调用: workflow:add
+[2025-04-06T15:11:25.480Z] [DEBUG] IPC调用: task:add
+[2025-04-06T15:11:27.644Z] [DEBUG] IPC调用: task:update
+[2025-04-06T15:11:28.490Z] [DEBUG] IPC调用: task:update
+[2025-04-06T15:11:54.410Z] [INFO] 所有窗口已关闭
+[2025-04-06T15:11:56.272Z] [INFO] 应用即将退出
+[2025-04-06T15:11:58.585Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-06T15:11:58.585Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-06T15:11:58.585Z] [DEBUG] 初始化脚本处理程序
+[2025-04-06T15:11:58.586Z] [INFO] 脚本注册服务已初始化
+[2025-04-06T15:11:58.628Z] [INFO] Electron应用已准备好
+[2025-04-06T15:11:58.628Z] [INFO] 创建主窗口
+[2025-04-06T15:11:58.661Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-06T15:11:58.665Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:11:58.666Z] [INFO] 设置IPC处理程序
+[2025-04-06T15:11:58.666Z] [INFO] IPC处理程序设置完成
+[2025-04-06T15:11:58.666Z] [DEBUG] 查找脚本: default
+[2025-04-06T15:11:58.666Z] [WARN] 脚本未找到: default
+[2025-04-06T15:11:59.410Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:11:59.410Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:11:59.410Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T15:11:59.410Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T15:12:04.198Z] [DEBUG] IPC调用: task:update

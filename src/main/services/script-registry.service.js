@@ -4,29 +4,11 @@ const fs = require('fs');
 const { SCRIPT_DEFINITIONS } = require('../config/script-definitions');
 const logger = require('../utils/logger');
 
-// 添加默认脚本
-const defaultScripts = [
-  {
-    id: 'system-info',
-    name: 'System Information',
-    description: 'Retrieves basic system information',
-    path: 'system-info.js',
-    requiredParams: []
-  },
-  {
-    id: 'user-greeting',
-    name: 'User Greeting',
-    description: 'Creates a personalized greeting using variables from other tasks',
-    path: 'user-greeting.js',
-    requiredParams: ['username', 'platform', 'memory', 'greeting']
-  }
-];
-
 class ScriptRegistryService {
   constructor() {
     this.scriptsDir = path.join(__dirname, '../../../scripts');
     this.defaultScriptPath = path.join(this.scriptsDir, 'default-handler.js');
-    this.scripts = [...SCRIPT_DEFINITIONS, ...defaultScripts];
+    this.scripts = [...SCRIPT_DEFINITIONS];
     
     // 确保脚本目录存在
     this.ensureScriptsDir();

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import WorkflowContainer from './containers';
+import WorkflowContainer from './components/container';
 import { WorkflowProvider } from './context/WorkflowContext';
 import './app.css';
 import ScriptService from './services/script.service';
