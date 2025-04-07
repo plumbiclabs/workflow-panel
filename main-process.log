@@ -1351,3 +1351,85 @@
 [2025-04-06T15:55:33.121Z] [DEBUG] IPC调用: task:update
 [2025-04-06T15:55:33.142Z] [DEBUG] IPC调用: task:update
 [2025-04-06T15:55:35.450Z] [DEBUG] IPC调用: task:update
+[2025-04-06T15:57:36.099Z] [DEBUG] IPC调用: task:add
+[2025-04-06T15:57:36.246Z] [DEBUG] IPC调用: task:update
+[2025-04-06T15:57:36.264Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:23.902Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:23.925Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:23.944Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:23.965Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:25.319Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:25.339Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:25.357Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:25.375Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:26.863Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:26.883Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:30.949Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:30.952Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:30.970Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:30.988Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:31.007Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:31.026Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:31.044Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:31.063Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:31.083Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:31.101Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:00:47.702Z] [DEBUG] IPC调用: task:add
+[2025-04-06T16:00:47.746Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T16:00:47.746Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T16:00:56.718Z] [DEBUG] IPC调用: task:add
+[2025-04-06T16:00:56.750Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T16:00:56.751Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T16:04:51.188Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:04:51.230Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:04:51.250Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T16:04:51.251Z] [DEBUG] IPC调用: task:update
+[2025-04-06T16:05:02.120Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T16:05:02.121Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T16:05:02.121Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T16:05:02.121Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:47:47.698Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T23:47:47.699Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:47:47.700Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T23:47:47.700Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:49:08.365Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T23:49:08.365Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:49:08.365Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-06T23:49:08.366Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:50:43.887Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:50:43.888Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:50:43.888Z] [DEBUG] IPC调用: script:getAll
+[2025-04-06T23:50:43.888Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:00:38.461Z] [INFO] 应用即将退出
+[2025-04-07T00:00:46.286Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T00:00:46.290Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T00:00:46.290Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T00:00:46.291Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T00:00:46.523Z] [INFO] Electron应用已准备好
+[2025-04-07T00:00:46.523Z] [INFO] 创建主窗口
+[2025-04-07T00:00:46.598Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T00:00:46.610Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:00:46.610Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:00:46.611Z] [INFO] IPC处理程序设置完成
+[2025-04-07T00:00:46.611Z] [DEBUG] 查找脚本: default
+[2025-04-07T00:00:46.611Z] [WARN] 脚本未找到: default
+[2025-04-07T00:00:47.390Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:00:47.391Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:00:47.391Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:00:47.391Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:04:50.412Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:04:50.412Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:04:50.413Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:04:50.413Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:04:53.753Z] [DEBUG] IPC调用: task:add
+[2025-04-07T00:04:53.877Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:04:53.898Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:05:41.410Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T00:05:41.970Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T00:05:42.342Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T00:05:42.544Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T00:05:42.769Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T00:05:42.984Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T00:06:00.275Z] [DEBUG] IPC调用: task:add
+[2025-04-07T00:06:00.432Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:06:00.456Z] [DEBUG] IPC调用: task:update
