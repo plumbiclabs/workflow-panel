@@ -54,5 +54,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   script: {
     getAll: () => ipcRenderer.invoke('script:getAll'),
     getById: (scriptId) => ipcRenderer.invoke('script:getById', scriptId)
+  },
+  // 调试相关的 API
+  debug: {
+    getStoreData: () => ipcRenderer.invoke('debug:getStoreData')
   }
 });

@@ -4,7 +4,7 @@ import ScriptService from '../../../services/script.service';
 function useScriptOptions(initialScriptId) {
   const [scriptOptions, setScriptOptions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedScriptId, setSelectedScriptId] = useState(initialScriptId || 'default');
+  const [selectedScriptId, setSelectedScriptId] = useState(initialScriptId);
   const [selectedScript, setSelectedScript] = useState(null);
 
   // 加载脚本选项
@@ -16,14 +16,14 @@ function useScriptOptions(initialScriptId) {
         setScriptOptions(scripts);
         
         // 设置当前选择的脚本
-        const current = scripts.find(s => s.id === selectedScriptId) || scripts[0];
+        const current = scripts.find(s => s.id === selectedScriptId);
         setSelectedScript(current);
       } catch (error) {
         console.error('Failed to load scripts:', error);
         // 使用本地定义作为备用
         const localScripts = ScriptService.getLocalScriptDefinitions();
         setScriptOptions(localScripts);
-        setSelectedScript(localScripts.find(s => s.id === selectedScriptId) || localScripts[0]);
+        setSelectedScript(localScripts.find(s => s.id === selectedScriptId));
       } finally {
         setLoading(false);
       }

@@ -17,10 +17,11 @@ const ScriptSelector = React.memo(({
         <select
           id={`script-select-${taskId}`}
           className="script-select"
-          value={selectedScriptId}
+          value={selectedScriptId || ""}
           onChange={onScriptChange}
           disabled={loading}
         >
+          <option value="">-- select script --</option>
           {scriptOptions.map(script => (
             <option key={script.id} value={script.id}>
               {script.name}

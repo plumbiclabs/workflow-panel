@@ -62,7 +62,7 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
     const newScriptId = e.target.value;
     setSelectedScriptId(newScriptId);
     
-    const newScript = scriptOptions.find(s => s.id === newScriptId) || scriptOptions[0];
+    const newScript = scriptOptions.find(s => s.id === newScriptId);
     
     try {
       await updateTask(workflowId, task.id, { 

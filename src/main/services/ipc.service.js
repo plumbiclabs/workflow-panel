@@ -140,6 +140,24 @@ function setupIpcHandlers(mainWindow) {
     return scriptRegistry.getScriptById(scriptId);
   });
   
+  // 调试数据处理程序
+  ipcMain.handle('debug:getStoreData', async () => {
+    logger.debug('IPC调用: debug:getStoreData');
+    try {
+      // 收集所有主进程的状态数据
+      return {
+        workflows: workflowStore.getAllWorkflows(),
+        taskOutputCache: taskRunnerService.taskOutputCache,
+        availableScripts: await scriptRegistry.getAllScripts(),
+        terminals: terminalService.getAvailableTerminals(),
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      logger.error('获取调试数据失败:', error);
+      return { error: error.message || '获取调试数据失败' };
+    }
+  });
+  
   logger.info('IPC处理程序设置完成');
 }
 

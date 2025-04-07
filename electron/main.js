@@ -47,8 +47,6 @@ app.whenReady().then(() => {
   // 设置IPC处理程序
   logger.info('设置IPC处理程序');
   setupIpcHandlers(mainWindow);
-  
-  scriptRegistry.getScriptById('default');
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

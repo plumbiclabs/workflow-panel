@@ -55,6 +55,14 @@ class WorkflowService {
   static async deleteCommand(workflowId, taskId, commandIndex) {
     return await window.electronAPI.command.delete(workflowId, taskId, commandIndex);
   }
+
+  // 调试功能 - 获取主进程存储数据
+  static async getDebugData() {
+    if (window.electronAPI.debug?.getStoreData) {
+      return await window.electronAPI.debug.getStoreData();
+    }
+    return { error: 'Debug API not available' };
+  }
 }
 
 export default WorkflowService;

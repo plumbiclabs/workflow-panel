@@ -155,7 +155,7 @@ class TaskRunnerService {
       logger.debug('Resolved parameters:', resolvedParams);
       
       // 使用脚本注册表运行相应的脚本
-      const scriptId = task.scriptId || 'default';
+      const scriptId = task.scriptId;
       
       logger.info(`Preparing to run script: ${scriptId}`);
       logger.debug('Script parameters:', resolvedParams);

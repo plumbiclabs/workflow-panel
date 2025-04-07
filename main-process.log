@@ -1596,3 +1596,230 @@
 [2025-04-07T00:49:59.135Z] [ERROR] Script "default" not found
 [2025-04-07T00:49:59.135Z] [INFO] Task execution result:
 [2025-04-07T00:49:59.135Z] [INFO] ===== Task execution completed =====
+[2025-04-07T00:55:10.863Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:55:10.864Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:55:10.864Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:55:10.864Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:55:10.885Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:55:10.917Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:58:45.354Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:58:45.355Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:58:45.355Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:58:45.356Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:05:16.567Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:05:16.568Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:05:32.762Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:05:32.764Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:05:32.764Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:05:32.764Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:07:39.363Z] [INFO] ===== Starting task execution =====
+[2025-04-07T01:07:39.364Z] [INFO] Workflow ID: 1743952280575, Task ID: 1743955247704, Terminal ID: undefined
+[2025-04-07T01:07:39.367Z] [INFO] Task info:
+[2025-04-07T01:07:39.367Z] [INFO] Starting task: Task 1
+[2025-04-07T01:07:39.367Z] [DEBUG] Running script-executor task
+[2025-04-07T01:07:39.367Z] [DEBUG] Resolved parameters:
+[2025-04-07T01:07:39.367Z] [INFO] Preparing to run script: system-info
+[2025-04-07T01:07:39.368Z] [DEBUG] Script parameters:
+[2025-04-07T01:07:39.368Z] [DEBUG] 查找脚本: system-info
+[2025-04-07T01:07:39.368Z] [DEBUG] 找到脚本: system-info
+[2025-04-07T01:07:39.368Z] [DEBUG] Found script:
+[2025-04-07T01:07:39.368Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-07T01:07:39.368Z] [ERROR] Script file not found: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-07T01:07:39.368Z] [INFO] Task execution result:
+[2025-04-07T01:07:39.369Z] [INFO] ===== Task execution completed =====
+[2025-04-07T01:09:10.441Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:09:10.442Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:09:10.442Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:09:10.442Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:16:10.082Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:16:10.083Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:16:10.083Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:16:10.084Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:17:20.488Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:17:20.492Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:17:20.493Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:17:20.493Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:18:23.800Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:26.430Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:30.864Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:33.779Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:36.102Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:38.629Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:40.744Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:48.862Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:53.546Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:18:57.366Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:19:03.448Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:19:10.299Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T01:22:37.252Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T01:22:40.569Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T01:22:48.103Z] [DEBUG] IPC调用: task:add
+[2025-04-07T01:22:48.133Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:22:48.133Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:23:01.020Z] [DEBUG] IPC调用: task:add
+[2025-04-07T01:23:01.045Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:23:01.046Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:23:03.774Z] [DEBUG] IPC调用: task:update
+[2025-04-07T01:23:03.808Z] [DEBUG] IPC调用: task:update
+[2025-04-07T01:23:03.827Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:23:03.828Z] [DEBUG] IPC调用: task:update
+[2025-04-07T01:23:24.909Z] [DEBUG] IPC调用: workflow:update
+[2025-04-07T01:23:33.813Z] [DEBUG] IPC调用: workflow:update
+[2025-04-07T01:23:37.446Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:23:37.446Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:23:37.447Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:23:37.448Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:24:45.879Z] [INFO] 所有窗口已关闭
+[2025-04-07T01:24:52.334Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T01:24:52.337Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T01:24:52.337Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T01:24:52.337Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T01:24:52.510Z] [INFO] Electron应用已准备好
+[2025-04-07T01:24:52.511Z] [INFO] 创建主窗口
+[2025-04-07T01:24:52.592Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T01:24:52.603Z] [INFO] 设置IPC处理程序
+[2025-04-07T01:24:52.603Z] [INFO] 设置IPC处理程序
+[2025-04-07T01:24:52.603Z] [INFO] IPC处理程序设置完成
+[2025-04-07T01:24:52.603Z] [DEBUG] 查找脚本: default
+[2025-04-07T01:24:52.604Z] [WARN] 脚本未找到: default
+[2025-04-07T01:24:53.142Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:24:53.142Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:24:53.142Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:24:53.142Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:25:09.179Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:25:09.180Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:25:09.181Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:25:09.181Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:25:34.487Z] [DEBUG] IPC调用: task:update
+[2025-04-07T01:25:34.510Z] [DEBUG] IPC调用: task:update
+[2025-04-07T01:25:34.532Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:25:34.532Z] [DEBUG] IPC调用: task:update
+[2025-04-07T01:25:37.059Z] [DEBUG] IPC调用: task:update
+[2025-04-07T01:25:37.087Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:25:56.314Z] [INFO] 所有窗口已关闭
+[2025-04-07T01:25:58.459Z] [INFO] 应用即将退出
+[2025-04-07T01:26:01.114Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T01:26:01.115Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T01:26:01.115Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T01:26:01.115Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T01:26:01.155Z] [INFO] Electron应用已准备好
+[2025-04-07T01:26:01.156Z] [INFO] 创建主窗口
+[2025-04-07T01:26:01.189Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T01:26:01.192Z] [INFO] 设置IPC处理程序
+[2025-04-07T01:26:01.193Z] [INFO] 设置IPC处理程序
+[2025-04-07T01:26:01.193Z] [INFO] IPC处理程序设置完成
+[2025-04-07T01:26:01.193Z] [DEBUG] 查找脚本: default
+[2025-04-07T01:26:01.193Z] [WARN] 脚本未找到: default
+[2025-04-07T01:26:01.462Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:26:01.462Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:26:01.463Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T01:26:01.463Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:26:19.950Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:26:19.951Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:26:19.951Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:26:19.951Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T01:26:25.390Z] [INFO] ===== Starting task execution =====
+[2025-04-07T01:26:25.391Z] [INFO] Workflow ID: 1743809692059, Task ID: 1743988968104, Terminal ID: undefined
+[2025-04-07T01:26:25.391Z] [INFO] Task info:
+[2025-04-07T01:26:25.392Z] [INFO] Starting task: Task 1
+[2025-04-07T01:26:25.392Z] [DEBUG] Running script-executor task
+[2025-04-07T01:26:25.393Z] [DEBUG] Resolving variables for workflow 1743809692059. Available outputs:
+[2025-04-07T01:26:25.393Z] [DEBUG] Resolved parameters:
+[2025-04-07T01:26:25.394Z] [DEBUG] Resolved parameters:
+[2025-04-07T01:26:25.394Z] [INFO] Preparing to run script: system-info
+[2025-04-07T01:26:25.394Z] [DEBUG] Script parameters:
+[2025-04-07T01:26:25.394Z] [DEBUG] 查找脚本: system-info
+[2025-04-07T01:26:25.395Z] [DEBUG] 找到脚本: system-info
+[2025-04-07T01:26:25.395Z] [DEBUG] Found script:
+[2025-04-07T01:26:25.395Z] [DEBUG] Script path: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-07T01:26:25.395Z] [ERROR] Script file not found: /Users/wangtengyun/workplace/workflow-panel/scripts/system-info.js
+[2025-04-07T01:26:25.395Z] [INFO] Task execution result:
+[2025-04-07T01:26:25.395Z] [INFO] ===== Task execution completed =====
+[2025-04-07T07:00:45.637Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T07:00:45.638Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:00:45.639Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T07:00:45.639Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:01:40.548Z] [INFO] 应用即将退出
+[2025-04-07T07:01:40.725Z] [INFO] 应用即将退出
+[2025-04-07T07:07:56.952Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T07:07:56.957Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T07:07:56.957Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T07:07:56.957Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T07:07:57.080Z] [INFO] Electron应用已准备好
+[2025-04-07T07:07:57.080Z] [INFO] 创建主窗口
+[2025-04-07T07:07:57.163Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T07:07:57.182Z] [INFO] 设置IPC处理程序
+[2025-04-07T07:07:57.182Z] [INFO] 设置IPC处理程序
+[2025-04-07T07:07:57.182Z] [INFO] IPC处理程序设置完成
+[2025-04-07T07:07:57.182Z] [DEBUG] 查找脚本: default
+[2025-04-07T07:07:57.183Z] [WARN] 脚本未找到: default
+[2025-04-07T07:07:57.982Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T07:07:57.982Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:07:57.982Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T07:07:57.983Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:08:00.051Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:08:00.051Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:08:00.053Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:08:00.053Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:10:14.333Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T07:10:16.300Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T07:10:47.166Z] [DEBUG] IPC调用: task:add
+[2025-04-07T07:10:47.191Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:10:47.191Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:11:13.440Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T07:11:23.619Z] [DEBUG] IPC调用: task:add
+[2025-04-07T07:11:23.647Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:11:23.647Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:11:43.157Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:11:43.179Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:11:43.199Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:11:43.199Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:15:14.481Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:18:32.635Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:18:39.768Z] [DEBUG] IPC调用: workflow:delete
+[2025-04-07T07:18:40.636Z] [DEBUG] IPC调用: workflow:add
+[2025-04-07T07:18:45.866Z] [DEBUG] IPC调用: task:add
+[2025-04-07T07:18:45.890Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:18:45.891Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:19:34.112Z] [INFO] 应用即将退出
+[2025-04-07T07:19:37.108Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T07:19:37.109Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T07:19:37.109Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T07:19:37.109Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T07:19:37.169Z] [INFO] Electron应用已准备好
+[2025-04-07T07:19:37.169Z] [INFO] 创建主窗口
+[2025-04-07T07:19:37.203Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T07:19:37.208Z] [INFO] 设置IPC处理程序
+[2025-04-07T07:19:37.208Z] [INFO] 设置IPC处理程序
+[2025-04-07T07:19:37.208Z] [INFO] IPC处理程序设置完成
+[2025-04-07T07:19:37.947Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T07:19:37.948Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:19:37.948Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T07:19:37.948Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:19:42.119Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:19:42.119Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:19:45.153Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T07:19:47.810Z] [DEBUG] IPC调用: task:add
+[2025-04-07T07:19:47.882Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:19:47.902Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:19:51.039Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T07:19:59.138Z] [DEBUG] IPC调用: task:add
+[2025-04-07T07:19:59.163Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:19:59.164Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:20:16.440Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T07:20:25.677Z] [DEBUG] IPC调用: task:add
+[2025-04-07T07:20:25.701Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:20:25.702Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:22:06.545Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:24:57.466Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:24:57.492Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:24:57.512Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:24:57.514Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:24:59.770Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:24:59.803Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:25:06.368Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T07:25:10.708Z] [DEBUG] IPC调用: task:add
+[2025-04-07T07:25:10.732Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:25:10.732Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T07:29:13.548Z] [DEBUG] IPC调用: task:update
+[2025-04-07T07:29:13.571Z] [DEBUG] IPC调用: script:getAll
