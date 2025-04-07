@@ -14,6 +14,14 @@ function useParameters(task, workflowId, updateTask, selectedScript) {
   
   // 验证任务参数是否满足运行条件
   const validateTaskParameters = useCallback(() => {
+    // 检查是否选择了脚本
+    if (!selectedScript) {
+      return { 
+        isValid: false, 
+        error: 'Please select a script first' 
+      };
+    }
+    
     // 如果脚本没有定义必需参数，总是有效
     if (!selectedScript?.requiredParams?.length) {
       return { isValid: true };

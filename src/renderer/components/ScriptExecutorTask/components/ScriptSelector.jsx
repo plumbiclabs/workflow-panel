@@ -9,14 +9,16 @@ const ScriptSelector = React.memo(({
   selectedScript 
 }) => (
   <div className="script-selector-container">
-    <label htmlFor={`script-select-${taskId}`}>Script:</label>
+    <label htmlFor={`script-select-${taskId}`}>
+      Script: <span className="required-indicator">*</span>
+    </label>
     {loading ? (
       <div className="loading-scripts">Loading scripts...</div>
     ) : (
       <>
         <select
           id={`script-select-${taskId}`}
-          className="script-select"
+          className={`script-select ${!selectedScriptId ? 'required-field' : ''}`}
           value={selectedScriptId || ""}
           onChange={onScriptChange}
           disabled={loading}

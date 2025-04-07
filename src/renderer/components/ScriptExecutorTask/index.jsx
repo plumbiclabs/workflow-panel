@@ -84,6 +84,12 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
   const handleRunTask = useCallback(async () => {
     if (!workflowId || isRunning) return;
     
+    // 检查是否选择了脚本
+    if (!selectedScriptId) {
+      alert('Please select a script before running the task');
+      return;
+    }
+    
     // 使用集中的验证函数检查参数
     const validation = validateTaskParameters();
     if (!validation.isValid) {
@@ -102,7 +108,7 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
       console.error('Error running task:', error);
       alert(`Error running task: ${error.message || 'Unknown error'}`);
     }
-  }, [workflowId, isRunning, validateTaskParameters, runTask, task.id]);
+  }, [workflowId, isRunning, validateTaskParameters, runTask, task.id, task.scriptId, selectedScriptId, updateTask]);
 
   // 计算表单禁用状态
   const formDisabled = useMemo(() => {
@@ -117,9 +123,12 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
     // 如果正在加载或运行中，禁用按钮
     if (loading || isRunning) return true;
     
+    // 如果没有选择脚本，禁用按钮
+    if (!selectedScriptId) return true;
+    
     // 使用集中的验证函数检查是否可以运行
     return !validateTaskParameters().isValid;
-  }, [loading, isRunning, validateTaskParameters]);
+  }, [loading, isRunning, validateTaskParameters, selectedScriptId]);
 
   return (
     <div className="task-window script-executor-task">
