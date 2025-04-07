@@ -165,6 +165,19 @@
   opacity: 1;
 }
 
+/* 添加禁用状态样式 */
+.parameter-delete.disabled,
+.parameter-delete:disabled {
+  cursor: not-allowed;
+  color: #666;
+  opacity: 0.5;
+}
+
+.parameter-delete.disabled:hover,
+.parameter-delete:disabled:hover {
+  background-color: transparent;
+}
+
 /* 参数添加表单 */
 .parameter-form {
   margin-top: 12px;
@@ -401,4 +414,18 @@
 
 .preview-toggle:hover {
   opacity: 1;
+}
+
+/* 添加必填参数样式 */
+.parameter-row.required-parameter {
+  background-color: rgba(24, 144, 255, 0.05);
+  border-left: 3px solid #1890ff;
+}
+
+.parameter-row.required-parameter:hover {
+  background-color: rgba(24, 144, 255, 0.1);
+}
+
+.parameter-row.required-parameter .param-name {
+  font-weight: 500;
 }

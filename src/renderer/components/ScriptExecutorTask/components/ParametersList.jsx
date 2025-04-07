@@ -146,7 +146,7 @@ const ParametersList = ({
         
         <div className="parameters-body">
           {parameters.map((param, index) => (
-            <div key={index} className="parameter-row">
+            <div key={index} className={`parameter-row ${isRequiredParam(param.key) ? 'required-parameter' : ''}`}>
               <div className="param-cell param-name">
                 {param.key}
                 {isRequiredParam(param.key) && <span className="required-badge">*</span>}
@@ -197,10 +197,10 @@ const ParametersList = ({
               </div>
               <div className="param-cell param-actions">
                 <button
-                  className="param-delete"
+                  className={`param-delete ${isRequiredParam(param.key) ? 'disabled' : ''}`}
                   onClick={() => onDelete(index)}
-                  disabled={loading}
-                  title="Delete parameter"
+                  disabled={loading || isRequiredParam(param.key)}
+                  title={isRequiredParam(param.key) ? "Required parameters cannot be deleted" : "Delete parameter"}
                 >
                   ×
                 </button>

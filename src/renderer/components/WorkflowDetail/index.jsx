@@ -51,7 +51,7 @@ const WorkflowDetail = () => {
           type: 'command'
         };
       } else if (template.type === 'script-executor') {
-        // Key-value task
+        // Script executor task
         newTask = {
           name: `Task ${(selectedWorkflow.tasks || []).length + 1}`,
           parameters: [],

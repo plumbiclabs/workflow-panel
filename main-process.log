@@ -1433,3 +1433,166 @@
 [2025-04-07T00:06:00.275Z] [DEBUG] IPC调用: task:add
 [2025-04-07T00:06:00.432Z] [DEBUG] IPC调用: task:update
 [2025-04-07T00:06:00.456Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:08:01.029Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T00:08:04.173Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T00:16:56.010Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:17:03.682Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:19:04.610Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:19:04.611Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:35:38.278Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:35:38.284Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:35:59.442Z] [INFO] 应用即将退出
+[2025-04-07T00:36:04.852Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T00:36:04.855Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T00:36:04.855Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T00:36:04.855Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T00:36:05.108Z] [INFO] Electron应用已准备好
+[2025-04-07T00:36:05.108Z] [INFO] 创建主窗口
+[2025-04-07T00:36:05.184Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T00:36:05.201Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:36:05.201Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:36:05.202Z] [INFO] IPC处理程序设置完成
+[2025-04-07T00:36:05.202Z] [DEBUG] 查找脚本: default
+[2025-04-07T00:36:05.202Z] [WARN] 脚本未找到: default
+[2025-04-07T00:36:06.248Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:36:06.249Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:36:06.249Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:36:06.249Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:36:14.849Z] [DEBUG] IPC调用: task:add
+[2025-04-07T00:36:14.998Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:36:15.017Z] [DEBUG] IPC调用: task:update
+[2025-04-07T00:36:18.336Z] [DEBUG] IPC调用: task:delete
+[2025-04-07T00:36:23.038Z] [DEBUG] IPC调用: task:add
+[2025-04-07T00:36:23.077Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:36:23.077Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:38:21.084Z] [INFO] ===== Starting task execution =====
+[2025-04-07T00:38:21.085Z] [INFO] Workflow ID: 1743984341969, Task ID: 1743986183039, Terminal ID: undefined
+[2025-04-07T00:38:21.086Z] [INFO] Task info:
+[2025-04-07T00:38:21.086Z] [INFO] Starting task: Task 1
+[2025-04-07T00:38:21.087Z] [DEBUG] Running script-executor task
+[2025-04-07T00:38:21.087Z] [ERROR] No parameters defined for task
+[2025-04-07T00:38:21.087Z] [INFO] Task execution result:
+[2025-04-07T00:38:21.087Z] [INFO] ===== Task execution completed =====
+[2025-04-07T00:39:18.172Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:39:18.174Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:39:18.174Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:39:18.174Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:41:10.795Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:41:10.797Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:41:12.992Z] [INFO] ===== Starting task execution =====
+[2025-04-07T00:41:12.993Z] [INFO] Workflow ID: 1743984341969, Task ID: 1743986183039, Terminal ID: undefined
+[2025-04-07T00:41:12.994Z] [INFO] Task info:
+[2025-04-07T00:41:12.995Z] [INFO] Starting task: Task 1
+[2025-04-07T00:41:12.995Z] [DEBUG] Running script-executor task
+[2025-04-07T00:41:12.995Z] [ERROR] No parameters defined for task
+[2025-04-07T00:41:12.996Z] [INFO] Task execution result:
+[2025-04-07T00:41:12.996Z] [INFO] ===== Task execution completed =====
+[2025-04-07T00:41:23.034Z] [INFO] 所有窗口已关闭
+[2025-04-07T00:41:26.413Z] [INFO] 应用即将退出
+[2025-04-07T00:41:29.129Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T00:41:29.130Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T00:41:29.130Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T00:41:29.130Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T00:41:29.211Z] [INFO] Electron应用已准备好
+[2025-04-07T00:41:29.211Z] [INFO] 创建主窗口
+[2025-04-07T00:41:29.268Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T00:41:29.280Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:41:29.280Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:41:29.280Z] [INFO] IPC处理程序设置完成
+[2025-04-07T00:41:29.280Z] [DEBUG] 查找脚本: default
+[2025-04-07T00:41:29.281Z] [WARN] 脚本未找到: default
+[2025-04-07T00:41:29.986Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:41:29.987Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:41:29.987Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:41:29.987Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:41:33.511Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:41:33.511Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:41:39.563Z] [INFO] ===== Starting task execution =====
+[2025-04-07T00:41:39.564Z] [INFO] Workflow ID: 1743984341969, Task ID: 1743986183039, Terminal ID: undefined
+[2025-04-07T00:41:39.564Z] [INFO] Task info:
+[2025-04-07T00:41:39.564Z] [INFO] Starting task: Task 1
+[2025-04-07T00:41:39.564Z] [DEBUG] Running script-executor task
+[2025-04-07T00:41:39.564Z] [ERROR] No parameters defined for task
+[2025-04-07T00:41:39.564Z] [INFO] Task execution result:
+[2025-04-07T00:41:39.564Z] [INFO] ===== Task execution completed =====
+[2025-04-07T00:44:11.967Z] [INFO] ===== Starting task execution =====
+[2025-04-07T00:44:11.967Z] [INFO] Workflow ID: 1743984341969, Task ID: 1743986183039, Terminal ID: undefined
+[2025-04-07T00:44:11.968Z] [INFO] Task info:
+[2025-04-07T00:44:11.968Z] [INFO] Starting task: Task 1
+[2025-04-07T00:44:11.968Z] [DEBUG] Running script-executor task
+[2025-04-07T00:44:11.968Z] [ERROR] No parameters defined for task
+[2025-04-07T00:44:11.968Z] [INFO] Task execution result:
+[2025-04-07T00:44:11.968Z] [INFO] ===== Task execution completed =====
+[2025-04-07T00:44:30.686Z] [INFO] 所有窗口已关闭
+[2025-04-07T00:44:34.693Z] [INFO] 应用即将退出
+[2025-04-07T00:44:36.920Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T00:44:36.920Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T00:44:36.920Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T00:44:36.920Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T00:44:36.966Z] [INFO] Electron应用已准备好
+[2025-04-07T00:44:36.967Z] [INFO] 创建主窗口
+[2025-04-07T00:44:37.002Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T00:44:37.006Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:44:37.006Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:44:37.007Z] [INFO] IPC处理程序设置完成
+[2025-04-07T00:44:37.007Z] [DEBUG] 查找脚本: default
+[2025-04-07T00:44:37.007Z] [WARN] 脚本未找到: default
+[2025-04-07T00:44:37.821Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:44:37.821Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:44:37.821Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:44:37.821Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:44:39.478Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:44:39.479Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:44:39.480Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:44:39.480Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:44:46.352Z] [INFO] ===== Starting task execution =====
+[2025-04-07T00:44:46.352Z] [INFO] Workflow ID: 1743952280575, Task ID: 1743955247704, Terminal ID: undefined
+[2025-04-07T00:44:46.352Z] [INFO] Task info:
+[2025-04-07T00:44:46.352Z] [INFO] Starting task: Task 1
+[2025-04-07T00:44:46.352Z] [DEBUG] Running script-executor task
+[2025-04-07T00:44:46.352Z] [DEBUG] Resolved parameters:
+[2025-04-07T00:44:46.352Z] [INFO] Preparing to run script: default
+[2025-04-07T00:44:46.352Z] [DEBUG] Script parameters:
+[2025-04-07T00:44:46.353Z] [DEBUG] 查找脚本: default
+[2025-04-07T00:44:46.353Z] [WARN] 脚本未找到: default
+[2025-04-07T00:44:46.353Z] [DEBUG] Found script:
+[2025-04-07T00:44:46.353Z] [ERROR] Script "default" not found
+[2025-04-07T00:44:46.353Z] [INFO] Task execution result:
+[2025-04-07T00:44:46.353Z] [INFO] ===== Task execution completed =====
+[2025-04-07T00:45:41.269Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:45:41.270Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:46:03.405Z] [INFO] 应用即将退出
+[2025-04-07T00:46:08.760Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/scripts
+[2025-04-07T00:46:08.760Z] [DEBUG] 不创建其他示例脚本，只使用已有的脚本
+[2025-04-07T00:46:08.760Z] [DEBUG] 初始化脚本处理程序
+[2025-04-07T00:46:08.760Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T00:46:08.809Z] [INFO] Electron应用已准备好
+[2025-04-07T00:46:08.809Z] [INFO] 创建主窗口
+[2025-04-07T00:46:08.838Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T00:46:08.842Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:46:08.842Z] [INFO] 设置IPC处理程序
+[2025-04-07T00:46:08.842Z] [INFO] IPC处理程序设置完成
+[2025-04-07T00:46:08.842Z] [DEBUG] 查找脚本: default
+[2025-04-07T00:46:08.842Z] [WARN] 脚本未找到: default
+[2025-04-07T00:46:09.559Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:46:09.560Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:46:09.560Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T00:46:09.560Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:46:12.145Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:46:12.146Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:46:12.147Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:46:12.147Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T00:49:59.133Z] [INFO] ===== Starting task execution =====
+[2025-04-07T00:49:59.134Z] [INFO] Workflow ID: 1743952280575, Task ID: 1743955247704, Terminal ID: undefined
+[2025-04-07T00:49:59.134Z] [INFO] Task info:
+[2025-04-07T00:49:59.134Z] [INFO] Starting task: Task 1
+[2025-04-07T00:49:59.134Z] [DEBUG] Running script-executor task
+[2025-04-07T00:49:59.135Z] [DEBUG] Resolved parameters:
+[2025-04-07T00:49:59.135Z] [INFO] Preparing to run script: default
+[2025-04-07T00:49:59.135Z] [DEBUG] Script parameters:
+[2025-04-07T00:49:59.135Z] [DEBUG] 查找脚本: default
+[2025-04-07T00:49:59.135Z] [WARN] 脚本未找到: default
+[2025-04-07T00:49:59.135Z] [DEBUG] Found script:
+[2025-04-07T00:49:59.135Z] [ERROR] Script "default" not found
+[2025-04-07T00:49:59.135Z] [INFO] Task execution result:
+[2025-04-07T00:49:59.135Z] [INFO] ===== Task execution completed =====

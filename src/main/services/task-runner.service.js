@@ -30,7 +30,7 @@ class TaskRunnerService {
       // 根据任务类型执行不同的处理逻辑
       if (task.type === 'script-executor') {
         logger.debug('Running script-executor task');
-        return await this.runKeyValueTask(task, workflowId);
+        return await this.runScriptExecutorTask(task, workflowId);
       } else {
         // 命令类型任务 (默认)
         logger.debug('Running command task');
@@ -145,16 +145,13 @@ class TaskRunnerService {
     return resolvedParams;
   }
 
-  // 运行键值对任务
-  async runKeyValueTask(task, workflowId) {
-    if (!task.parameters || task.parameters.length === 0) {
-      logger.error('No parameters defined for task', { taskId: task.id });
-      return { success: false, error: 'No parameters defined for this task' };
-    }
-    
+  // 运行脚本执行器任务
+  async runScriptExecutorTask(task, workflowId) {
     try {
       // 解析参数中的变量引用
-      const resolvedParams = this.resolveVariableReferences(task.parameters, workflowId);
+      const resolvedParams = task.parameters && task.parameters.length > 0 
+        ? this.resolveVariableReferences(task.parameters, workflowId)
+        : {};
       logger.debug('Resolved parameters:', resolvedParams);
       
       // 使用脚本注册表运行相应的脚本
@@ -252,7 +249,7 @@ class TaskRunnerService {
         }
       });
     } catch (error) {
-      logger.error('Error running key-value task:', error);
+      logger.error('Error running script executor task:', error);
       return { success: false, error: error.message };
     }
   }

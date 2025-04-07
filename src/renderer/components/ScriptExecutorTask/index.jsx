@@ -39,7 +39,8 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
     isRequiredParam,
     handleAddParameter,
     handleDeleteParameter,
-    handleParameterValueChange
+    handleParameterValueChange,
+    validateTaskParameters
   } = useParameters(task, workflowId, updateTask, selectedScript);
   
   // 检查此任务是否正在运行
@@ -83,20 +84,10 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
   const handleRunTask = useCallback(async () => {
     if (!workflowId || isRunning) return;
     
-    // 验证必填参数
-    if (missingParams.length > 0) {
-      alert(`Missing required parameters: ${missingParams.join(', ')}`);
-      return;
-    }
-    
-    // 验证必填参数有值
-    const emptyRequiredParams = selectedScript?.requiredParams?.filter(param => {
-      const paramObj = parameters.find(p => p.key === param);
-      return !paramObj || !paramObj.value.trim();
-    }) || [];
-    
-    if (emptyRequiredParams.length > 0) {
-      alert(`Required parameters cannot be empty: ${emptyRequiredParams.join(', ')}`);
+    // 使用集中的验证函数检查参数
+    const validation = validateTaskParameters();
+    if (!validation.isValid) {
+      alert(validation.error);
       return;
     }
     
@@ -111,7 +102,7 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
       console.error('Error running task:', error);
       alert(`Error running task: ${error.message || 'Unknown error'}`);
     }
-  }, [workflowId, isRunning, missingParams, selectedScript, parameters, runTask, task.id]);
+  }, [workflowId, isRunning, validateTaskParameters, runTask, task.id]);
 
   // 计算表单禁用状态
   const formDisabled = useMemo(() => {
@@ -121,13 +112,14 @@ const ScriptExecutorTask = ({ task, workflowId, onClose }) => {
       parameters.some(p => p.key === newKey);
   }, [loading, newKey, selectedScript, parameters]);
 
-  // 运行按钮禁用状态
+  // 运行按钮禁用状态 - 简化逻辑
   const runDisabled = useMemo(() => {
-    return isRunning || 
-      missingParams.length > 0 || 
-      loading || 
-      parameters.length === 0;
-  }, [isRunning, missingParams.length, loading, parameters.length]);
+    // 如果正在加载或运行中，禁用按钮
+    if (loading || isRunning) return true;
+    
+    // 使用集中的验证函数检查是否可以运行
+    return !validateTaskParameters().isValid;
+  }, [loading, isRunning, validateTaskParameters]);
 
   return (
     <div className="task-window script-executor-task">

@@ -12,6 +12,38 @@ function useParameters(task, workflowId, updateTask, selectedScript) {
     ) || [];
   }, [selectedScript, parameters]);
   
+  // 验证任务参数是否满足运行条件
+  const validateTaskParameters = useCallback(() => {
+    // 如果脚本没有定义必需参数，总是有效
+    if (!selectedScript?.requiredParams?.length) {
+      return { isValid: true };
+    }
+    
+    // 检查是否缺少必需参数
+    if (missingParams.length > 0) {
+      return { 
+        isValid: false, 
+        error: `Missing required parameters: ${missingParams.join(', ')}` 
+      };
+    }
+    
+    // 检查必需参数是否有值
+    const emptyRequired = selectedScript.requiredParams
+      .filter(param => {
+        const paramObj = parameters.find(p => p.key === param);
+        return !paramObj || !paramObj.value.trim();
+      });
+    
+    if (emptyRequired.length > 0) {
+      return {
+        isValid: false,
+        error: `Required parameters cannot be empty: ${emptyRequired.join(', ')}`
+      };
+    }
+    
+    return { isValid: true };
+  }, [selectedScript, parameters, missingParams]);
+  
   // 当脚本变更时，自动添加必填参数
   useEffect(() => {
     const addRequiredParams = async () => {
@@ -153,7 +185,8 @@ function useParameters(task, workflowId, updateTask, selectedScript) {
     isRequiredParam,
     handleAddParameter,
     handleDeleteParameter,
-    handleParameterValueChange
+    handleParameterValueChange,
+    validateTaskParameters
   };
 }
 
