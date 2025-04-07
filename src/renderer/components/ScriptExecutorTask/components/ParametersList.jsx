@@ -62,56 +62,6 @@ const ParametersList = ({
     });
   };
 
-  // 渲染语法高亮的变量值
-  const renderHighlightedValue = (value) => {
-    if (!value || typeof value !== 'string') return value;
-    
-    // 如果不包含变量引用，直接返回
-    if (!value.includes('${')) return value;
-    
-    // 用正则表达式匹配变量引用
-    const parts = [];
-    let lastIndex = 0;
-    const variablePattern = /(\${[^}]+})/g;
-    let match;
-    
-    while ((match = variablePattern.exec(value)) !== null) {
-      // 添加变量引用前的普通文本
-      if (match.index > lastIndex) {
-        parts.push(
-          <span key={`text-${lastIndex}`}>
-            {value.substring(lastIndex, match.index)}
-          </span>
-        );
-      }
-      
-      // 添加变量引用（带高亮）
-      const variableRef = match[1];
-      parts.push(
-        <Tooltip 
-          key={`var-${match.index}`}
-          title={`Preview: ${getResolvedValue(variableRef)}`}
-          placement="top"
-        >
-          <span className="variable-reference">{variableRef}</span>
-        </Tooltip>
-      );
-      
-      lastIndex = match.index + match[0].length;
-    }
-    
-    // 添加最后一部分普通文本（如果有）
-    if (lastIndex < value.length) {
-      parts.push(
-        <span key={`text-${lastIndex}`}>
-          {value.substring(lastIndex)}
-        </span>
-      );
-    }
-    
-    return <div className="highlighted-value">{parts}</div>;
-  };
-
   const handleVariableSelect = (paramIndex, value) => {
     // 如果现有值不为空，将变量引用添加到末尾
     const currentValue = parameters[paramIndex]?.value || '';
@@ -188,12 +138,6 @@ const ParametersList = ({
                     </>
                   )}
                 </div>
-                
-                {param.value.includes('${') && !previewMode[index] && (
-                  <div className="param-preview-hint">
-                    {renderHighlightedValue(param.value)}
-                  </div>
-                )}
               </div>
               <div className="param-cell param-actions">
                 <button
