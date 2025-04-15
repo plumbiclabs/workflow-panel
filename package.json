@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "antd": "^5.24.6",
-    "electron-builder": "^24.9.1",
     "electron-store": "^8.2.0",
     "puppeteer": "^24.4.0",
     "react": "^18.2.0",
@@ -48,6 +47,7 @@
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
     "vite": "^5.0.10",
     "wait-on": "^7.2.0"
   }

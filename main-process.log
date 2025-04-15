@@ -2265,3 +2265,39 @@
 [2025-04-07T12:29:32.374Z] [DEBUG] IPC调用: task:update
 [2025-04-07T12:29:45.041Z] [DEBUG] IPC调用: task:update
 [2025-04-07T12:30:04.808Z] [DEBUG] IPC调用: task:update
+[2025-04-07T12:39:28.254Z] [DEBUG] IPC调用: task:update
+[2025-04-07T12:42:59.318Z] [DEBUG] IPC调用: task:update
+[2025-04-07T12:47:00.859Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T12:47:00.860Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T12:47:00.860Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T12:47:00.860Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T12:57:05.559Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts
+[2025-04-07T12:57:05.560Z] [INFO] 脚本注册服务已初始化
+[2025-04-07T12:57:05.605Z] [INFO] Electron应用已准备好
+[2025-04-07T12:57:05.605Z] [INFO] 创建主窗口
+[2025-04-07T12:57:05.648Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-04-07T12:57:05.653Z] [INFO] 设置IPC处理程序
+[2025-04-07T12:57:05.653Z] [INFO] 设置IPC处理程序
+[2025-04-07T12:57:05.654Z] [INFO] IPC处理程序设置完成
+[2025-04-07T12:57:06.124Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T12:57:06.125Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T12:57:06.126Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T12:57:06.127Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T13:31:54.630Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T13:31:54.632Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T13:31:54.633Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T13:31:54.633Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T13:31:54.651Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T13:31:54.651Z] [DEBUG] IPC调用: script:getAll
+[2025-04-07T13:31:54.653Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-07T13:31:54.654Z] [DEBUG] IPC调用: script:getAll
+[2025-04-08T14:02:26.430Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-08T14:02:26.431Z] [DEBUG] IPC调用: script:getAll
+[2025-04-08T14:02:26.434Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-08T14:02:26.434Z] [DEBUG] IPC调用: script:getAll
+[2025-04-08T14:02:26.436Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-08T14:02:26.446Z] [DEBUG] IPC调用: script:getAll
+[2025-04-08T14:02:26.447Z] [DEBUG] IPC调用: workflow:getAll
+[2025-04-08T14:02:26.447Z] [DEBUG] IPC调用: script:getAll
+[2025-04-08T14:02:51.075Z] [INFO] 应用即将退出
+[2025-04-08T14:02:51.078Z] [INFO] 应用即将退出
