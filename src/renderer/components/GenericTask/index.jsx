@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import EditableTitle from '../EditableTitle';
 import { useWorkflow } from '../../context/WorkflowContext';
-import { Select } from 'antd';
+import { Select, Tooltip } from 'antd';
 import './styles.css';
 
 /**
@@ -20,6 +20,7 @@ const GenericTask = ({ task, workflowId, onClose }) => {
   const [newCommand, setNewCommand] = useState('');
   const [availableTerminals, setAvailableTerminals] = useState([]);
   const [selectedTerminal, setSelectedTerminal] = useState(task.terminalId || '');
+  const [dragIndex, setDragIndex] = useState(null);
   const inputRef = useRef(null);
   
   // 检查此任务是否正在运行
@@ -122,6 +123,47 @@ const GenericTask = ({ task, workflowId, onClose }) => {
     }
   };
 
+  // 拖动开始事件处理
+  const handleDragStart = (index) => {
+    setDragIndex(index);
+  };
+
+  // 拖动结束事件处理
+  const handleDragEnd = () => {
+    setDragIndex(null);
+  };
+
+  // 拖动放置处理
+  const handleDrop = async (dropIndex) => {
+    if (dragIndex === null || dragIndex === dropIndex) return;
+    
+    // 创建命令的新顺序
+    const newCommands = [...commands];
+    const [movedCommand] = newCommands.splice(dragIndex, 1);
+    newCommands.splice(dropIndex, 0, movedCommand);
+    
+    setCommands(newCommands);
+    
+    try {
+      await updateTask(workflowId, task.id, { commands: newCommands });
+    } catch (error) {
+      console.error('Failed to reorder commands:', error);
+    }
+  };
+
+  // 拖动经过处理
+  const handleDragOver = (e, index) => {
+    e.preventDefault(); // 允许放置
+    if (dragIndex !== null && dragIndex !== index) {
+      e.currentTarget.classList.add('drag-over');
+    }
+  };
+
+  // 拖动离开处理
+  const handleDragLeave = (e) => {
+    e.currentTarget.classList.remove('drag-over');
+  };
+
   // 处理键盘事件
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -159,6 +201,38 @@ const GenericTask = ({ task, workflowId, onClose }) => {
     updateTerminalSelection(value);
   };
 
+  // 命令上移一位
+  const handleMoveUp = async (index) => {
+    if (index === 0) return; // 已经是第一位
+    
+    const newCommands = [...commands];
+    [newCommands[index-1], newCommands[index]] = [newCommands[index], newCommands[index-1]];
+    
+    setCommands(newCommands);
+    
+    try {
+      await updateTask(workflowId, task.id, { commands: newCommands });
+    } catch (error) {
+      console.error('Failed to move command up:', error);
+    }
+  };
+  
+  // 命令下移一位
+  const handleMoveDown = async (index) => {
+    if (index === commands.length - 1) return; // 已经是最后一位
+    
+    const newCommands = [...commands];
+    [newCommands[index], newCommands[index+1]] = [newCommands[index+1], newCommands[index]];
+    
+    setCommands(newCommands);
+    
+    try {
+      await updateTask(workflowId, task.id, { commands: newCommands });
+    } catch (error) {
+      console.error('Failed to move command down:', error);
+    }
+  };
+
   return (
     <div className="task-window generic-task">
       <div className="task-header">
@@ -190,7 +264,17 @@ const GenericTask = ({ task, workflowId, onClose }) => {
       </div>
       <div className="task-content">
         {commands.map((command, index) => (
-          <div key={index} className="task-command">
+          <div 
+            key={index} 
+            className={`task-command ${dragIndex === index ? 'dragging' : ''}`}
+            draggable
+            onDragStart={() => handleDragStart(index)}
+            onDragEnd={handleDragEnd}
+            onDrop={() => handleDrop(index)}
+            onDragOver={(e) => handleDragOver(e, index)}
+            onDragLeave={handleDragLeave}
+          >
+            <div className="command-drag-handle" title="拖动调整顺序">⋮</div>
             <div className="command-prompt">$</div>
             <textarea
               className="command-input"
@@ -199,13 +283,34 @@ const GenericTask = ({ task, workflowId, onClose }) => {
               placeholder="Type command here"
               rows={1}
             />
-            <button 
-              className="command-delete" 
-              onClick={() => handleDeleteCommand(index)}
-              title="Delete command"
-            >
-              ×
-            </button>
+            <div className="command-actions">
+              <Tooltip title="上移" placement="top">
+                <button 
+                  className="command-action" 
+                  onClick={() => handleMoveUp(index)}
+                  disabled={index === 0}
+                >
+                  ↑
+                </button>
+              </Tooltip>
+              <Tooltip title="下移" placement="top">
+                <button 
+                  className="command-action" 
+                  onClick={() => handleMoveDown(index)}
+                  disabled={index === commands.length - 1}
+                >
+                  ↓
+                </button>
+              </Tooltip>
+              <Tooltip title="删除" placement="top">
+                <button 
+                  className="command-delete" 
+                  onClick={() => handleDeleteCommand(index)}
+                >
+                  ×
+                </button>
+              </Tooltip>
+            </div>
           </div>
         ))}
         <div className="command-input-container">

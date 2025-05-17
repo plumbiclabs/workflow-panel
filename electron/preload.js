@@ -25,7 +25,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     update: (id, workflowData) => ipcRenderer.invoke('workflow:update', { id, workflowData }),
     delete: (id) => ipcRenderer.invoke('workflow:delete', id),
     export: (workflowData) => ipcRenderer.invoke('workflow:export', workflowData),
-    import: () => ipcRenderer.invoke('workflow:import')
+    import: () => ipcRenderer.invoke('workflow:import'),
+    updateOrder: (orderedWorkflows) => ipcRenderer.invoke('workflow:updateOrder', orderedWorkflows)
   },
   // 任务相关的 API
   task: {

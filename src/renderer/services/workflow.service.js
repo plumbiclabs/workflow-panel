@@ -73,6 +73,11 @@ class WorkflowService {
   static async importWorkflow() {
     return await window.electronAPI.workflow.import();
   }
+  
+  // 更新工作流排序
+  static async updateWorkflowsOrder(orderedWorkflows) {
+    return await window.electronAPI.workflow.updateOrder(orderedWorkflows);
+  }
 }
 
 export default WorkflowService;

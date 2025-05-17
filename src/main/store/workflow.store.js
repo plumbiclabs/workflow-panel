@@ -55,6 +55,13 @@ class WorkflowStore {
     return true;
   }
 
+  // 更新工作流排序
+  updateWorkflowsOrder(orderedWorkflows) {
+    // 直接保存重新排序后的工作流数组
+    this.store.set('workflows', orderedWorkflows);
+    return orderedWorkflows;
+  }
+
   addTask(workflowId, task) {
     const workflow = this.getWorkflowById(workflowId);
     if (!workflow) return null;

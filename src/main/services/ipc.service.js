@@ -34,6 +34,11 @@ function setupIpcHandlers(mainWindow) {
     logger.debug('IPC调用: workflow:delete', { id });
     return workflowStore.deleteWorkflow(id);
   });
+  
+  ipcMain.handle('workflow:updateOrder', (_, orderedWorkflows) => {
+    logger.debug('IPC调用: workflow:updateOrder', { count: orderedWorkflows.length });
+    return workflowStore.updateWorkflowsOrder(orderedWorkflows);
+  });
 
   // 任务操作
   ipcMain.handle('task:add', (_, { workflowId, task }) => {

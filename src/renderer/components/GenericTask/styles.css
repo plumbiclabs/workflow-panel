@@ -90,7 +90,8 @@
     border-radius: 3px;
     position: relative;
     background: rgba(255, 255, 255, 0.05);
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
+    cursor: default;
 }
 
 .task-command:hover {
@@ -102,10 +103,35 @@
     outline: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* 拖放相关样式 */
+.task-command.dragging {
+    opacity: 0.5;
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.12);
+    outline: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.task-command.drag-over {
+    border-top: 2px solid #007AFF;
+}
+
+.command-drag-handle {
+    color: #555;
+    cursor: move;
+    padding: 0 8px;
+    font-size: 16px;
+    line-height: 22px;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.task-command:hover .command-drag-handle {
+    color: #888;
+}
+
 .command-prompt {
     color: #666;
     margin-right: 8px;
-    margin-left: 8px;
     line-height: 22px;
     user-select: none;
 }
@@ -128,21 +154,52 @@
     color: #555;
 }
 
+/* 命令操作按钮容器 */
+.command-actions {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-right: 8px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.task-command:hover .command-actions {
+    opacity: 1;
+}
+
+/* 通用命令操作按钮样式 */
+.command-action {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
+.command-action:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.command-action:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* 命令删除按钮样式 */
 .command-delete {
-    display: none;
     background: none;
     border: none;
     color: #666;
     font-size: 14px;
     cursor: pointer;
-    margin-right: 8px;
-    padding: 0 4px;
+    padding: 2px 4px;
     border-radius: 2px;
     transition: all 0.2s;
-}
-
-.task-command:hover .command-delete {
-    display: inline-block;
 }
 
 .command-delete:hover {
@@ -166,6 +223,10 @@
     outline: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.command-input-container .command-prompt {
+    margin-left: 8px;
+}
+
 .task-run {
     position: absolute;
     bottom: 16px;
@@ -187,6 +248,11 @@
 .task-run:hover {
     background: #218838;
     transform: scale(1.1);
+}
+
+.task-run:disabled {
+    background: rgba(40, 167, 69, 0.5);
+    cursor: not-allowed;
 }
 
 @keyframes slideIn {

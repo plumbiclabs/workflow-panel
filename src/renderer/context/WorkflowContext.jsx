@@ -88,6 +88,28 @@ export const WorkflowProvider = ({ children }) => {
       throw err;
     }
   };
+  
+  // 更新工作流排序
+  const updateWorkflowsOrder = async (reorderedWorkflows) => {
+    try {
+      // 保存新的排序到服务端
+      await WorkflowService.updateWorkflowsOrder(reorderedWorkflows);
+      
+      // 更新本地状态
+      setWorkflows(reorderedWorkflows);
+      
+      // 如果有选中的工作流，确保它在新排序中保持选中状态
+      if (selectedWorkflow) {
+        const updatedSelectedWorkflow = reorderedWorkflows.find(w => w.id === selectedWorkflow.id);
+        if (updatedSelectedWorkflow) {
+          setSelectedWorkflow(updatedSelectedWorkflow);
+        }
+      }
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    }
+  };
 
   // 添加任务
   const addTask = async (workflowId, task) => {
@@ -355,6 +377,7 @@ export const WorkflowProvider = ({ children }) => {
     addWorkflow,
     updateWorkflow,
     deleteWorkflow,
+    updateWorkflowsOrder,
     addTask,
     updateTask,
     deleteTask,
