@@ -2354,3 +2354,14 @@
 [2025-05-17T00:13:25.656Z] [INFO] 开始导入工作流
 [2025-05-17T00:13:32.190Z] [INFO] 工作流导入成功
 [2025-05-17T00:13:32.191Z] [DEBUG] IPC调用: workflow:add
+[2025-05-17T00:17:56.968Z] [DEBUG] IPC调用: workflow:add
+[2025-05-17T00:18:04.052Z] [DEBUG] IPC调用: workflow:delete
+[2025-05-17T00:18:09.236Z] [DEBUG] IPC调用: task:add
+[2025-05-17T00:18:09.273Z] [DEBUG] IPC调用: task:update
+[2025-05-17T00:18:09.281Z] [DEBUG] IPC调用: task:update
+[2025-05-17T00:20:27.286Z] [DEBUG] IPC调用: workflow:import
+[2025-05-17T00:20:27.287Z] [INFO] 开始导入工作流
+[2025-05-17T00:20:29.396Z] [INFO] 导入操作已取消
+[2025-05-17T00:20:31.167Z] [DEBUG] IPC调用: workflow:export
+[2025-05-17T00:20:31.167Z] [INFO] 开始导出工作流
+[2025-05-17T00:20:32.812Z] [INFO] 导出操作已取消
