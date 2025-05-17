@@ -63,6 +63,16 @@ class WorkflowService {
     }
     return { error: 'Debug API not available' };
   }
+
+  // 导出工作流到文件
+  static async exportWorkflow(workflow) {
+    return await window.electronAPI.workflow.export(workflow);
+  }
+
+  // 从文件导入工作流
+  static async importWorkflow() {
+    return await window.electronAPI.workflow.import();
+  }
 }
 
 export default WorkflowService;

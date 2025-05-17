@@ -27,6 +27,43 @@
   letter-spacing: -0.5px;
 }
 
+.workflow-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.action-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  background: white;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.action-button:hover {
+  background: #f5f5f5;
+  border-color: #d0d0d0;
+  color: #333;
+}
+
+.action-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #f8f8f8;
+}
+
+.import-button, .export-button {
+  padding: 4px;
+}
+
 .workflow-list-header::after {
   content: '';
   position: absolute;

@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
 import { useWorkflow } from '../../context/WorkflowContext';
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
+import WorkflowService from '../../services/workflow.service';
 import './styles.css';
 
 // 空状态图标组件
 const EmptyIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// 导入图标组件
+const ImportIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// 导出图标组件
+const ExportIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
@@ -24,6 +39,59 @@ const WorkflowList = () => {
   
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [workflowToDelete, setWorkflowToDelete] = useState(null);
+
+  // 导出工作流处理函数
+  const handleExportWorkflow = async (e) => {
+    e.stopPropagation();
+    if (!selectedWorkflow) {
+      message.warning('请先选择一个工作流');
+      return;
+    }
+
+    try {
+      const result = await WorkflowService.exportWorkflow(selectedWorkflow);
+      if (result.success) {
+        message.success(`工作流已成功导出到: ${result.filePath}`);
+      } else if (result.message) {
+        message.info(result.message);
+      } else if (result.error) {
+        message.error(`导出失败: ${result.error}`);
+      }
+    } catch (error) {
+      message.error(`导出失败: ${error.message}`);
+    }
+  };
+
+  // 导入工作流处理函数
+  const handleImportWorkflow = async (e) => {
+    e.stopPropagation();
+    try {
+      const result = await WorkflowService.importWorkflow();
+      
+      if (result.success && result.workflowData) {
+        // 为导入的工作流生成新ID，避免冲突
+        const importedWorkflow = {
+          ...result.workflowData,
+          id: Date.now(),
+          tasks: result.workflowData.tasks || []
+        };
+        
+        // 将导入的工作流保存到Electron Store
+        const savedWorkflow = await addWorkflow(importedWorkflow);
+        
+        if (savedWorkflow) {
+          message.success(`工作流 "${savedWorkflow.name}" 已成功导入`);
+          selectWorkflow(savedWorkflow);
+        }
+      } else if (result.message) {
+        message.info(result.message);
+      } else if (result.error) {
+        message.error(`导入失败: ${result.error}`);
+      }
+    } catch (error) {
+      message.error(`导入失败: ${error.message}`);
+    }
+  };
 
   const handleAddWorkflow = async () => {
     try {
@@ -99,13 +167,30 @@ const WorkflowList = () => {
       </Modal>
       <div className="workflow-list-header">
         <h2>WorkFlow List</h2>
-        <button 
-          className="add-button" 
-          onClick={handleAddWorkflow}
-          title="Add new workflow"
-        >
-          +
-        </button>
+        <div className="workflow-actions">
+          <button 
+            className="action-button import-button" 
+            onClick={handleImportWorkflow}
+            title="导入工作流"
+          >
+            <ImportIcon />
+          </button>
+          <button 
+            className="action-button export-button" 
+            onClick={handleExportWorkflow}
+            title="导出工作流"
+            disabled={!selectedWorkflow}
+          >
+            <ExportIcon />
+          </button>
+          <button 
+            className="add-button" 
+            onClick={handleAddWorkflow}
+            title="Add new workflow"
+          >
+            +
+          </button>
+        </div>
       </div>
       <div className="workflow-items">
         {workflows.length === 0 ? (
@@ -119,6 +204,7 @@ const WorkflowList = () => {
               key={workflow.id}
               className={`workflow-item ${selectedWorkflow?.id === workflow.id ? 'selected' : ''}`}
               onClick={() => selectWorkflow(workflow)}
+              data-id={workflow.id}
             >
               <span title={workflow.name}>{workflow.name}</span>
               <button

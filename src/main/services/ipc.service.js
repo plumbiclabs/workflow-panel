@@ -2,6 +2,7 @@ const { ipcMain } = require('electron');
 const workflowStore = require('../store/workflow.store');
 const scriptRegistry = require('./script-registry.service');
 const taskRunnerService = require('./task-runner.service');
+const fileService = require('./file.service');
 const logger = require('../utils/logger');
 const terminalService = require('./terminal.service');
 
@@ -156,6 +157,17 @@ function setupIpcHandlers(mainWindow) {
       logger.error('获取调试数据失败:', error);
       return { error: error.message || '获取调试数据失败' };
     }
+  });
+  
+  // 工作流导入导出功能
+  ipcMain.handle('workflow:export', async (_, workflowData) => {
+    logger.debug('IPC调用: workflow:export', { workflowId: workflowData.id });
+    return await fileService.exportWorkflow(workflowData);
+  });
+
+  ipcMain.handle('workflow:import', async () => {
+    logger.debug('IPC调用: workflow:import');
+    return await fileService.importWorkflow();
   });
   
   logger.info('IPC处理程序设置完成');

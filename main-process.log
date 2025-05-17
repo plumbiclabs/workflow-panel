@@ -2301,3 +2301,56 @@
 [2025-04-08T14:02:26.447Z] [DEBUG] IPC调用: script:getAll
 [2025-04-08T14:02:51.075Z] [INFO] 应用即将退出
 [2025-04-08T14:02:51.078Z] [INFO] 应用即将退出
+[2025-05-17T00:04:09.153Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts
+[2025-05-17T00:04:09.156Z] [INFO] 脚本注册服务已初始化
+[2025-05-17T00:04:09.269Z] [INFO] Electron应用已准备好
+[2025-05-17T00:04:09.269Z] [INFO] 创建主窗口
+[2025-05-17T00:04:09.372Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-05-17T00:04:09.378Z] [INFO] 设置IPC处理程序
+[2025-05-17T00:04:09.378Z] [INFO] 设置IPC处理程序
+[2025-05-17T00:04:09.378Z] [INFO] IPC处理程序设置完成
+[2025-05-17T00:04:10.299Z] [DEBUG] IPC调用: workflow:getAll
+[2025-05-17T00:04:10.299Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:04:10.300Z] [DEBUG] IPC调用: workflow:getAll
+[2025-05-17T00:04:10.300Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:05:22.077Z] [DEBUG] IPC调用: workflow:getAll
+[2025-05-17T00:05:22.078Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:05:22.079Z] [DEBUG] IPC调用: workflow:getAll
+[2025-05-17T00:05:22.079Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:07:32.114Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:07:32.115Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:07:32.115Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:07:32.115Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:09:04.877Z] [INFO] 所有窗口已关闭
+[2025-05-17T00:09:09.775Z] [INFO] 应用即将退出
+[2025-05-17T00:09:13.573Z] [INFO] Scripts directory: /Users/wangtengyun/workplace/workflow-panel/src/main/scripts
+[2025-05-17T00:09:13.575Z] [INFO] 脚本注册服务已初始化
+[2025-05-17T00:09:13.670Z] [INFO] Electron应用已准备好
+[2025-05-17T00:09:13.670Z] [INFO] 创建主窗口
+[2025-05-17T00:09:13.746Z] [INFO] 开发模式 - 加载开发服务器URL
+[2025-05-17T00:09:13.758Z] [INFO] 设置IPC处理程序
+[2025-05-17T00:09:13.759Z] [INFO] 设置IPC处理程序
+[2025-05-17T00:09:13.759Z] [INFO] IPC处理程序设置完成
+[2025-05-17T00:09:14.600Z] [DEBUG] IPC调用: workflow:getAll
+[2025-05-17T00:09:14.600Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:09:14.600Z] [DEBUG] IPC调用: workflow:getAll
+[2025-05-17T00:09:14.601Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:09:19.557Z] [DEBUG] IPC调用: workflow:import
+[2025-05-17T00:09:19.558Z] [INFO] 开始导入工作流
+[2025-05-17T00:09:23.184Z] [INFO] 导入操作已取消
+[2025-05-17T00:09:24.143Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:09:24.143Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:09:24.144Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:09:24.145Z] [DEBUG] IPC调用: script:getAll
+[2025-05-17T00:09:29.672Z] [DEBUG] IPC调用: workflow:export
+[2025-05-17T00:09:29.673Z] [INFO] 开始导出工作流
+[2025-05-17T00:09:38.965Z] [INFO] 工作流导出成功
+[2025-05-17T00:11:55.298Z] [DEBUG] IPC调用: workflow:import
+[2025-05-17T00:11:55.301Z] [INFO] 开始导入工作流
+[2025-05-17T00:12:15.268Z] [INFO] 工作流导入成功
+[2025-05-17T00:12:15.278Z] [DEBUG] IPC调用: workflow:add
+[2025-05-17T00:13:22.058Z] [DEBUG] IPC调用: workflow:delete
+[2025-05-17T00:13:25.655Z] [DEBUG] IPC调用: workflow:import
+[2025-05-17T00:13:25.656Z] [INFO] 开始导入工作流
+[2025-05-17T00:13:32.190Z] [INFO] 工作流导入成功
+[2025-05-17T00:13:32.191Z] [DEBUG] IPC调用: workflow:add
